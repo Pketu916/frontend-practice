@@ -45,38 +45,45 @@
                 totalValue = "something went wrong";
             }
 
-            document.orderForm.TotalPrice.value = "Rs" + totalValue;
+            document.orderForm.TotalPrice.value = totalValue;
         }
 
         function DisplayProduct() {
             var selectedProduct = document.orderForm.product.value;
             var quantity = parseInt(document.orderForm.quantity.value);
-            var totalPrice = price * quantity;
 
-            if (!cart[selectedProduct]) {
-                cart[selectedProduct] = {
-                    productName: selectedProduct,
-                    quantity: 0,
-                    totalPrice: 0
-                };
+            if (quantity == 0) {
+                alert("kkwsjd")
             }
+            else {
 
-            cart[selectedProduct].quantity += quantity;
-            cart[selectedProduct].totalPrice += totalPrice;
+                var totalPrice = price * quantity;
 
-            var cartDetails = "";
-            for (var product in cart) {
-                cartDetails += "Product Name: " + cart[product].productName + "\n";
-                cartDetails += "Quantity: " + cart[product].quantity + "\n";
-                cartDetails += "Total Price: Rs." + cart[product].totalPrice + "\n\n";
+                if (!cart[selectedProduct]) {
+                    cart[selectedProduct] = {
+                        productName: selectedProduct,
+                        quantity: 0,
+                        totalPrice: 0
+                    };
+                }
+
+                cart[selectedProduct].quantity += quantity;
+                cart[selectedProduct].totalPrice += totalPrice;
+
+                var cartDetails = "";
+                for (var product in cart) {
+                    cartDetails += "Product Name: " + cart[product].productName + "\n";
+                    cartDetails += "Quantity: " + cart[product].quantity + "\n";
+                    cartDetails += "Total Price: Rs." + cart[product].totalPrice + "\n\n";
+                }
+
+                // display cart details
+                document.orderForm.printOrder.value = cartDetails;
+
+                // clear input field
+                document.orderForm.quantity.value = "0";
+                document.orderForm.TotalPrice.value = "0";
             }
-
-            // display cart details
-            document.orderForm.printOrder.value = cartDetails;
-
-            // clear input field
-            document.orderForm.quantity.value = "";
-            document.orderForm.TotalPrice.value= "";
         }
 
         function DisplayCustomerInfo() {
@@ -88,7 +95,7 @@
             var namePattern = /^[A-Za-z\s]+$/;
             var emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
             var phonePattern = /^\d{10}$/;
-            
+
             // validation
             if (!namePattern.test(name) || name.length < 2 || name.length > 50) {
                 document.orderForm.customerDetails.value = "Enter a valid name";
@@ -124,7 +131,7 @@
             if (document.orderForm.name.value != "" &&
                 document.orderForm.email.value != "" &&
                 document.orderForm.phone.value != "") {
-    
+
                 clearCustomerInfo(); // Call the function if fields are not empty
             }
         }
@@ -223,7 +230,7 @@
         <input type="email" name="email" placeholder="Enter Your Email ID"><br />
         <input type="text" name="phone" placeholder="Enter Your Phone Number">
         <p />
-        <input type="button" value="Order Submit" onclick=DisplayCustomerInfo() >
+        <input type="button" value="Order Submit" onclick=DisplayCustomerInfo()>
         <!-- <input type="button" value="Order Submit" onclick="DisplayCustomerInfo(); OrderSummary();"> -->
         <p />
         <textarea name="customerDetails" cols="40" rows="8"></textarea><br />
