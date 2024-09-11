@@ -1,22 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <script>
         var row = 5;
         var col = 5;
-        var rowindex;
-        var colindex;
+        var i, j;
+        var str = "*";
 
-        for(rowindex = 1 ; rowindex<= col ; rowindex++  ){
-            for(colindex = 1 ; colindex<= row ; colindex){
-                
+        for (i = 1; i <= row; i++) {
+            for (j = 1; j <= col; j++) {
+                if (i == 1 || i == row || j == 1 || j == col) {
+                    document.write(str);
+                } else {
+                    document.write(` `);  // Regular space
+                }
             }
+            document.write("<br/>");  // HTML line break for the next row
         }
     </script>
 </body>
+
 </html>
