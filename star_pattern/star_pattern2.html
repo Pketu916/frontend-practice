@@ -14,10 +14,10 @@
         var i, j;
         var str = "*";
         var pattern = "";
-        
+
         for (i = 1; i <= row; i++) {
-            for (j = 1; j <= col; j++) {
-                if (i == 1 || i == row || j == 1 || j == col) {
+            for (j = col; j >= 1; j--) {
+                if (i < j) {
                     pattern += str;
                 } else {
                     pattern += " ";
@@ -25,9 +25,9 @@
             }
             pattern += "\n";
         }
-
-        console.log(pattern);
         // document.write(pattern);
+        console.log(pattern);
+
     </script>
 </body>
 
