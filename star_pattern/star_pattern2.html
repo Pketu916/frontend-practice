@@ -9,24 +9,15 @@
 
 <body>
     <script>
-        var row = 5;
-        var col = 5;
-        var i, j;
-        var str = "*";
-        var pattern = "";
 
-        for (i = 1; i <= row; i++) {
-            for (j = col; j >= 1; j--) {
+        for (let i = 0; i <= 5; i++) {
+            for (let j = 5; j >= 1; j--) {
                 if (i < j) {
-                    pattern += str;
-                } else {
-                    pattern += " ";
+                    document.write("*")
                 }
             }
-            pattern += "\n";
+            document.write("</br >")
         }
-        // document.write(pattern);
-        console.log(pattern);
 
     </script>
 </body>

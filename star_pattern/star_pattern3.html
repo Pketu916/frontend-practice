@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const rows = 5;
+        const cols = 5;
+
+        for (let i = 1; i <= rows; i++) {
+            // printing space
+            for (let k = cols; k > i; k--) {
+                document.write("&nbsp ");
+            }
+
+            // printing star
+            for (let j = 1; j <= i * 2 - 1; j++) {
+                document.write("*")
+            }
+            document.write("</br >");
+        }
+
+        for (let i = 1; i <= rows - 1; i++) {
+            // printing spaces
+            for (let k = 0; k < i; k++) {
+                document.write("&nbsp ");
+            }
+            // printing star
+            for (let j = (cols - i) * 2 - 1; j > 0; j--) {
+                document.write("*");
+            }
+            document.write("</br >");
+        }
+
+    </script>
+</body>
+
+</html>
