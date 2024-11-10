@@ -42,19 +42,21 @@ document.getElementById("addTeamBtn").addEventListener(
 
         tossArray = [firstTeam, secondTeam];
         let randomWinner = Math.floor(Math.random() * 2);
-        document.getElementById("winnerTeam").value = tossArray[randomWinner];
-        alert(`${tossArray[randomWinner]} winn the toss`);
+        let winningTeam = tossArray[randomWinner];
+        let otherTeam = tossArray[1 - randomWinner];
 
-        team1.name = tossArray[randomWinner];
-        if (tossArray[randomWinner] == secondTeam) {
-            team2.name = firstTeam;
-        } else {
-            team2.name = secondTeam;
-        }
+        tossArray = [winningTeam, otherTeam];
+
+        document.getElementById("winnerTeam").value = tossArray[0];
+        alert(`${tossArray[0]} wins the toss`);
+
+        team1.name = tossArray[0];
+        team2.name = tossArray[1];
 
         setTimeout(() => {
             document.getElementById('startGame').style.display = 'inline';
             document.getElementById('chooseTeam').style.display = 'none';
+            document.getElementById("teamName").innerHTML = `<h2>Create Team ${tossArray[0]}<h2/>`;
         }, 3000);
 
     }
@@ -67,6 +69,7 @@ var addButtonTeam2;
 display();
 
 function display() {
+
     // Initialize allPlayer with all players from the 'players' array
     allPlayer = [...players];
 
@@ -117,58 +120,54 @@ let bowlerCount = 0;
 // let teamIsDone = true;
 
 
-function addPlayerToTeam(player, teamName, index) {
-
-    if (teamName.totalCredit <= 100) {
-        if (teamName.players.length < 11) {
-
-            if (player.playingRole === "Batsman" && batsmanCount >= 5) {
-                alert("You can only select 5 batsmen.");
-                return;  // Stop execution if the limit is exceeded
-            } else if (player.playingRole === "Wicketkeeper" && wicketkeeperCount >= 1) {
-                alert("You can only select 1 wicketkeeper.");
-                return;
-            } else if (player.playingRole === "Bowler" && bowlerCount >= 5) {
-                alert("You can only select 5 bowlers.");
-                return;
-            }
-        } else {
-            alert("maximum 11 player in team");
-            return;
-        }
-    } else {
-        alert("You have no credit");
+function addPlayerToTeam(player, team, index) {
+    // Check team size and player role limits first
+    if (team.players.length >= 11) {
+        alert("Maximum 11 players in the team");
         return;
     }
 
-    // Increase the count if validation passes
-    if (player.playingRole === "Batsman") {
-        batsmanCount++;
-    } else if (player.playingRole === "Wicketkeeper") {
-        wicketkeeperCount++;
-    } else if (player.playingRole === "Bowler") {
-        bowlerCount++;
+    if ((player.playingRole === "Batsman" && batsmanCount >= 5) ||
+        (player.playingRole === "Wicketkeeper" && wicketkeeperCount >= 1) ||
+        (player.playingRole === "Bowler" && bowlerCount >= 5)) {
+        alert(`You can only select ${player.playingRole === "Wicketkeeper" ? 1 : 5} ${player.playingRole.toLowerCase()}${player.playingRole === "Wicketkeeper" ? "" : "s"}.`);
+        return;
     }
-    teamName.players.push(player);
-    document.getElementById(`player-${index}`).style.display = 'none'; // Hide the player card after adding
-    teamName.totalCredit += player.credit; // Update the total credit for the team
-    console.log("Total Credits: ", teamName.totalCredit);
-    document.querySelector(".credits").innerHTML = ""; // Clear the previous content
-    document.querySelector(".credits").innerHTML = "Total Credits: " + teamName.totalCredit; // Set the new content    
 
+    // Update total credits and display before checking credit limit
+    team.totalCredit += player.credit;
+    document.querySelector(".credits").textContent = "Total Credits: " + team.totalCredit;
 
-    displayAllTeams(teamName);
+    if (team.totalCredit > 100) {
+        alert("You have no credit");
+        team.totalCredit -= player.credit; // Revert the credit update
+        document.querySelector(".credits").textContent = "Total Credits: " + team.totalCredit;
+        return;
+    }
 
-    if (teamName == team1) {
+    // Add player to the team and update role counts
+    team.players.push(player);
+    if (player.playingRole === "Batsman") batsmanCount++;
+    if (player.playingRole === "Wicketkeeper") wicketkeeperCount++;
+    if (player.playingRole === "Bowler") bowlerCount++;
+
+    // Hide player card and display the updated team
+    document.getElementById(`player-${index}`).style.display = 'none';
+    displayAllTeams(team);
+
+    // Check team readiness and adjust buttons based on team
+    if (team === team1) {
         team1ReadyCheck();
         captainBtnHide1();
         vcBtnHide1();
-    } else if (teamName == team2) {
+    } else if (team === team2) {
         team2ReadyCheck();
         captainBtnHide2();
         vcBtnHide2();
     }
 }
+
+
 
 function displayAllTeams(teamName) {
 
@@ -493,24 +492,24 @@ function makeViceCaptain(player, teamName, index) {
                 });
             } else {
                 teamName.viceCapName.push(player);
-                // document.querySelectorAll("#viceCaptain2").forEach(vc => {
-                //     vc.style.display = 'none';
-                // });
                 document.getElementById("team2PlayerCard").style.display = "none";
                 document.getElementById("team1PlayerCard").style.display = "none";
 
                 document.getElementById("hit").style.display = "flex";
 
             }
-        }
-        if (teamName == team1) {
-            addToTeam2Display()
-            alert("create second team");
-            document.getElementById("team1PlayerCard").style.display = "none";
-        } else if (teamName == team2) {
-            document.getElementById("selectPlayers").style.display = "none";
-            document.getElementById("credits").style.display = "none"
-            alert("Press Hit Button Your Game Is Start");
+            if (teamName == team1) {
+                addToTeam2Display()
+                alert("create second team");
+                document.getElementById("team1PlayerCard").style.display = "none";
+                document.getElementById("teamName").innerHTML = "";
+                document.getElementById("teamName").innerHTML = `<h2>Create Team ${tossArray[1]}<h2/>`;
+            } else if (teamName == team2) {
+                document.getElementById("selectPlayers").style.display = "none";
+                document.getElementById("credits").style.display = "none"
+                document.getElementById("teamName").innerHTML = "";
+                alert("Press Hit Button Your Game Is Start");
+            }
         }
     }
 }
@@ -522,11 +521,11 @@ function makeViceCaptain(player, teamName, index) {
 
 // let team1BatsmenPoints = [];
 // let team2BatsmenPoints = [];
-let team1BatsmenPoints = Array(11).fill(0);
-let team2BatsmenPoints = Array(11).fill(0);
+// let team1BatsmenPoints = Array(11).fill(0);
+// let team2BatsmenPoints = Array(11).fill(0);
 
-let team1BowlingPoints = 0;
-let team2BowlingPoints = 0;
+// let team1BowlingPoints = 0;
+// let team2BowlingPoints = 0;
 
 let currentBatsmanIndex = 0;
 let currentBowlerIndex = 6;
@@ -538,8 +537,13 @@ let team2Points = 0;
 
 let isTeam1Batting = true;
 
+document.getElementById("score-summary").style.display = "none";
+document.getElementById("match-update").style.display = "none";
+
 let hit = document.getElementById("hit");
 hit.onclick = () => {
+    document.getElementById("score-summary").style.display = "flex";
+    document.getElementById("match-update").style.display = "block";
 
     if (balls >= 30) {
         isTeam1Batting = false;
@@ -552,24 +556,22 @@ hit.onclick = () => {
 
     if (totalBalls >= 30 && isTeam1Batting) {
         isTeam1Batting = false;
-        currentBatsmanIndex = 0;  // Reset for team 2 batting
-        currentBowlerIndex = 6;  // Reset for team 1 bowling
-        over = 0;  // Reset overs for second innings
-        totalBalls = 0;  // Reset total balls for second innings
+        currentBatsmanIndex = 0;
+        currentBowlerIndex = 6;
+        over = 0;
+        totalBalls = 0;
         alert("Team 1's innings is over! Team 2 is now batting.");
         return;
     }
 
-    // Check if Team 2 innings is over
     if (totalBalls >= 30 && !isTeam1Batting) {
         captainPoints();
         alert("Team 2's innings is over! Match finished.");
-        document.getElementById("hit").style.display = "none";  // hide button hide
+        document.getElementById("hit").style.display = "none";
         document.getElementById("summary").style.display = "block";
         return;
     }
 
-    // Set current batsman and bowler based on who's batting
     if (isTeam1Batting) {
         currentBatsman = team1.players[currentBatsmanIndex];
         currentBowler = team2.players[currentBowlerIndex];
@@ -578,70 +580,65 @@ hit.onclick = () => {
         currentBowler = team1.players[currentBowlerIndex];
     }
 
-    // If a wicket is taken
-    if (short[x] === "W") {
+    let shortType = short[x];
+    let commentaryText = ""; // For commentary
+
+    if (shortType === "W") {
         if (isTeam1Batting) {
-            team1.players[currentBatsmanIndex].balls += 1;    // Increment balls face
-            team2.players[currentBowlerIndex].wickets += 1;  // Increment wickets for Team 2's bowler
-            team2.players[currentBowlerIndex].bowlingPoints += 10;  // Add points for the wicket
+            team1.players[currentBatsmanIndex].balls += 1;
+            team2.players[currentBowlerIndex].wickets += 1;
+            team2.players[currentBowlerIndex].bowlingPoints += 10;
+            team1.players[currentBatsmanIndex].isOut = true;
         } else {
-            team2.players[currentBatsmanIndex].balls += 1;    // Increment balls face
-            team1.players[currentBowlerIndex].wickets += 1;  // Increment wickets for Team 1's bowler
-            team1.players[currentBowlerIndex].bowlingPoints += 10;  // Add points for the wicket
+            team2.players[currentBatsmanIndex].balls += 1;
+            team1.players[currentBowlerIndex].wickets += 1;
+            team1.players[currentBowlerIndex].bowlingPoints += 10;
+            team2.players[currentBatsmanIndex].isOut = true;
         }
-    }
-
-    if (short[x] === "W") {
-        console.log(`${currentBatsman.name} is out!`);
-        isTeam1Batting ? team2BowlingPoints += 10 : team1BowlingPoints += 10;
-
-        // Move to next batsman if current one is out
+        commentaryText = `${currentBatsman.name} is out! ${currentBowler.name} takes the wicket!`;
         currentBatsmanIndex += 1;
         if (currentBatsmanIndex >= 11) {
-            // If all batsmen are out, finish the innings
-            totalBalls = 30; // End the innings
+            totalBalls = 30;
             return;
         }
     } else {
-        let runs = short[x];
-        console.log(`${currentBatsman.name} scored ${runs} runs!`);
-        console.log(`${currentBowler.name}`)
+        let runs = shortType;
+        commentaryText = `${currentBatsman.name} scores ${runs} runs! Bowler: ${currentBowler.name}`;
 
-        // Update team points
-        isTeam1Batting ? team1Points += runs : team2Points += runs;
-
-        // Update individual player stats for batsmen
         if (isTeam1Batting) {
-            team1.players[currentBatsmanIndex].runs += runs;  // Update runs
-            team1.players[currentBatsmanIndex].balls += 1;    // Increment balls faced
-            team1.players[currentBatsmanIndex].battingPoints += runs + (runs === 4 ? 1 : runs === 6 ? 2 : 0);  // Bonus points for boundaries
-        } else if (!isTeam1Batting) {
-            team2.players[currentBatsmanIndex].runs += runs;  // Update runs
-            team2.players[currentBatsmanIndex].balls += 1;    // Increment balls faced
-            team2.players[currentBatsmanIndex].battingPoints += runs + (runs === 4 ? 1 : runs === 6 ? 2 : 0);  // Bonus points for boundaries
+            team1Points += runs;
+            team1.players[currentBatsmanIndex].runs += runs;
+            team1.players[currentBatsmanIndex].balls += 1;
+            team1.players[currentBatsmanIndex].battingPoints += runs + (runs === 4 ? 1 : runs === 6 ? 2 : 0);
+        } else {
+            team2Points += runs;
+            team2.players[currentBatsmanIndex].runs += runs;
+            team2.players[currentBatsmanIndex].balls += 1;
+            team2.players[currentBatsmanIndex].battingPoints += runs + (runs === 4 ? 1 : runs === 6 ? 2 : 0);
         }
-        // if(isTeam1Batting){
-        //     (team1.players[currentBatsmanIndex].name == team1.capName[0].name) {
-        //         team1.players[currentBatsmanIndex].battingPoints += 
-        //     }
-        // }
 
-
-        // Bonus point for bowlers if the ball was a dot
         if (runs === 0) {
+            commentaryText += ` - Dot ball!`;
             if (isTeam1Batting) {
-                team2.players[currentBowlerIndex].bowlingPoints += 1; // Dot ball bonus for Team 2 bowler
+                team2.players[currentBowlerIndex].bowlingPoints += 1;
             } else {
-                team1.players[currentBowlerIndex].bowlingPoints += 1; // Dot ball bonus for Team 1 bowler
+                team1.players[currentBowlerIndex].bowlingPoints += 1;
             }
         }
     }
 
-    // Increment the ball count
+    // Add commentary
+    commentaryText += `<br>Batsman Points: ${currentBatsman.battingPoints}`;
+    commentaryText += `<br>Bowler Points: ${currentBowler.bowlingPoints}`;
+
+    const matchUpdateDiv = document.getElementById("match-update");
+    matchUpdateDiv.innerHTML += `<p>${commentaryText}</p>`;
+    matchUpdateDiv.scrollTop = matchUpdateDiv.scrollHeight;  // Auto-scroll to the latest update
+
+    // Score and other updates
     over += 1;
     totalBalls += 1;
 
-    // After 6 balls, reset over count and change bowler
     if (over === 6) {
         over = 0;
         currentBowlerIndex += 1;
@@ -650,101 +647,133 @@ hit.onclick = () => {
         }
     }
 
-    // captain and vice captain point
-    function captainPoints() {
-        const team1Captain = team1.capName[0];
-        const team1ViceCaptain = team1.viceCapName[0];
-        const team2Captain = team2.capName[0];
-        const team2ViceCaptain = team2.viceCapName[0];
+    const overs = Math.floor(totalBalls / 6) + '.' + (totalBalls % 6);
+    const wickets = isTeam1Batting ? team1.players.filter(p => p.isOut).length : team2.players.filter(p => p.isOut).length;
 
-        team1.players.forEach(player => {
-            if (player.name === team1Captain.name) {
-                player.battingPoints *= 2;
-                player.bowlingPoints *= 2;
-            }
-            if (player.name === team1ViceCaptain.name) {
-                player.battingPoints *= 1.5;
-                player.bowlingPoints *= 1.5;
-            }
-        });
+    let score1 = document.getElementById("score1");
+    let score2 = document.getElementById("score2");
 
-        team2.players.forEach(player => {
-            if (player.name === team2Captain.name) {
-                player.battingPoints *= 2;
-                player.bowlingPoints *= 2;
-            }
-            if (player.name === team2ViceCaptain.name) {
-                player.battingPoints *= 1.5;
-                player.bowlingPoints *= 1.5;
-            }
-        });
+    if (isTeam1Batting) {
+        score1.innerHTML = `
+        <strong>${tossArray[0]}</strong><br>
+        Score: ${team1Points}/${wickets}<br>
+        Overs: ${overs}<br>
+        Batsman: ${currentBatsman.name} - ${currentBatsman.runs}/${currentBatsman.balls}`
 
-        showSummary();
+        score2.innerHTML = `
+        <strong>${tossArray[1]}</strong><br>
+        Yet to bat<br>
+        Bowler: ${currentBowler.name}`;
+    } else {
+        score1.innerHTML = `
+        <strong>${tossArray[0]}</strong><br>
+        Final Score: ${team1Points}/${team1.players.filter(p => p.isOut).length}<br>
+        Bowler: ${currentBowler.name} `;
+
+        score2.innerHTML = `
+        <strong>${tossArray[1]}</strong><br>
+        Score: ${team2Points}/${wickets}<br>
+        Overs: ${overs}<br>
+        Batsman: ${currentBatsman.name} - ${currentBatsman.runs}/${currentBatsman.balls}`;
     }
-    function showSummary() {
-        // document.getElementById("summary").style.display = "block";
+};
 
-        let summary1 = document.getElementById("summary1");
-        let summary2 = document.getElementById("summary2");
-        let result = document.getElementById("result");
-        let firstTeam = document.getElementById("firstTeamName").value;
-        let secondTeam = document.getElementById("secondTeamName").value;
 
-        // Reset content to avoid appending on multiple calls
-        summary1.innerHTML = "";
-        summary2.innerHTML = "";
-        result.innerHTML = "";
+// captain and vice captain point
+function captainPoints() {
+    const team1Captain = team1.capName[0];
+    const team1ViceCaptain = team1.viceCapName[0];
+    const team2Captain = team2.capName[0];
+    const team2ViceCaptain = team2.viceCapName[0];
 
-        // Calculate Team 1 points, runs, and wickets
-        let team1BattingPoints = team1.players.reduce((total, player) => total + player.battingPoints, 0);
-        let team1BowlingPoints = team1.players.reduce((total, player) => total + player.bowlingPoints, 0);
-        let team1TotalPoints = team1BattingPoints + team1BowlingPoints;
-        let totalRuns1 = team1.players.reduce((sum, player) => sum + player.runs, 0);
-        let totalWickets1 = team1.players.reduce((sum, player) => sum + player.wickets, 0);
-
-        // Display Team 1 Summary
-        summary1.innerHTML += `<h4>${firstTeam} Players</h4>`;
-        summary1.innerHTML += `<p>Total Points: ${team1TotalPoints}</p>`;
-        summary1.innerHTML += `<p>Total Runs: ${totalRuns1}, Total Wickets: ${totalWickets1}</p>`;
-
-        team1.players.forEach((player) => {
-            summary1.innerHTML += `<p>${player.name} - 
-                Runs: ${player.runs}, 
-                Balls Played: ${player.balls}, 
-                Wickets: ${player.wickets}, 
-                Bowling Points: ${player.bowlingPoints}, 
-                Batting Points: ${player.battingPoints}</p>`;
-        });
-
-        // Calculate Team 2 points, runs, and wickets
-        let team2BattingPoints = team2.players.reduce((total, player) => total + player.battingPoints, 0);
-        let team2BowlingPoints = team2.players.reduce((total, player) => total + player.bowlingPoints, 0);
-        let team2TotalPoints = team2BattingPoints + team2BowlingPoints;
-        let totalRuns2 = team2.players.reduce((sum, player) => sum + player.runs, 0);
-        let totalWickets2 = team2.players.reduce((sum, player) => sum + player.wickets, 0);
-
-        // Display Team 2 Summary
-        summary2.innerHTML += `<h4>${secondTeam} Players</h4>`;
-        summary2.innerHTML += `<p>Total Points: ${team2TotalPoints}</p>`;
-        summary2.innerHTML += `<p>Total Runs: ${totalRuns2}, Total Wickets: ${totalWickets2}</p>`;
-
-        team2.players.forEach((player) => {
-            summary2.innerHTML += `<p>${player.name} - 
-                Runs: ${player.runs}, 
-                Balls Played: ${player.balls}, 
-                Wickets: ${player.wickets}, 
-                Bowling Points: ${player.bowlingPoints}, 
-                Batting Points: ${player.battingPoints}</p>`;
-        });
-
-        // Display the match result
-        if (team1TotalPoints > team2TotalPoints) {
-            result.innerHTML = `<h4>Result: ${firstTeam} wins!</h4>`;
-        } else if (team1TotalPoints < team2TotalPoints) {
-            result.innerHTML = `<h4>Result: ${secondTeam} wins!</h4>`;
-        } else {
-            result.innerHTML = "<h4>Result: It's a tie!</h4>";
+    team1.players.forEach(player => {
+        if (player.name === team1Captain.name) {
+            player.battingPoints *= 2;
+            player.bowlingPoints *= 2;
         }
-    }
+        if (player.name === team1ViceCaptain.name) {
+            player.battingPoints *= 1.5;
+            player.bowlingPoints *= 1.5;
+        }
+    });
 
+    team2.players.forEach(player => {
+        if (player.name === team2Captain.name) {
+            player.battingPoints *= 2;
+            player.bowlingPoints *= 2;
+        }
+        if (player.name === team2ViceCaptain.name) {
+            player.battingPoints *= 1.5;
+            player.bowlingPoints *= 1.5;
+        }
+    });
+
+    showSummary();
+}
+
+function showSummary() {
+    // document.getElementById("score-summary").style.display = "none";
+    // document.getElementById("match-update").style.display = "none";
+
+    let summary1 = document.getElementById("summary1");
+    let summary2 = document.getElementById("summary2");
+    let result = document.getElementById("result");
+    let firstTeam = document.getElementById("firstTeamName").value;
+    let secondTeam = document.getElementById("secondTeamName").value;
+
+    // Reset content to avoid appending on multiple calls
+    summary1.innerHTML = "";
+    summary2.innerHTML = "";
+    result.innerHTML = "";
+
+    // Calculate Team 1 points, runs, and wickets
+    let team1BattingPoints = team1.players.reduce((total, player) => total + player.battingPoints, 0);
+    let team1BowlingPoints = team1.players.reduce((total, player) => total + player.bowlingPoints, 0);
+    let team1TotalPoints = team1BattingPoints + team1BowlingPoints;
+    let totalRuns1 = team1.players.reduce((sum, player) => sum + player.runs, 0);
+    let totalWickets1 = team1.players.reduce((sum, player) => sum + player.wickets, 0);
+
+    // Display Team 1 Summary
+    summary1.innerHTML += `<h4>${firstTeam} Players</h4>`;
+    summary1.innerHTML += `<p>Total Points: ${team1TotalPoints}</p>`;
+    summary1.innerHTML += `<p>Total Runs: ${totalRuns1}, Total Wickets: ${totalWickets1}</p>`;
+
+    team1.players.forEach((player) => {
+        summary1.innerHTML += `<p>${player.name} - 
+                Runs: ${player.runs}, 
+                Balls Played: ${player.balls}, 
+                Wickets: ${player.wickets}, 
+                Bowling Points: ${player.bowlingPoints}, 
+                Batting Points: ${player.battingPoints}</p>`;
+    });
+
+    // Calculate Team 2 points, runs, and wickets
+    let team2BattingPoints = team2.players.reduce((total, player) => total + player.battingPoints, 0);
+    let team2BowlingPoints = team2.players.reduce((total, player) => total + player.bowlingPoints, 0);
+    let team2TotalPoints = team2BattingPoints + team2BowlingPoints;
+    let totalRuns2 = team2.players.reduce((sum, player) => sum + player.runs, 0);
+    let totalWickets2 = team2.players.reduce((sum, player) => sum + player.wickets, 0);
+
+    // Display Team 2 Summary
+    summary2.innerHTML += `<h4>${secondTeam} Players</h4>`;
+    summary2.innerHTML += `<p>Total Points: ${team2TotalPoints}</p>`;
+    summary2.innerHTML += `<p>Total Runs: ${totalRuns2}, Total Wickets: ${totalWickets2}</p>`;
+
+    team2.players.forEach((player) => {
+        summary2.innerHTML += `<p>${player.name} - 
+                Runs: ${player.runs}, 
+                Balls Played: ${player.balls}, 
+                Wickets: ${player.wickets}, 
+                Bowling Points: ${player.bowlingPoints}, 
+                Batting Points: ${player.battingPoints}</p>`;
+    });
+
+    // Display the match result
+    if (team1TotalPoints > team2TotalPoints) {
+        result.innerHTML = `<h4>Result: ${firstTeam} wins!</h4>`;
+    } else if (team1TotalPoints < team2TotalPoints) {
+        result.innerHTML = `<h4>Result: ${secondTeam} wins!</h4>`;
+    } else {
+        result.innerHTML = "<h4>Result: It's a tie!</h4>";
+    }
 }

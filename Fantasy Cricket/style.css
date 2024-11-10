@@ -199,3 +199,28 @@ h3 , h4{
 #summary2 , #summary1 {
     padding: 20px;
 }
+
+#score-summary {
+    font-weight: bold;
+    display: flex;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    width: 50%;
+    margin: 10px auto;
+    justify-content: space-between;
+}
+#match-update{
+    height: 150px;
+    overflow-y: scroll;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 50%;
+    margin: 10px auto;
+    justify-content: center;
+    display: grid;
+}
+h2{
+    justify-content: center;
+    display: flex;
+    margin: 0px;
+}
