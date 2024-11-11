@@ -24,10 +24,11 @@
             <input type="text" name="secondTeamName" id="secondTeamName" value="">
         </div>
 
-        <button type="button" id="addTeamBtn">TOSS</button>
+        <button type="button" id="toss">TOSS</button>
         <label for="winnerTeam">TOSS WINNER TEAM NAME</label>
         <input type="text" name="" id="winnerTeam" readonly>
     </div>
+
     <div id="startGame" style="display: none;">
         <div id="selectPlayers">
             <div id="playerCard"></div>
@@ -35,20 +36,19 @@
             <div id="team2PlayerCard"></div>
         </div>
         <!-- Submit Buttons for Teams -->
-        <button id="submitTeam1Btn">Submit Team 1</button>
-        <button id="submitTeam2Btn">Submit Team 2</button>
+        <button id="submitTeam1Btn" style="display: none;">Submit Team 1</button>
+        <button id="submitTeam2Btn" style="display: none;">Submit Team 2</button>
 
         <div id="startGame">
-            <button type="button" id="hit">Hit</button>
-            <div id="score-summary">
+            <button type="button" id="hit" style="display: none;">Hit</button>
+            <div id="score-summary" style="display: none;">
                 <div id="score1"></div>
                 <div id="score2"></div>
             </div>
-            <div id="match-update"></div>
-
+            <div id="match-update" style="display: none;"></div>
         </div>
 
-        <div id="summary">
+        <div id="summary" style="display: none;" >
             <h3>Match Summary</h3>
             <div id="result"></div>
             <div class="summary-container">
@@ -56,7 +56,6 @@
                 <div id="summary2"></div>
             </div>
         </div>
-
 
     </div>
 </body>

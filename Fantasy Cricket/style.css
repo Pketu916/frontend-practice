@@ -23,7 +23,7 @@ div#chooseTeam .team2 label {
     width: 170px;
 }
 
-#addTeamBtn {
+#toss {
     justify-content: center;
     display: grid;
     height: 40px;
@@ -38,12 +38,14 @@ div#chooseTeam .team2 label {
     color: blue;
     font-size: 20px;
 }
-.credits{
+
+.credits {
     display: flex;
     justify-content: center;
 }
 
-div#chooseTeam label ,div#chooseTeam input{
+div#chooseTeam label,
+div#chooseTeam input {
     display: block;
     width: 220px;
     margin: 10px auto;
@@ -51,7 +53,8 @@ div#chooseTeam label ,div#chooseTeam input{
     padding: 3px;
     height: 20px;
 }
-#chooseTeam input{
+
+#chooseTeam input {
     border: 2px solid black;
     border-radius: 20px;
 }
@@ -61,15 +64,19 @@ div#chooseTeam label ,div#chooseTeam input{
     display: inline-block;
 
 }
+
 .team2PlayersDisplay {
     background: greenyellow;
 }
-#team1PlayerCard , #team2PlayerCard{
+
+#team1PlayerCard,
+#team2PlayerCard {
     /* width: 75%; */
-    overflow-y: auto; 
+    overflow-y: auto;
     white-space: nowrap;
     height: 400px;
 }
+
 #selectPlayers {
     display: flex;
     width: 60%;
@@ -79,50 +86,61 @@ div#chooseTeam label ,div#chooseTeam input{
     border-radius: 20px;
     /* justify-content: space-evenly; */
 }
+
 #playerCard {
     display: flex;
-    overflow-x: auto; 
+    overflow-x: auto;
     white-space: nowrap;
     width: 50%;
 }
-#addToTeam1 , #addToTeam2{
+
+#addToTeam1,
+#addToTeam2 {
     padding: 10px 15px;
-    background-color: #4CAF50; 
+    background-color: #4CAF50;
     color: white;
-    border: none; 
+    border: none;
     border-radius: 50%;
-    font-size: 20px;    
-    cursor: pointer; 
+    font-size: 20px;
+    cursor: pointer;
 
 }
-#removeButton1 , #removeButton2{
+
+#removeButton1,
+#removeButton2 {
     padding: 10px 17px;
-    background-color: #ff0000; 
+    background-color: #ff0000;
     color: white;
-    border: none; 
+    border: none;
     border-radius: 50%;
-    font-size: 20px;    
-    cursor: pointer; 
+    font-size: 20px;
+    cursor: pointer;
 }
-#captain1 , #captain2{
+
+#captain1,
+#captain2 {
     padding: 10px 15px;
-    background-color: #2752c7; 
+    background-color: #2752c7;
     color: white;
-    border: none; 
+    border: none;
     border-radius: 50%;
-    font-size: 20px;    
-    cursor: pointer; 
+    font-size: 20px;
+    cursor: pointer;
 }
-#viceCaptain1 ,#viceCaptain2{
+
+#viceCaptain1,
+#viceCaptain2 {
     padding: 10px 8px;
-    background-color: #27c7c2; 
+    background-color: #27c7c2;
     color: white;
-    border: none; 
+    border: none;
     border-radius: 50%;
-    font-size: 20px;    
-    cursor: pointer; 
+    font-size: 20px;
+    cursor: pointer;
 }
-#submitTeam1Btn , #submitTeam2Btn {
+
+#submitTeam1Btn,
+#submitTeam2Btn {
     margin: 5px auto;
     padding: 5px;
     width: 150px;
@@ -137,32 +155,35 @@ div#chooseTeam label ,div#chooseTeam input{
 
 }
 
-#playerCard{
+#playerCard {
     display: inline-block;
     /* width: 45%; */
 }
 
-.player-item{
+.player-item {
     display: flex;
     justify-content: space-between;
     margin: 10px;
     flex-wrap: wrap;
     align-items: center;
 }
-#selPlayersItem{
+
+#selPlayersItem {
     display: flex;
     margin: 10px;
     flex-wrap: wrap;
     align-items: center;
 }
-.teamPlayer{
+
+.teamPlayer {
     display: flex;
     justify-content: space-between;
     margin: 10px;
     flex-wrap: wrap;
     align-items: center;
 }
-#hit{
+
+#hit {
     padding: 5px;
     margin: 10px auto;
     height: 50px;
@@ -178,25 +199,31 @@ div#chooseTeam label ,div#chooseTeam input{
     color: blue;
 }
 
-#startGame{
+#startGame {
     box-shadow: 0 4px 8px rgba(228, 5, 5, 0.1);
 }
-#summary{
+
+#summary {
     display: block;
     align-content: center;
     justify-content: start;
     margin: 20px auto;
     width: 60%;
 }
-h3 , h4{
+
+h3,
+h4 {
     text-align: center;
 }
-.summary-container{
+
+.summary-container {
     display: flex;
     border: 2px solid #0000ff;
     border-radius: 20px;
 }
-#summary2 , #summary1 {
+
+#summary2,
+#summary1 {
     padding: 20px;
 }
 
@@ -209,7 +236,8 @@ h3 , h4{
     margin: 10px auto;
     justify-content: space-between;
 }
-#match-update{
+
+#match-update {
     height: 150px;
     overflow-y: scroll;
     border: 1px solid #ccc;
@@ -218,9 +246,50 @@ h3 , h4{
     margin: 10px auto;
     justify-content: center;
     display: grid;
+    border-radius: 10px;
+    background: #eff1f600;
+
 }
-h2{
+
+h2 {
     justify-content: center;
     display: flex;
     margin: 0px;
+}
+
+.summary-container {
+    overflow-y: scroll;
+    height: 600px;
+}
+
+div.summary-container p {
+    background: #7afaff2e;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+#score1,
+#score2 {
+    background: #7afaff2e;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+div#summary1 h4,
+div#summary2 h4,
+div#result h4 {
+    font-size: 22px;
+    margin: 10px;
+    background-color: #5631242b;
+    color: blue;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+div#result h4 {
+    color: red;
+}
+div#summary h3{
+    font-size: 25px;
+    color: blue;
 }
