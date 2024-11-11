@@ -1,6 +1,5 @@
 import { players } from "./players.js";
 
-// console.log(players[0].name)
 const team1 = {
     players: [],
     runs: 0,
@@ -20,8 +19,6 @@ const team2 = {
 };
 const short = [1, 2, 3, 4, 6, 0, "W"];
 var tossArray = [];
-// console.log(players[1])
-// alert(players[1])
 
 document.getElementById("toss").addEventListener(
     "click",
@@ -69,7 +66,6 @@ display();
 
 function display() {
 
-    // Initialize allPlayer with all players from the 'players' array
     allPlayer = [...players];
 
     // Clear the content
@@ -153,15 +149,15 @@ function addPlayerToTeam(player, team, index) {
 
     //adjust buttons
     if (team === team1) {
-        // For display team submit button
-        team1ReadyCheck();
-        captainBtnHide1();
-        vcBtnHide1();
+        hideCaptainAndViceCaptainBtn("#captain1");
+        hideCaptainAndViceCaptainBtn("#viceCaptain1");
+
     } else if (team === team2) {
-        team2ReadyCheck();
-        captainBtnHide2();
-        vcBtnHide2();
+        hideCaptainAndViceCaptainBtn("#captain2");
+        hideCaptainAndViceCaptainBtn("#viceCaptain1");
+
     }
+    teamIsReadyCheck(team);
 }
 
 
@@ -270,11 +266,10 @@ function teamDisplay(player, teamName, index) {
 
     }
 
-    // adjust button
-    captainBtnHide1();
-    captainBtnHide2();
-    vcBtnHide1();
-    vcBtnHide2();
+    hideCaptainAndViceCaptainBtn("#captain1");
+    hideCaptainAndViceCaptainBtn("#captain2");
+    hideCaptainAndViceCaptainBtn("#viceCaptain1");
+    hideCaptainAndViceCaptainBtn("#viceCaptain2");
 }
 
 // remove player frome team
@@ -287,16 +282,12 @@ function removePlayerFromTeam(player, teamName, index) {
         }
     });
 
-    if (index !== -1) {
-        teamName.players.splice(index, 1);
-        teamName.totalCredit -= player.credit;
-        console.log("Total Credits after removal: ", teamName.totalCredit);
-        document.querySelector(".credits").innerHTML = ""; // Clear the previous content
-        document.querySelector(".credits").innerHTML = "Total Credits: " + teamName.totalCredit; // Set the new content
+    teamName.players.splice(index, 1);
+    teamName.totalCredit -= player.credit;
+    console.log("Total Credits after removal: ", teamName.totalCredit);
+    document.querySelector(".credits").innerHTML = ""; 
+    document.querySelector(".credits").innerHTML = "Total Credits: " + teamName.totalCredit;
 
-    }
-
-    // remove player to the team and update role counts
 
     if (player.playingRole === "Batsman") {
         batsmanCount--;
@@ -306,14 +297,8 @@ function removePlayerFromTeam(player, teamName, index) {
         bowlerCount--;
     }
 
-    // For update team submit button
-    if (teamName == team1) {
-        team1ReadyCheck();
-    } else {
-        team2ReadyCheck();
-    }
-    // update team player 
     displayAllTeams(teamName);
+    teamIsReadyCheck(teamName);
 }
 
 ///////// team is ready and make captain 
@@ -328,61 +313,30 @@ addToTeam2Btn.forEach(hideBtn => {
     hideBtn.style.display = 'none';
 });
 
-// display submit team 1 button
-function team1ReadyCheck() {
-    if (team1.totalCredit <= 100 && team1.players.length == 11) {
-        document.getElementById("submitTeam1Btn").style.display = "flex";
-    } else {
+function teamIsReadyCheck(teamName) {
+    if (teamName.totalCredit <= 100 && teamName.players.length == 11) {
+        if (teamName == team1) {
+            document.getElementById("submitTeam1Btn").style.display = "flex";
+        } else {
+            document.getElementById("submitTeam2Btn").style.display = "flex";
+        }
+    } else{
+        if(teamName == team1){
         document.getElementById("submitTeam1Btn").style.display = "none";
-    }
-}
-// display submit team 2 button
-function team2ReadyCheck() {
-    if (team2.totalCredit <= 100 && team2.players.length == 11) {
-        document.getElementById("submitTeam2Btn").style.display = "flex";
-    } else {
+        } else {
         document.getElementById("submitTeam2Btn").style.display = "none";
+        }
     }
 }
 
-// functions for captain button and vice captain button hide and show
-function captainBtnHide1() {
-    document.querySelectorAll("#captain1").forEach(element => {
+function hideCaptainAndViceCaptainBtn(buttonId) {
+    document.querySelectorAll(buttonId).forEach(element => {
         element.style.display = "none";
     });
 }
-function captainBtnHide2() {
-    document.querySelectorAll("#captain2").forEach(element => {
-        element.style.display = "none";
-    });
-}
-function vcBtnHide1() {
-    document.querySelectorAll("#viceCaptain1").forEach(element => {
-        element.style.display = "none";
-    });
-}
-function vcBtnHide2() {
-    document.querySelectorAll("#viceCaptain2").forEach(element => {
-        element.style.display = "none";
-    });
-}
-function captainBtnshow1() {
-    document.querySelectorAll("#captain1").forEach(element => {
-        element.style.display = "inline";
-    });
-}
-function captainBtnshow2() {
-    document.querySelectorAll("#captain2").forEach(element => {
-        element.style.display = "inline";
-    });
-}
-function vcBtnshow1() {
-    document.querySelectorAll("#viceCaptain1").forEach(element => {
-        element.style.display = "inline";
-    });
-}
-function vcBtnshow2() {
-    document.querySelectorAll("#viceCaptain2").forEach(element => {
+
+function showCaptainAndViceCaptainBtn(buttonId) {
+    document.querySelectorAll(buttonId).forEach(element => {
         element.style.display = "inline";
     });
 }
@@ -404,8 +358,7 @@ team1Ready.onclick = () => {
 
     team1Ready.style.display = "none";
     // document.getElementById("team1PlayerCard").style.display="none";  //team 1 hide
-    captainBtnshow1();
-
+    showCaptainAndViceCaptainBtn("#captain1");
 }
 
 //  click team2 submit button
@@ -423,7 +376,7 @@ team2Ready.onclick = () => {
     teamIsReady(team2);
 
     document.getElementById("submitTeam2Btn").style.display = "none";
-    captainBtnshow2();
+    showCaptainAndViceCaptainBtn("#captain2");
 }
 
 // add player team 2 (+) button display inline
@@ -461,7 +414,7 @@ function makeCaptain(player, teamName, index) {
             document.querySelectorAll("#captain1").forEach(c => {
                 c.style.display = 'none';
             });
-            vcBtnshow1();
+            showCaptainAndViceCaptainBtn("#viceCaptain1");
         }
     }
     if (teamName == team2) {
@@ -470,7 +423,7 @@ function makeCaptain(player, teamName, index) {
             document.querySelectorAll("#captain2").forEach(c => {
                 c.style.display = 'none';
             });
-            vcBtnshow2();
+            showCaptainAndViceCaptainBtn("#viceCaptain2");
         }
     }
 }
