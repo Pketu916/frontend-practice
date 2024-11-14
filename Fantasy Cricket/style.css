@@ -152,7 +152,7 @@ div#chooseTeam input {
     border-radius: 20px;
     background: aqua;
     color: revert;
-
+    cursor: pointer;
 }
 
 #playerCard {

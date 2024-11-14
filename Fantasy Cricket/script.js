@@ -251,15 +251,15 @@ function createTeamStructure(player, teamName, index) {
 
 function removePlayerFromTeam(player, teamName, index) {
     // document.getElementById(`player-${index}`).style.display = 'block';
-    players.forEach((playerId, indexId) => {
-        if (playerId === player) {
-            document.getElementById(`player-${indexId}`).style.display = 'flex';
+    players.forEach((teamPlayer, players) => {
+        if (teamPlayer === player) {
+            document.getElementById(`player-${players}`).style.display = 'flex';
         }
     });
 
     teamName.players.splice(index, 1);
     teamName.totalCredit -= player.credit;
-    document.querySelector(".credits").innerHTML = "";
+    // document.querySelector(".credits").innerHTML = "";
     document.querySelector(".credits").innerHTML = "Total Credits: " + teamName.totalCredit;
 
 
@@ -319,8 +319,8 @@ submitTeam1.onclick = () => {
     alert("Team1 is submitted");
     alert("select captain and vice captain ")
 
-    addPlayerToTeam1Btn.forEach(card => {
-        card.style.display = 'none';
+    addPlayerToTeam1Btn.forEach(element => {
+        element.style.display = 'none';
     });
 
     batsmanCount = 0;
@@ -337,11 +337,11 @@ submitTeam1.onclick = () => {
 submitTeam2.onclick = () => {
     // document.getElementById("submitTeam2Btn").style.display = "none";
     alert("Team2 is submitted");
-    addPlayerToTeam1Btn.forEach(card => {
-        card.style.display = 'none';
+    addPlayerToTeam1Btn.forEach(element => {
+        element.style.display = 'none';
     });
-    addPlayerToTeam2Btn.forEach(card => {
-        card.style.display = 'none';
+    addPlayerToTeam2Btn.forEach(element => {
+        element.style.display = 'none';
     });
 
     playerCard.style.display = "none";
@@ -353,8 +353,8 @@ submitTeam2.onclick = () => {
 
 // [ add player to team 2 (+) ] button display inline
 function addPlayerToTeam2BtnDisplay() {
-    addPlayerToTeam2Btn.forEach(card => {
-        card.style.display = 'inline';
+    addPlayerToTeam2Btn.forEach(btn => {
+        btn.style.display = 'inline';
     });
 }
 
