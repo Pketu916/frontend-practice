@@ -264,7 +264,8 @@ h2 {
 
 div.summary-container p {
     background: #7afaff2e;
-    padding: 15px;
+    padding: 10px;
+    margin: 10px;
     border-radius: 10px;
 }
 
@@ -273,6 +274,7 @@ div.summary-container p {
     background: #7afaff2e;
     padding: 10px;
     border-radius: 10px;
+    width: 40%;
 }
 
 div#summary1 h4,

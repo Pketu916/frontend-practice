@@ -329,7 +329,7 @@ submitTeam1.onclick = () => {
     removeBtnHide('#removeButton1');
 
     submitTeam1.style.display = "none";
-    // document.getElementById("team1PlayerCard").style.display="none";  //team 1 hide
+    // document.getElementById("team1PlayerCard").style.display="none";
     showCaptainAndViceCaptainBtn("#captain1");
 }
 
@@ -351,7 +351,7 @@ submitTeam2.onclick = () => {
     showCaptainAndViceCaptainBtn("#captain2");
 }
 
-// { add player to team 2 (+) } button display inline
+// [ add player to team 2 (+) ] button display inline
 function addPlayerToTeam2BtnDisplay() {
     addPlayerToTeam2Btn.forEach(card => {
         card.style.display = 'inline';
