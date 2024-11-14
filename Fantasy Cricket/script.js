@@ -3,106 +3,99 @@ import { players } from "./players.js";
 const team1 = {
     players: [],
     runs: 0,
-    fantasy: 0,
-    capName: [],
-    viceCapName: [],
+    capName: {},
+    viceCapName: {},
     totalCredit: 0,
 };
 
 const team2 = {
     players: [],
     runs: 0,
-    fantasy: 0,
-    capName: [],
-    viceCapName: [],
+    capName: {},
+    viceCapName: {},
     totalCredit: 0,
 };
-const short = [1, 2, 3, 4, 6, 0, "W"];
-var tossArray = [];
+const shots = [1, 2, 3, 4, 6, 0, "W"];
+var teamName = [];
 
 document.getElementById("toss").addEventListener(
     "click",
     () => {
-        let firstTeam = document.getElementById("firstTeamName").value;
-        let secondTeam = document.getElementById("secondTeamName").value;
+        let firstTeamName = document.getElementById("firstTeamName").value;
+        let secondTeamName = document.getElementById("secondTeamName").value;
 
-        if (firstTeam == "" ||
-            secondTeam == "" ||
-            firstTeam == secondTeam ||
-            !isNaN(firstTeam) ||
-            !isNaN(secondTeam)
+        if (firstTeamName == "" ||
+            secondTeamName == "" ||
+            firstTeamName == secondTeamName ||
+            !isNaN(firstTeamName) ||
+            !isNaN(secondTeamName)
 
         ) {
             return alert("ENTER VALID TEAM NAMES");
         }
 
-        tossArray = [firstTeam, secondTeam];
+        let toss = [firstTeamName, secondTeamName];
         let randomWinner = Math.floor(Math.random() * 2);
-        let winningTeam = tossArray[randomWinner];
-        let otherTeam = tossArray[1 - randomWinner];
+        let winningTeam = toss[randomWinner];
+        let otherTeam = toss[1 - randomWinner];
 
-        tossArray = [winningTeam, otherTeam];
+        teamName = [winningTeam, otherTeam];
 
-        document.getElementById("winnerTeam").value = tossArray[0];
-        alert(`${tossArray[0]} wins the toss`);
+        document.getElementById("winnerTeam").value = teamName[0];
+        alert(`${teamName[0]} wins the toss`);
 
-        team1.name = tossArray[0];
-        team2.name = tossArray[1];
+        team1.name = teamName[0];
+        team2.name = teamName[1];
 
         setTimeout(() => {
             document.getElementById('startGame').style.display = 'inline';
             document.getElementById('chooseTeam').style.display = 'none';
-            document.getElementById("teamName").innerHTML = `<h2>Create Team ${tossArray[0]}<h2/>`;
-        }, 3000);
+            document.getElementById("teamName").innerHTML = `<h2>Create Team ${teamName[0]}<h2/>`;
+        }, 1000);
 
     }
 )
 
 var allPlayer = [];
 var playerCard = document.getElementById("playerCard");
-var addButtonTeam2;
 
-display();
+allPlayersListDisplay();
 
-function display() {
+function allPlayersListDisplay() {
+
+    let addPlayerBtnForTeam2;
 
     allPlayer = [...players];
 
-    // Clear the content
     playerCard.innerHTML = '';
 
     for (let i = 0; i < allPlayer.length; i++) {
-        // Create div for each player
+
         let playerItem = document.createElement("div");
         playerItem.id = `player-${i}`;
         playerItem.classList.add("player-item");
 
-        // Set the player's information as text content
         let playerInfo = `${allPlayer[i].name},${allPlayer[i].playingRole},${allPlayer[i].credit}`;
         playerItem.textContent = playerInfo;
 
-        // Create and append the "Add to Team 1" button
-        let addButtonTeam1 = document.createElement("button");
-        addButtonTeam1.textContent = "+";
-        addButtonTeam1.id = "addToTeam1";
-        addButtonTeam1.onclick = function () {
-            addPlayerToTeam(allPlayer[i], team1, i);  // Add player to Team 1
+        let addPlayerBtnForTeam1 = document.createElement("button");
+        addPlayerBtnForTeam1.textContent = "+";
+        addPlayerBtnForTeam1.id = "addToTeam1";
+        addPlayerBtnForTeam1.onclick = function () {
+            addPlayerToTeam(allPlayer[i], team1, i);
         };
 
-        // Create and append the "Add to Team 2" button
-        addButtonTeam2 = document.createElement("button");
-        addButtonTeam2.textContent = "+";
-        addButtonTeam2.id = "addToTeam2";
+        addPlayerBtnForTeam2 = document.createElement("button");
+        addPlayerBtnForTeam2.textContent = "+";
+        addPlayerBtnForTeam2.id = "addToTeam2";
 
-        addButtonTeam2.onclick = function () {
-            addPlayerToTeam(allPlayer[i], team2, i);  // Add player to Team 2
+        addPlayerBtnForTeam2.onclick = function () {
+            addPlayerToTeam(allPlayer[i], team2, i);
         };
 
-        // Append the buttons to the player item div
-        playerItem.appendChild(addButtonTeam1);
-        playerItem.appendChild(addButtonTeam2);
+        playerItem.appendChild(addPlayerBtnForTeam1);
+        playerItem.appendChild(addPlayerBtnForTeam2);
 
-        // Append the player item to the playerCard container
         playerCard.appendChild(playerItem);
     }
 }
@@ -112,7 +105,7 @@ let wicketkeeperCount = 0;
 let bowlerCount = 0;
 
 function addPlayerToTeam(player, team, index) {
-    // Check team size and player role limits first
+
     if (team.players.length >= 11) {
         alert("Maximum 11 players in the team");
         return;
@@ -125,29 +118,24 @@ function addPlayerToTeam(player, team, index) {
         return;
     }
 
-    // Update total credits
     team.totalCredit += player.credit;
     document.querySelector(".credits").textContent = "Total Credits: " + team.totalCredit;
 
-    // checking credit limit
     if (team.totalCredit > 100) {
         alert("You have no credit");
-        team.totalCredit -= player.credit; // Revert the credit update
+        team.totalCredit -= player.credit;
         document.querySelector(".credits").textContent = "Total Credits: " + team.totalCredit;
         return;
     }
 
-    // Add player to the team and update role counts
     team.players.push(player);
     if (player.playingRole === "Batsman") batsmanCount++;
     if (player.playingRole === "Wicketkeeper") wicketkeeperCount++;
     if (player.playingRole === "Bowler") bowlerCount++;
 
-    // Hide player card and display the updated team
     document.getElementById(`player-${index}`).style.display = 'none';
-    displayAllTeams(team);
+    bothTeamPlayerDisplayUpdate(team);
 
-    //adjust buttons
     if (team === team1) {
         hideCaptainAndViceCaptainBtn("#captain1");
         hideCaptainAndViceCaptainBtn("#viceCaptain1");
@@ -157,33 +145,28 @@ function addPlayerToTeam(player, team, index) {
         hideCaptainAndViceCaptainBtn("#viceCaptain1");
 
     }
-    teamIsReadyCheck(team);
+    showAndHideSubmitBtn(team);
 }
 
 
-// display both team
-// call function for updated team players
-function displayAllTeams(teamName) {
+function bothTeamPlayerDisplayUpdate(teamName) {
 
     if (teamName == team1) {
-        team1PlayerCard.innerHTML = "";
+        document.getElementById("team1PlayerCard").innerHTML = "";
 
-        // Display players for Team 1
         team1.players.forEach((player, index) => {
-            teamDisplay(player, team1, index);
+            createTeamStructure(player, team1, index);
         });
     } else {
-        team2PlayerCard.innerHTML = "";
+        document.getElementById("team2PlayerCard").innerHTML = "";
 
-        // Display players for Team 2
         team2.players.forEach((player, index) => {
-            teamDisplay(player, team2, index);
+            createTeamStructure(player, team2, index);
         });
     }
 }
 
-// team display
-function teamDisplay(player, teamName, index) {
+function createTeamStructure(player, teamName, index) {
     let playerCard = document.createElement("div");
     let removeButton1 = document.createElement("button");
     let removeButton2 = document.createElement("button");
@@ -207,8 +190,6 @@ function teamDisplay(player, teamName, index) {
     captain2.textContent = "C";
     viceCaptain2.textContent = "VC";
 
-
-    // sort the player first Batsman ,Wicketkeeper ,Bowler 
     teamName.players.sort((a, b) => {
         const roleOrder = {
             "Batsman": 1,
@@ -218,7 +199,6 @@ function teamDisplay(player, teamName, index) {
         return roleOrder[a.playingRole] - roleOrder[b.playingRole];
     });
 
-    // Create the player card with details
     playerCard.classList.add("teamPlayer");
     playerCard.textContent = `${player.name},${player.playingRole},${player.credit}`;
     if (teamName == team1) {
@@ -227,17 +207,14 @@ function teamDisplay(player, teamName, index) {
         removeButton2.textContent = "-";
     }
 
-    // Remove player from team 1
     removeButton1.onclick = function () {
-        removePlayerFromTeam(player, teamName, index);  // Remove player from team
+        removePlayerFromTeam(player, teamName, index);
     };
 
-    // Remove player from team 1
     removeButton2.onclick = function () {
-        removePlayerFromTeam(player, teamName, index);  // Remove player from team
+        removePlayerFromTeam(player, teamName, index);
     };
 
-    // for captain and vice captain
     captain1.onclick = function () {
         makeCaptain(player, teamName, index);
     }
@@ -252,13 +229,13 @@ function teamDisplay(player, teamName, index) {
     }
 
     if (teamName === team1) {
-        team1PlayerCard.appendChild(selPlayersItem);
+        document.getElementById("team1PlayerCard").appendChild(selPlayersItem);
         selPlayersItem.appendChild(removeButton1);
         selPlayersItem.appendChild(captain1);
         selPlayersItem.appendChild(viceCaptain1);
         selPlayersItem.appendChild(playerCard);
     } else {
-        team2PlayerCard.appendChild(selPlayersItem);
+        document.getElementById("team2PlayerCard").appendChild(selPlayersItem);
         selPlayersItem.appendChild(removeButton2);
         selPlayersItem.appendChild(captain2);
         selPlayersItem.appendChild(viceCaptain2);
@@ -272,20 +249,17 @@ function teamDisplay(player, teamName, index) {
     hideCaptainAndViceCaptainBtn("#viceCaptain2");
 }
 
-// remove player frome team
 function removePlayerFromTeam(player, teamName, index) {
     // document.getElementById(`player-${index}`).style.display = 'block';
     players.forEach((playerId, indexId) => {
         if (playerId === player) {
             document.getElementById(`player-${indexId}`).style.display = 'flex';
-            console.log(player);
         }
     });
 
     teamName.players.splice(index, 1);
     teamName.totalCredit -= player.credit;
-    console.log("Total Credits after removal: ", teamName.totalCredit);
-    document.querySelector(".credits").innerHTML = ""; 
+    document.querySelector(".credits").innerHTML = "";
     document.querySelector(".credits").innerHTML = "Total Credits: " + teamName.totalCredit;
 
 
@@ -297,34 +271,33 @@ function removePlayerFromTeam(player, teamName, index) {
         bowlerCount--;
     }
 
-    displayAllTeams(teamName);
-    teamIsReadyCheck(teamName);
+    bothTeamPlayerDisplayUpdate(teamName);
+    showAndHideSubmitBtn(teamName);
 }
 
-///////// team is ready and make captain 
 
-let team1Ready = document.getElementById("submitTeam1Btn");
-let team2Ready = document.getElementById("submitTeam2Btn");
+let submitTeam1 = document.getElementById("submitTeam1Btn");
+let submitTeam2 = document.getElementById("submitTeam2Btn");
 
-var addToTeam1Btn = document.querySelectorAll('#addToTeam1');
-var addToTeam2Btn = document.querySelectorAll('#addToTeam2');
-//  hide add to team 2 but
-addToTeam2Btn.forEach(hideBtn => {
+var addPlayerToTeam1Btn = document.querySelectorAll('#addToTeam1');
+var addPlayerToTeam2Btn = document.querySelectorAll('#addToTeam2');
+
+addPlayerToTeam2Btn.forEach(hideBtn => {
     hideBtn.style.display = 'none';
 });
 
-function teamIsReadyCheck(teamName) {
+function showAndHideSubmitBtn(teamName) {
     if (teamName.totalCredit <= 100 && teamName.players.length == 11) {
         if (teamName == team1) {
             document.getElementById("submitTeam1Btn").style.display = "flex";
         } else {
             document.getElementById("submitTeam2Btn").style.display = "flex";
         }
-    } else{
-        if(teamName == team1){
-        document.getElementById("submitTeam1Btn").style.display = "none";
+    } else {
+        if (teamName == team1) {
+            document.getElementById("submitTeam1Btn").style.display = "none";
         } else {
-        document.getElementById("submitTeam2Btn").style.display = "none";
+            document.getElementById("submitTeam2Btn").style.display = "none";
         }
     }
 }
@@ -341,85 +314,73 @@ function showCaptainAndViceCaptainBtn(buttonId) {
     });
 }
 
-//  click team1 submit button
-team1Ready.onclick = () => {
+submitTeam1.onclick = () => {
 
     alert("Team1 is submitted");
     alert("select captain and vice captain ")
 
-    addToTeam1Btn.forEach(card => {
+    addPlayerToTeam1Btn.forEach(card => {
         card.style.display = 'none';
     });
 
     batsmanCount = 0;
     wicketkeeperCount = 0;
     bowlerCount = 0;
-    teamIsReady(team1);
+    removeBtnHide('#removeButton1');
 
-    team1Ready.style.display = "none";
+    submitTeam1.style.display = "none";
     // document.getElementById("team1PlayerCard").style.display="none";  //team 1 hide
     showCaptainAndViceCaptainBtn("#captain1");
 }
 
-//  click team2 submit button
-team2Ready.onclick = () => {
+
+submitTeam2.onclick = () => {
     // document.getElementById("submitTeam2Btn").style.display = "none";
     alert("Team2 is submitted");
-    addToTeam1Btn.forEach(card => {
+    addPlayerToTeam1Btn.forEach(card => {
         card.style.display = 'none';
     });
-    addToTeam2Btn.forEach(card => {
+    addPlayerToTeam2Btn.forEach(card => {
         card.style.display = 'none';
     });
 
     playerCard.style.display = "none";
-    teamIsReady(team2);
+    removeBtnHide('#removeButton2');
 
     document.getElementById("submitTeam2Btn").style.display = "none";
     showCaptainAndViceCaptainBtn("#captain2");
 }
 
-// add player team 2 (+) button display inline
-function addToTeam2Display() {
-    addToTeam2Btn.forEach(card => {
+// { add player to team 2 (+) } button display inline
+function addPlayerToTeam2BtnDisplay() {
+    addPlayerToTeam2Btn.forEach(card => {
         card.style.display = 'inline';
     });
 }
 
-// adjust button display remove player button hide display none
-function teamIsReady(teamName) {
-    if (teamName == team1) {
-        let removeBtnHide1 = document.querySelectorAll('#removeButton1');
-        removeBtnHide1.forEach(remove1 => {
-            remove1.style.display = 'none';
+function removeBtnHide(teamName) {
+        let removeBtnHide1 = document.querySelectorAll(teamName);
+        removeBtnHide1.forEach(removeBtnHide => {
+            removeBtnHide.style.display = 'none';
         });
-    }
-    if (teamName == team2) {
-        let removeBtnHide2 = document.querySelectorAll('#removeButton2');
-        removeBtnHide2.forEach(remove2 => {
-            remove2.style.display = 'none';
-        });
-    }
 }
 
-// Captain choice
 
-function makeCaptain(player, teamName, index) {
+function makeCaptain(player, teamName) {
     let isConfirmed = false;
     isConfirmed = confirm("Are you sure you want to select this player as captain?");
 
     if (teamName == team1) {
         if (isConfirmed) {
-            teamName.capName.push(player);
+            teamName.capName.name = player.name;
             document.querySelectorAll("#captain1").forEach(c => {
                 c.style.display = 'none';
             });
             showCaptainAndViceCaptainBtn("#viceCaptain1");
         }
-    }
-    if (teamName == team2) {
+    } else {
         if (isConfirmed) {
-            teamName.capName.push(player);
+            teamName.capName.name = player.name;
             document.querySelectorAll("#captain2").forEach(c => {
                 c.style.display = 'none';
             });
@@ -428,8 +389,7 @@ function makeCaptain(player, teamName, index) {
     }
 }
 
-// Captain and viceCaptain choice
-function makeViceCaptain(player, teamName, index) {
+function makeViceCaptain(player, teamName) {
     let isConfirmed = false;
     if (teamName.capName[0] == player) {
         alert("captain and vice captain not same")
@@ -438,38 +398,29 @@ function makeViceCaptain(player, teamName, index) {
 
         if (isConfirmed) {
             if (teamName == team1) {
-                teamName.viceCapName.push(player);
+                teamName.viceCapName.name = player.name;
                 document.querySelectorAll("#viceCaptain1").forEach(vc => {
                     vc.style.display = 'none';
                 });
+                addPlayerToTeam2BtnDisplay();
+                alert("create second team");
+                document.getElementById("team1PlayerCard").style.display = "none";
+                document.getElementById("teamName").innerHTML = `<h2>Create Team ${team2.name}<h2/>`;
             } else {
-                teamName.viceCapName.push(player);
+                teamName.viceCapName.name = player.name;
                 document.getElementById("team2PlayerCard").style.display = "none";
                 document.getElementById("team1PlayerCard").style.display = "none";
 
                 document.getElementById("hit").style.display = "flex";
-
-            }
-            if (teamName == team1) {
-                addToTeam2Display()
-                alert("create second team");
-                document.getElementById("team1PlayerCard").style.display = "none";
-                document.getElementById("teamName").innerHTML = "";
-                document.getElementById("teamName").innerHTML = `<h2>Create Team ${tossArray[1]}<h2/>`;
-            } else if (teamName == team2) {
                 document.getElementById("selectPlayers").style.display = "none";
                 document.getElementById("credits").style.display = "none"
                 document.getElementById("teamName").innerHTML = "";
                 alert("Press Hit Button Your Game Is Start");
+
             }
         }
     }
 }
-
-
-// Start the game
-
-// create a hit button
 
 let currentBatsmanIndex = 0;
 let currentBowlerIndex = 6;
@@ -495,7 +446,6 @@ hit.onclick = () => {
     let currentBatsman;
     let currentBowler;
 
-    // check team 1 inning is over
     if (totalBalls >= 30 && isTeam1Batting) {
         isTeam1Batting = false;
         currentBatsmanIndex = 0;
@@ -506,9 +456,9 @@ hit.onclick = () => {
         return;
     }
 
-    // check team 2inning is over
     if (totalBalls >= 30 && !isTeam1Batting) {
-        captainPoints();
+        captainViceCaptainPoints(team1);
+        captainViceCaptainPoints(team2);
         alert("Team 2's innings is over! Match finished.");
         document.getElementById("hit").style.display = "none";
         document.getElementById("summary").style.display = "block";
@@ -523,9 +473,9 @@ hit.onclick = () => {
         currentBowler = team1.players[currentBowlerIndex];
     }
 
-    let shortType = short[x];
-    let commentaryText = ""; // For commentary
-    // add date and time
+    let shortType = shots[x];
+    let commentaryText = "";
+
     const currentDate = new Date();
     const formattedDate = currentDate.toLocaleDateString();
     const formattedTime = currentDate.toLocaleTimeString();
@@ -576,16 +526,13 @@ hit.onclick = () => {
         }
     }
 
-    // Add commentary
-
     commentaryText += `<br>Batsman Points: ${currentBatsman.battingPoints}`;
     commentaryText += `<br>Bowler Points: ${currentBowler.bowlingPoints}`;
 
     const matchUpdateDiv = document.getElementById("match-update");
     matchUpdateDiv.innerHTML += `<p>${commentaryText}</p>`;
-    matchUpdateDiv.scrollTop = matchUpdateDiv.scrollHeight;  // Auto-scroll to the latest update
+    matchUpdateDiv.scrollTop = matchUpdateDiv.scrollHeight;  // Auto scroll
 
-    // Score and other updates
     over += 1;
     totalBalls += 1;
 
@@ -597,8 +544,6 @@ hit.onclick = () => {
         }
     }
 
-    // code for show summary live match
-    // balls convert into over
     const overs = Math.floor(totalBalls / 6) + '.' + (totalBalls % 6);
     const wickets = isTeam1Batting ? team1.players.filter(p => p.isOut).length : team2.players.filter(p => p.isOut).length;
 
@@ -607,92 +552,68 @@ hit.onclick = () => {
 
     if (isTeam1Batting) {
         score1.innerHTML = `
-        <strong>${tossArray[0]}</strong><br>
+        <strong>${teamName[0]}</strong><br>
         Score: ${team1Points}/${wickets}<br>
         Overs: ${overs}<br>
         Batsman: ${currentBatsman.name} - ${currentBatsman.runs}/${currentBatsman.balls}`
 
         score2.innerHTML = `
-        <strong>${tossArray[1]}</strong><br>
+        <strong>${teamName[1]}</strong><br>
         Yet to bat<br>
         Bowler: ${currentBowler.name}`;
     } else {
         score1.innerHTML = `
-        <strong>${tossArray[0]}</strong><br>
+        <strong>${teamName[0]}</strong><br>
         Final Score: ${team1Points}/${team1.players.filter(p => p.isOut).length}<br>
         Bowler: ${currentBowler.name} `;
 
         score2.innerHTML = `
-        <strong>${tossArray[1]}</strong><br>
+        <strong>${teamName[1]}</strong><br>
         Score: ${team2Points}/${wickets}<br>
         Overs: ${overs}<br>
         Batsman: ${currentBatsman.name} - ${currentBatsman.runs}/${currentBatsman.balls}`;
     }
 };
 
+function captainViceCaptainPoints(teamName) {
 
-// captain and vice captain point
-function captainPoints() {
-    const team1Captain = team1.capName[0];
-    const team1ViceCaptain = team1.viceCapName[0];
-    const team2Captain = team2.capName[0];
-    const team2ViceCaptain = team2.viceCapName[0];
-
-    team1.players.forEach(player => {
-        if (player.name === team1Captain.name) {
+    teamName.players.forEach(player => {
+        if (player.name === teamName.capName.name) {
             player.battingPoints *= 2;
             player.bowlingPoints *= 2;
         }
-        if (player.name === team1ViceCaptain.name) {
+        if (player.name === teamName.viceCapName.name) {
             player.battingPoints *= 1.5;
             player.bowlingPoints *= 1.5;
         }
     });
-
-    team2.players.forEach(player => {
-        if (player.name === team2Captain.name) {
-            player.battingPoints *= 2;
-            player.bowlingPoints *= 2;
-        }
-        if (player.name === team2ViceCaptain.name) {
-            player.battingPoints *= 1.5;
-            player.bowlingPoints *= 1.5;
-        }
-    });
-
-    showSummary();
+    displaySummary();
 }
 
-// summary all players run , played balls and point
-function showSummary() {
+function displaySummary() {
     // document.getElementById("score-summary").style.display = "none";
     // document.getElementById("match-update").style.display = "none";
 
-    let summary1 = document.getElementById("summary1");
-    let summary2 = document.getElementById("summary2");
+    let team1Summary = document.getElementById("team1Summary");
+    let team2Summary = document.getElementById("team2Summary");
     let result = document.getElementById("result");
-    let firstTeam = document.getElementById("firstTeamName").value;
-    let secondTeam = document.getElementById("secondTeamName").value;
 
-    // clear content
-    summary1.innerHTML = "";
-    summary2.innerHTML = "";
+    team1Summary.innerHTML = "";
+    team2Summary.innerHTML = "";
     result.innerHTML = "";
 
-    // Calculate Team 1 points, runs, and wickets
     let team1BattingPoints = team1.players.reduce((total, player) => total + player.battingPoints, 0);
     let team1BowlingPoints = team1.players.reduce((total, player) => total + player.bowlingPoints, 0);
     let team1TotalPoints = team1BattingPoints + team1BowlingPoints;
     let totalRuns1 = team1.players.reduce((sum, player) => sum + player.runs, 0);
     let totalWickets1 = team1.players.reduce((sum, player) => sum + player.wickets, 0);
 
-    // Display Team 1 Summary
-    summary1.innerHTML += `<h4>${firstTeam} Players</h4>`;
-    summary1.innerHTML += `<p>Total Points: ${team1TotalPoints}</p>`;
-    summary1.innerHTML += `<p>Total Runs: ${totalRuns1}, Total Wickets: ${totalWickets1}</p>`;
+    team1Summary.innerHTML += `<h4>${teamName[0]} Players</h4>`;
+    team1Summary.innerHTML += `<p>Total Points: ${team1TotalPoints}</p>`;
+    team1Summary.innerHTML += `<p>Total Runs: ${totalRuns1}, Total Wickets: ${totalWickets1}</p>`;
 
     team1.players.forEach((player) => {
-        summary1.innerHTML += `<p>${player.name} - 
+        team1Summary.innerHTML += `<p>${player.name} - 
                 Runs: ${player.runs}, 
                 Balls Played: ${player.balls}, 
                 Wickets: ${player.wickets}, 
@@ -700,20 +621,18 @@ function showSummary() {
                 Batting Points: ${player.battingPoints}</p>`;
     });
 
-    // Calculate Team 2 points, runs, and wickets
     let team2BattingPoints = team2.players.reduce((total, player) => total + player.battingPoints, 0);
     let team2BowlingPoints = team2.players.reduce((total, player) => total + player.bowlingPoints, 0);
     let team2TotalPoints = team2BattingPoints + team2BowlingPoints;
     let totalRuns2 = team2.players.reduce((sum, player) => sum + player.runs, 0);
     let totalWickets2 = team2.players.reduce((sum, player) => sum + player.wickets, 0);
 
-    // Display Team 2 Summary
-    summary2.innerHTML += `<h4>${secondTeam} Players</h4>`;
-    summary2.innerHTML += `<p>Total Points: ${team2TotalPoints}</p>`;
-    summary2.innerHTML += `<p>Total Runs: ${totalRuns2}, Total Wickets: ${totalWickets2}</p>`;
+    team2Summary.innerHTML += `<h4>${teamName[1]} Players</h4>`;
+    team2Summary.innerHTML += `<p>Total Points: ${team2TotalPoints}</p>`;
+    team2Summary.innerHTML += `<p>Total Runs: ${totalRuns2}, Total Wickets: ${totalWickets2}</p>`;
 
     team2.players.forEach((player) => {
-        summary2.innerHTML += `<p>${player.name} - 
+        team2Summary.innerHTML += `<p>${player.name} - 
                 Runs: ${player.runs}, 
                 Balls Played: ${player.balls}, 
                 Wickets: ${player.wickets}, 
@@ -721,11 +640,10 @@ function showSummary() {
                 Batting Points: ${player.battingPoints}</p>`;
     });
 
-    // Display the match result
     if (team1TotalPoints > team2TotalPoints) {
-        result.innerHTML = `<h4>Result: ${firstTeam} wins!</h4>`;
+        result.innerHTML = `<h4>Result: ${teamName[0]} wins!</h4>`;
     } else if (team1TotalPoints < team2TotalPoints) {
-        result.innerHTML = `<h4>Result: ${secondTeam} wins!</h4>`;
+        result.innerHTML = `<h4>Result: ${teamName[1]} wins!</h4>`;
     } else {
         result.innerHTML = "<h4>Result: It's a tie!</h4>";
     }
