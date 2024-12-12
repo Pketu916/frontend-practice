@@ -249,12 +249,18 @@ h3{
 /* contact us form */
 #contacts{
     margin-top: 120px;
+    margin-bottom: 268px;
 }
 
 .form{
     display: flex;
     justify-content: space-between;
-    margin-bottom: 77px;
+    /* margin-bottom: 77px; */
+    position: relative;
+}
+.send-btn{
+    position: absolute;
+    bottom:-148px;
 }
 form{
     display: flex;
@@ -270,8 +276,12 @@ form input{
     padding: 10px;
 }
 textarea{
-    height: 147px;
+    /* height: 147px; */
     max-height: 147px;
+    min-height: 147px;
+    max-width: 391px;
+    min-width: 391px;
+
     border: none;
     background-color: #F3F3F3;
     box-sizing: border-box;
