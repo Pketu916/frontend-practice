@@ -21,7 +21,7 @@ button {
 }
 
 .container {
-    max-width: 1440px;
+    max-width: 1240px;
     margin: 0px auto;
 }
 
@@ -30,7 +30,6 @@ nav {
     display: flex;
     justify-content: space-between;
     /* background-color: aqua; */
-    padding: 0px 100px;
     align-items: center;
     height: 123px;
 }

@@ -11,6 +11,10 @@ html {
     scroll-behavior: smooth;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 .container {
     max-width: 1170px;
     margin: 0px auto;
@@ -82,8 +86,9 @@ nav ul li a:active {
 h1 {
     font-size: 64px;
     color: #333333;
-    height: 250px;
+    height: 160px;
     position: relative;
+    line-height: 64px;
     cursor: default;
 }
 
@@ -121,8 +126,11 @@ h1::first-line {
 }
 
 .btn-global i {
-    margin-left: 18px;
+    margin-left: 16px;
     font-size: 24px;
+    font-style: normal;
+    margin-bottom: 5px;
+    
 }
 
 .btn-global:hover {
@@ -137,14 +145,14 @@ h1::first-line {
 }
 
 .btn--black:hover {
-    color: black;
+    color: #333333;
     background-color: white;
     border: 1px solid #333333;
 }
 
 .btn-bottom-right {
     position: absolute;
-    bottom: -100px;
+    bottom: 4px;
     right: 0px;
 }
 
@@ -214,10 +222,12 @@ h2 {
 .statements-wrapper {
     display: flex;
     justify-content: space-between;
-    height: 144px;
     font-size: 22px;
     line-height: 36px;
     gap: 187px;
+}
+.statement-1{
+    width: 279px;
 }
 
 .statement {
@@ -229,7 +239,7 @@ h2 {
 
 .statement-index {
     font-size: 200px;
-    line-height: 235px;
+    /* line-height: 235px; */
     font-weight: 900;
     color: #F2F2F2;
     padding-right: 30px;
@@ -238,7 +248,7 @@ h2 {
 /* our orijects  */
 
 #projects-section {
-    padding-top: 120px;
+    padding: 120px 0px 101px 0px;
     position: relative;
 
 }
