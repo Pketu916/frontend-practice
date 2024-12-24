@@ -189,7 +189,8 @@ h1::first-line {
     border-radius: 10px;
     letter-spacing: 0.15px;
 }
-.globle-btn:hover{
+
+.globle-btn:hover {
     background-color: white;
     color: #0D154B;
 }
@@ -207,7 +208,8 @@ h1::first-line {
     font-size: 16px;
     border: none;
 }
-.training-btn:hover{
+
+.training-btn:hover {
     background-color: #0D154B;
     color: white;
 }
@@ -316,7 +318,8 @@ h2>span,
     justify-content: space-between;
     align-items: center;
 }
-.card-footer a{
+
+.card-footer a {
     text-decoration: none;
     color: #0D154B;
     letter-spacing: 0.1;
@@ -483,9 +486,7 @@ h4 {
 
 .live-class-container {
     max-width: 1024px;
-    width: 100%;
     display: flex;
-    gap: 30%;
     position: absolute;
     top: 92%;
     justify-content: center;
@@ -493,14 +494,12 @@ h4 {
 
 .live-class-card {
     max-width: 452px;
-    min-width: 205px;
     background: linear-gradient(white 50%, #8A6CF9E5);
     border-radius: 10px;
     display: flex;
     align-items: center;
     flex-direction: column;
     padding: 32px;
-    gap: 20px;
     box-shadow: 0px -4px 50px 8px #0000001A;
 }
 
@@ -552,18 +551,14 @@ h4 {
 
 .testimonial-card-container {
     max-width: 984px;
-    width: 100%;
     position: absolute;
     display: flex;
     justify-content: center;
-    margin: auto;
-    gap: 21%;
     top: 62%;
 }
 
 .testimonial-card {
     max-width: 327px;
-    /* min-width: 213px; */
     border-radius: 10px;
     padding: 24px;
     text-align: center;
@@ -598,7 +593,8 @@ footer {
     padding: 32px 0px;
     overflow: hidden;
 }
-footer a:hover{
+
+footer a:hover {
     color: black;
 }
 
@@ -698,7 +694,8 @@ footer form button {
     color: white;
     border-radius: 12px;
 }
-footer form button:active{
+
+footer form button:active {
     color: #252739;
     background-color: white;
 }
@@ -854,7 +851,7 @@ footer form button:active{
 
     .live-class-card {
         padding: 12px;
-        gap: 0;
+        max-width: 205px;
     }
 
     .live-class-card img {
@@ -865,7 +862,6 @@ footer form button:active{
     .live-class-card h3 {
         font-size: 11px;
         margin-top: 4px;
-        margin-bottom: 16px;
     }
 
     .live-class-button {
@@ -874,6 +870,7 @@ footer form button:active{
         font-weight: 500;
         line-height: 16px;
         letter-spacing: 0.5px;
+        margin-top: 20px;
     }
 
     .testimonial-section h2 {
@@ -891,6 +888,7 @@ footer form button:active{
 
     .testimonial-card {
         padding: 12px;
+        max-width: 213px;
     }
 
     .testimonial-card h4 {
