@@ -1,0 +1,440 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display="Work Sans"');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Crimson Text", serif;
+    scroll-behavior: smooth;
+
+
+    /* ::selection{
+        color: yellow;
+        background-color:cadetblue;
+    } */
+
+}
+
+/* bakground */
+header,
+footer,
+main {
+    background-color: #74C69D;
+}
+
+#partners,
+#services {
+    background-color: white;
+}
+
+body {
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+/* navbar */
+header {
+    margin: auto;
+    width: 100%;
+    position: sticky;
+    top: 0px;
+}
+
+
+header nav {
+    margin: 0px auto;
+    /* padding: 35px 10px; */
+    padding: 20px;
+    width: 82%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 100%;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+    width: 187px;
+}
+
+
+header nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    cursor: pointer;
+    gap: 30px;
+}
+header nav ul li a{
+    color: white;
+    text-decoration: none;
+}
+
+.menu {
+    display: none;
+}
+
+header nav ul li a:hover {
+    text-decoration: underline;
+    color: blue;
+    transition: 0.5s;
+}
+
+.opacity-color {
+    color: rgba(33, 37, 41, 0.5) !important;
+}
+
+
+/* hero section */
+#hero {
+    display: flex;
+    margin: auto;
+    width: 82%;
+    justify-content: space-between;
+    padding-top: 40px;
+    padding-bottom: 80px;
+}
+#hero img {
+    max-width: 100%;
+    height: auto;
+    /* object-fit: contain; */
+}
+
+.welcome-details {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    width: 415px;
+    margin: 20px 0px;
+}
+
+.welcome-details h1 {
+    margin: 15px 0px;
+    font-size: 40px;
+    color: white;
+    font-weight: 700;
+}
+
+.p-main {
+    font-size: 16px;
+    font-weight: 700;
+    color: #74C69D;
+    font-family: "Work Sans", sans-serif;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.w-color {
+    color: white;
+
+}
+
+button {
+    margin-top: 25px;
+    width: 170px;
+    height: 48px;
+    font-size: 20px;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.welcome-details button:hover {
+    background-color: blue;
+    color: #ffffff;
+}
+
+/* partners */
+#partners {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    padding-top: 60px;
+    align-items: center;
+    margin: auto;
+
+}
+
+.partners-logo {
+    display: flex;
+    flex-direction: row;
+    width: 82%;
+    justify-content: space-between;
+    margin: 55px auto;
+    flex-wrap: wrap;
+}
+
+.partners-logo img {
+    height: 50px;
+    width: auto;
+    aspect-ratio: 3;
+}
+
+.btn {
+    background-color: black;
+    color: white;
+}
+.btn:hover{
+    color: black;
+    background-color: aqua;
+}
+/* services  section */
+
+#services article {
+    display: flex;
+    flex-direction: row;
+    /* width: 82%; */
+    justify-content: space-evenly;
+    align-items: center;
+    margin: auto;
+    padding: 73px 0;
+    /* padding-bottom: 73px; */
+    gap: 110px;
+    flex-wrap: wrap;
+}
+
+#services .article2 {
+    flex-direction: row-reverse;
+}
+.p-0{
+    padding-top: 0px !important;
+}
+
+#services article img {
+    max-width: 600px;
+    width: 95%;
+}
+
+.article1 div,
+.article2 div {
+    margin: 0px 20px;
+}
+
+/* paragraph and heading css */
+.paragraph {
+    font-size: 15px;
+    padding: 16px 0px;
+    font-weight: 400;
+    text-align: justify;
+    max-width: 470px;
+    width: 90%;
+    line-height: 25px;
+}
+
+.heading-h2 {
+    font-weight: 700;
+    font-size: 40px;
+    /* margin: 16px auto; */
+    max-width: 470px;
+    width: 90%;
+    text-align: left;
+}
+
+#team p.paragraph {
+    font-size: 20px;
+    max-width: 404px;
+}
+
+.team-card p {
+    margin: 15px 0px;
+}
+
+.center {
+    text-align: center;
+    margin: 16px auto;
+}
+
+.left {
+    text-align: left;
+    padding: 0px 38px;
+}
+
+.size-24 {
+    font-size: 24px;
+}
+
+/* team card */
+
+#team {
+    text-align: center;
+    background: white;
+}
+
+.team-cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 47px;
+}
+
+
+.team-card {
+    width: 299px;
+    /* border: 1px solid black; */
+    border-radius: 5px;
+    /* box-shadow: 6px 6px 11px 2px #724343; */
+    box-shadow: 4px 4px 9px 0px #636363;
+    margin: 25px 0px;
+}
+
+.team-card:hover{
+    scale: 1.1;
+    transition: 0.5s;
+}
+
+.team-card img {
+    border: 2px solid black;
+    border-radius: 50%;
+    margin: 20px;
+}
+
+/* footer */
+.footer {
+    margin-top: 54px;
+    height: 125px;
+}
+
+.footer {
+    display: flex;
+    max-width: 82%;
+    justify-content: space-between;
+    margin: auto;
+    flex-wrap: wrap;
+    margin-top: 54px;
+    align-items: center;
+}
+
+.social-icons {
+    display: flex;
+    max-width: 243px;
+    gap: 20px;
+}
+
+.social-icons a {
+    height: 18px;
+    color: white;
+}
+
+.footer-text {
+    color: white;
+}
+.fa-brands{
+    text-decoration: none;
+}
+.fa-brands:hover{
+    color: blue;
+}
+
+@media (max-width:1280px) {
+    #hero {
+        height: 100%;
+        margin: auto;
+        align-items: center;
+        padding-top: 32px;
+        padding-bottom: 40px;
+
+    }
+
+    header nav {
+        width: 100%;
+    }
+
+    .welcome-details {
+        width: auto;
+        height: auto;
+    }
+
+    .partners-logo {
+        justify-content: center;
+        gap: 30px;
+        margin: 0px auto;
+    }
+}
+
+
+@media (max-width:740px) {
+    .welcome-details h1 {
+        font-size: 28px;
+    }
+
+    .logo img {
+        height: 38px;
+        width: 129px;
+    }
+
+    ul li {
+        display: none;
+    }
+
+    .menu {
+        color: white;
+        text-decoration: none;
+        display: inline-block;
+        /* text-align: center; */
+        line-height: 35px;
+        font-size: 62px;
+    }
+
+    .heading-h2 {
+        font-size: 24px;
+    }
+
+    #partners {
+        padding-top: 22px;
+    }
+
+    #services .article2 {
+        flex-direction: row;
+    }
+
+    #services article {
+        gap: 30px;
+        padding: 30px 0px;
+    }
+
+    .team-card {
+        margin: auto;
+    }
+
+    .team-cards {
+        gap: 35px;
+        margin: 15px 50px;
+    }
+
+    .team-card img {
+        margin-bottom: 0px;
+    }
+
+    .social-icons {
+        margin: 0px auto;
+        padding-top: 25px;
+    }
+
+    .footer-text {
+        margin: 0px auto;
+        padding-bottom: 25px;
+    }
+    .footer{
+        margin-top: 40px;
+    }
+
+}
+
+@media (max-width:1219px) {
+    #services article {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 935px) {
+    #hero {
+        flex-direction: column-reverse;
+    }
+}

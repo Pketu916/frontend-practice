@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task1_function.html</title>
+    <!-- 
+    // Program name: Task1_function.html
+    // Purpose: Computer product order form
+    // Author : Ketu Patel
+    // Last Date Modified: 02-09-2024 
+    -->
+
+    <script>
+        // Define variables
+        var SIZE = 7; // Array size
+        var productList = []; // To hold product names
+        var prices = []; // To hold corresponding product prices
+        var price = 0;   // Selected product price
+        var totalValue; // Total value
+        var cart = []; // Temporary cart
+        var CustomerDetailsArray = [];
+        var OrderArray = [];
+        var currentIndex = 0; // To track the current order being displayed
+
+        function loadArrays() {
+            productList = ["keyboard", "mouse", "mousepad", "monitor", "ram1", "ram2", "ram3"];
+            prices = [500, 200, 100, 20000, 400, 800, 1500];
+        }
+
+        function updateValue() {
+            var selectedProduct = document.orderForm.product.value;
+            var quantity = parseInt(document.orderForm.quantity.value);
+
+            for (var i = 0; i < SIZE; i++) {
+                if (selectedProduct == productList[i]) {
+                    price = prices[i];
+                    totalValue = price * quantity;
+                    break;
+                }
+            }
+
+            if (!totalValue) {
+                totalValue = "something went wrong";
+            }
+
+            document.orderForm.TotalPrice.value = totalValue;
+        }
+
+        function DisplayProduct() {
+            var selectedProduct = document.orderForm.product.value;
+            var quantity = parseInt(document.orderForm.quantity.value);
+
+            if (quantity == 0) {
+                alert("First Select Quantity!")
+            }
+            else {
+
+                var totalPrice = price * quantity;
+
+                if (!cart[selectedProduct]) {
+                    cart[selectedProduct] = {
+                        productName: selectedProduct,
+                        quantity: 0,
+                        totalPrice: 0
+                    };
+                }
+
+                cart[selectedProduct].quantity += quantity;
+                cart[selectedProduct].totalPrice += totalPrice;
+
+                var cartDetails = "";
+                for (var product in cart) {
+                    cartDetails += "Product Name: " + cart[product].productName + "\n";
+                    cartDetails += "Quantity: " + cart[product].quantity + "\n";
+                    cartDetails += "Total Price: Rs." + cart[product].totalPrice + "\n\n";
+                }
+
+                // display cart details
+                document.orderForm.printOrder.value = cartDetails;
+
+                // clear input field
+                document.orderForm.quantity.value = "0";
+                document.orderForm.TotalPrice.value = "0";
+            }
+        }
+
+        function DisplayCustomerInfo() {
+            if (document.orderForm.printOrder.value == "") {
+                alert("First Enter Product in the cart")
+                return;
+            } 
+                var name = document.orderForm.name.value;
+                var email = document.orderForm.email.value;
+                var phone = document.orderForm.phone.value;
+
+                // validation pattern
+                var namePattern = /^[A-Za-z\s]+$/;
+                var emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+                var phonePattern = /^\d{10}$/;
+
+                // validation
+                if (!namePattern.test(name) || name.length < 2 || name.length > 50) {
+                    document.orderForm.customerDetails.value = "Enter a valid name";
+                } else if (!emailPattern.test(email)) {
+                    document.orderForm.customerDetails.value = "Enter a valid email ID";
+                } else if (!phonePattern.test(phone)) {
+                    document.orderForm.customerDetails.value = "Enter a valid phone number (10 digits)";
+                } else {
+                    var customerCart = { ...cart }; // Store a copy of the current cart for this order
+                    OrderArray.push({
+                        customerName: name,
+                        customerEmail: email,
+                        customerPhone: phone,
+                        cart: customerCart // Store the cart with the customer details
+                    });
+
+                    var CustomerDetail = "Customer Name: " + name + "\n";
+                    CustomerDetail += "Email: " + email + "\n";
+                    CustomerDetail += "Phone: " + phone + "\n\n";
+
+                    document.orderForm.customerDetails.value = CustomerDetail;
+                    document.orderForm.customerDetails.value += "Order Products:\n";
+
+                    for (var product in cart) {
+                        document.orderForm.customerDetails.value += "Product: " + product + "\n";
+                    }
+
+                    // Clear the cart after saving to the order
+                    cart = [];
+                    showOrder(OrderArray.length - 1)
+                }
+                //for clear customer Information validation
+                if (document.orderForm.name.value != "" &&
+                    document.orderForm.email.value != "" &&
+                    document.orderForm.phone.value != "") {
+
+                    clearCustomerInfo(); // Call the function if fields are not empty
+                }
+            
+        }
+
+        function clearCustomerInfo() {
+
+            document.orderForm.name.value = ""; // Clear name field
+            document.orderForm.email.value = ""; // Clear email field
+            document.orderForm.phone.value = ""; // Clear phone field
+            document.orderForm.printOrder.value = "";
+        }
+
+        function showOrder(index) {
+            // save details is array
+            if (index >= 0 && index < OrderArray.length) {
+                currentIndex = index;
+                var order = OrderArray[index];
+
+                var orderSummaryDetails = "Customer Name: " + order.customerName + "\n";
+                orderSummaryDetails += "Email: " + order.customerEmail + "\n";
+                orderSummaryDetails += "Phone: " + order.customerPhone + "\n\n";
+
+                // for display order details
+                var cartDetails = "";
+                for (var product in order.cart) {
+                    cartDetails += "Product Name: " + order.cart[product].productName + "\n";
+                    cartDetails += "Quantity: " + order.cart[product].quantity + "\n";
+                    cartDetails += "Total Price: RS." + order.cart[product].totalPrice + "\n\n";
+                }
+
+                document.orderForm.orderSummary.value = orderSummaryDetails + cartDetails;
+            }
+        }
+
+        function goToOrder() {
+            var orderNumber = parseInt(document.orderForm.OrderArray.value) - 1;
+            showOrder(orderNumber);
+        }
+
+        function firstOrder() {
+            showOrder(0);
+        }
+
+        function previousOrder() {
+            if (currentIndex > 0) {
+                showOrder(currentIndex - 1);
+            }
+        }
+
+        function nextOrder() {
+            if (currentIndex < OrderArray.length - 1) {
+                showOrder(currentIndex + 1);
+            }
+        }
+
+        function lastOrder() {
+            showOrder(OrderArray.length - 1);
+        }
+
+        window.onload = loadArrays;
+
+    </script>
+
+
+
+</head>
+
+<body>
+    <form name="orderForm" action="">
+        <h3>Add Product</h3>
+        <strong>Select Product:</strong><br />
+        <select name="product" id="product" onchange="updateValue()">
+            <option value="keyboard">Keyboard</option>
+            <option value="mouse">Mouse</option>
+            <option value="mousepad">Mouse Pad</option>
+            <option value="monitor">Monitor</option>
+            <option value="ram1">RAM (4Gb Price:400)</option>
+            <option value="ram2">RAM (8Gb Price:800)</option>
+            <option value="ram3">RAM (16Gb Price:1500)</option>
+        </select><br />
+
+        <strong>Quantity:</strong><br />
+        <input name="quantity" type="number" oninput="updateValue()" size="40" value="0" min="1"><br />
+
+        <strong>Total Price:</strong><br />
+        <input type="text" value="0" name="TotalPrice" readonly>
+        <p />
+
+        <input type="button" value="Add To Cart" onclick="DisplayProduct()">
+        <p />
+
+        <textarea name="printOrder" cols="40" readonly rows="8"></textarea><br />
+
+        <h3>Customer Info</h3>
+        <input type="text" name="name" placeholder="Enter Your Name"><br />
+        <input type="email" name="email" placeholder="Enter Your Email ID"><br />
+        <input type="text" name="phone" placeholder="Enter Your Phone Number">
+        <p />
+        <input type="button" value="Order Submit" onclick=DisplayCustomerInfo()>
+        <!-- <input type="button" value="Order Submit" onclick="DisplayCustomerInfo(); OrderSummary();"> -->
+        <p />
+        <textarea name="customerDetails" cols="40" rows="8"></textarea><br />
+
+        <h4>Order Summary</h4>
+        <textarea name="orderSummary" readonly cols="40" rows="10"></textarea><br />
+        <!-- Add the navigation buttons and order number input -->
+        <input type="button" value="First" onclick="firstOrder()" />
+        <input type="button" value="Previous" onclick="previousOrder()" />
+        <input type="button" value="Next" onclick="nextOrder()" />
+        <input type="button" value="Last" onclick="lastOrder()" />
+
+        <p />
+        <strong>Enter Order Number</strong>
+        <p />
+        <input type="text" name="OrderArray" value="1" size="2" />
+        <input type="button" value="Go To" onclick="goToOrder()" />
+        <p />
+    </form>
+</body>
+
+</html>

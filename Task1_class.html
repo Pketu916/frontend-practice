@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        //  class Product {
+        //     constructor(name, price) {
+        //         this.name = name;
+        //         this.price = price;
+        //     }
+        // }
+        class order {
+            constructor(){
+                this.cart = {} ;
+                this.totalvalue = 0 ;
+            }
+
+            addproduct(product,price){
+                if(!this.cart[this.product]){
+                    this.cart[this.product] = {
+                        productName : product,
+                        quantity : 0,
+                        totalPrice : 0
+                    };
+                }
+                this.cart[product].quantity += quantity;
+                this.cart[product].totalPrice += quantity * price;
+                this.totalValue += product.price * quantity;
+            }
+            getCartDetails() {
+                let cartDetails = "";
+                for (const product in this.cart) {
+                    cartDetails += `Product Name: ${this.cart[product].productName}\n`;
+                    cartDetails += `Quantity: ${this.cart[product].quantity}\n`;
+                    cartDetails += `Total Price: Rs. ${this.cart[product].totalPrice}\n\n`;
+                }
+                return cartDetails;
+
+                document.orderForm.printOrder.value = getCartDetails;
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <form name="orderForm" action="">
+        <h3>Add Product</h3>
+        <strong>Select Product:</strong><br />
+        <select name="product" id="product" onchange="">
+            <option value="keyboard">Keyboard</option>
+            <option value="mouse">Mouse</option>
+            <option value="mousepad">Mouse Pad</option>
+            <option value="monitor">Monitor</option>
+            <option value="ram1">RAM (4Gb Price:400)</option>
+            <option value="ram2">RAM (8Gb Price:800)</option>
+            <option value="ram3">RAM (16Gb Price:1500)</option>
+        </select><br />
+
+        <strong>Quantity:</strong><br />
+        <input name="quantity" type="number" oninput="" size="40" value="0" min="1"><br />
+
+        <strong>Total Price:</strong><br />
+        <input type="text" value="0" name="TotalPrice" readonly>
+        <p />
+
+        <input type="button" value="Add To Cart" onclick="getCartDetails()">
+        <p />
+
+        <textarea name="printOrder" cols="40" readonly rows="8"></textarea><br />
+
+        <h3>Customer Info</h3>
+        <input type="text" name="name" placeholder="Enter Your Name"><br />
+        <input type="email" name="email" placeholder="Enter Your Email ID"><br />
+        <input type="text" name="phone" placeholder="Enter Your Phone Number">
+        <p />
+        <input type="button" value="Order Submit" onclick="">
+        <p />
+        <textarea name="customerDetails" cols="40" rows="8"></textarea><br />
+
+        <h4>Order Summary</h4>
+        <textarea name="orderSummary" readonly cols="40" rows="10"></textarea><br />
+        <input type="button" value="First" onclick="" />
+        <input type="button" value="Previous" onclick="" />
+        <input type="button" value="Next" onclick="" />
+        <input type="button" value="Last" onclick="" />
+
+        <p />
+        <strong>Enter Order Number</strong>
+        <p />
+        <input type="text" name="OrderArray" value="1" size="2" />
+        <input type="button" value="Go To" onclick="" />
+        <p />
+    </form>
+</body>
+
+</html>
