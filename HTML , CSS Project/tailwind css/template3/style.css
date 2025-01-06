@@ -18,10 +18,10 @@
 }
 
 .hero-before {
-    @apply  before:absolute before:bg-[#8A6CF9] before:h-[10%] before:blur-[200px]  md:before:blur-[400px] before:w-[42%] before:max-h-[552px] before:max-w-[552px]  before:rounded-full before:left-0 ;
+    @apply  before:absolute before:bg-[#8A6CF9] before:h-[10%] before:blur-[200px]  md:before:blur-[400px] before:w-[42%] before:max-h-[552px] before:max-w-[552px]  before:rounded-full before:left-0 before:-z-10 ;
 }
 .hero-after {
-    @apply  after:absolute after:bg-[#56C6E7] after:h-[10%] after:blur-[200px]  md:after:blur-[400px] after:w-[42%] after:max-h-[552px] after:max-w-[552px] after:rounded-full after:right-0 ;
+    @apply  after:absolute after:bg-[#56C6E7] after:h-[10%] after:blur-[200px]  md:after:blur-[400px] after:w-[42%] after:max-h-[552px] after:max-w-[552px] after:rounded-full after:right-0 after:-z-10;
 }
 .text-gradient {
     @apply  text-transparent bg-clip-text bg-gradient-to-r from-purple via-pink to-blue;
@@ -47,7 +47,7 @@
     @apply font-medium text-primary text-sm tracking-[0.1px] rounded-[10px] border-2  active:shadow-custom-button w-[116px] h-10 border-[#E6E0EC] flex justify-evenly items-center ;
 }
 .card-before{
-    @apply before:absolute before:h-[369px] before:w-[435px] before:bg-[#8A6CF9E5] before:rounded-full before:blur-[140px] before:top-2/3 ; 
+    @apply before:absolute before:h-[369px] before:w-[435px] before:bg-[#8A6CF9E5] before:rounded-full before:blur-[140px] before:top-2/3 before:-z-10; 
 }
 .centered-flex-col{
     @apply flex flex-col items-center;
