@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+
+.container-4k {
+  @apply max-w-[2560px] mx-auto;
+}
+.container {
+  @apply max-w-1175 mx-auto;
+}
+.bg-green{
+  @apply bg-[#74C69D];
+}
+.text-green{
+  @apply text-[#74C69D];
+}
+.text-grey{
+  @apply text-[#21252980];
+}
+
+.h2{
+  @apply my-4 font-bold text-2xl lg:text-4xl;
+}
+
+.nav-link {
+  @apply text-white text-xl hover:border-y hover:text-blue-600;
+}
+.team-card-container {
+  @apply flex flex-wrap justify-center lg:justify-between gap-9 my-11;
+}
+.team-card-body {
+  @apply flex flex-col justify-evenly shadow-xl rounded w-[252px] h-[299px] duration-500 hover:scale-110;
+}
+.team-card-image {
+  @apply mx-auto border border-black rounded-full w-[175px] h-[175px];
+}
+.team-name {
+  @apply ml-9 text-2xl;
+}
+
+.team-role {
+  @apply ml-9 text-[#21252980];
+}
+.btn-primary {
+  @apply bg-black hover:bg-white rounded w-[170px] h-[48px] text-white text-xl hover:text-black;
+}
+
+.service-article {
+  @apply flex flex-col justify-center lg:justify-between items-center gap-y-7 my-14 lg:my-16;
+}
+
+.service-title {
+  @apply my-4 font-bold text-2xl lg:text-4xl;
+}
+.h5 {
+  @apply font-bold font-sans uppercase tracking-[5px];
+}
+.footer-link{
+  @apply text-white hover:text-blue-500;
+}
+
+@tailwind utilities;
