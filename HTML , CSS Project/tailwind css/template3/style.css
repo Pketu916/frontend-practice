@@ -18,7 +18,7 @@
 }
 
 .hero-before {
-    @apply  before:absolute before:bg-[#8A6CF9] before:h-[10%] before:blur-[200px]  md:before:blur-[400px] before:w-[42%] before:max-h-[552px] before:max-w-[552px]  before:rounded-full before:left-0 before:-z-10 ;
+    @apply  before:absolute before:bg-[#8A6CF9] before:h-[10%] before:blur-[200px]  md:before:blur-[400px] before:w-[42%] before:max-h-[552px] before:max-w-[552px]  before:rounded-full before:left-0 before:-z-10;
 }
 .hero-after {
     @apply  after:absolute after:bg-[#56C6E7] after:h-[10%] after:blur-[200px]  md:after:blur-[400px] after:w-[42%] after:max-h-[552px] after:max-w-[552px] after:rounded-full after:right-0 after:-z-10;

@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "vite",
-    "build": "vite build"
+    "start": "vite"
   },
   "keywords": [],
   "author": "",
@@ -15,5 +14,8 @@
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17",
     "vite": "^6.0.6"
+  },
+  "dependencies": {
+    "tailwind-scrollbar": "^3.1.0"
   }
 }
