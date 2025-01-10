@@ -20,7 +20,7 @@ export default function TextUpForm(props) {
 
     return (
         <>
-            <div className="container my-4 " style={`{text-${props.mode === 'light' ? 'dark':'light'}}`}>
+            <div className={`container my-4 text-${props.mode === 'light' ? 'dark' : 'light'}`}>
                 <h1 className="mb-4">Enter the text to analyze below</h1>
                 <div className="form-group">
                     <textarea
