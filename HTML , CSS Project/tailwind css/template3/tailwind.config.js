@@ -6,6 +6,9 @@ module.exports = {
       fontFamily: {
         poppins: ["Poppins", "serif"],
       },
+      screens: {
+        'custom': '1160px',
+      },
       colors: {
         primary:"#0D154B",
         secondary:"#79757F",
@@ -43,7 +46,22 @@ module.exports = {
           0px -222px 89px 0px #00000003,
           0px -347px 97px 0px #00000000
         `,
-      },   
+        'testimonial-card': `
+          0px 12px 27px 0px #0000001A,
+          0px 49px 49px 0px #00000017,
+          0px 110px 66px 0px #0000000D,
+          0px 196px 78px 0px #00000003,
+          0px 306px 86px 0px #00000000
+        `, 
+        'card-nav': `
+          0px 1px 1px 0px #0000001A,
+          0px 2px 2px 0px #00000017,
+          0px 5px 3px 0px #0000000D,
+          0px 9px 4px 0px #00000003,
+          0px 14px 4px 0px #00000000
+        `, 
+      },  
+
       height:{
         "30":123,
         "15.5":60,
