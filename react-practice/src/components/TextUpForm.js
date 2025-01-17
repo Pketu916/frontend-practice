@@ -8,15 +8,17 @@ export default function TextUpForm(props) {
         let upText = text.toUpperCase();
         setText(upText)
     }
-    const hendleLoClick = ()=>{
+    const hendleLoClick = () => {
         setText(text.toLowerCase());
     }
-    const hendleclearClick = ()=>{
+    const hendleclearClick = () => {
         setText("");
     }
     const handleOnChange = (event) => {
         setText(event.target.value);
     }
+    document.title = "Text Anaiyze";
+
 
     return (
         <>
@@ -37,7 +39,7 @@ export default function TextUpForm(props) {
             </div>
             <div className="container my-4">
                 <h1>Your Text Summary</h1>
-                <p>{text.split(" ").length} words and {text.length} characters</p> 
+                <p>{text.split(" ").length} words and {text.length} characters</p>
                 <p>{0.08 * text.split(" ").length}minutes average reading time</p>
             </div>
         </>

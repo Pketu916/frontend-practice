@@ -3,57 +3,48 @@ import React from 'react';
 
 
 export default function About(props) {
-  const [btnText, setBTnText] = useState("Enable Dark Mode")
 
-  const [myStyle, setMyStyle] = useState({
-    color: "black",
-    backgroundColor: "white"
-  });
+  // const [myStyle, setMyStyle] = useState({
+  //   color: "black",
+  //   backgroundColor: "white"
+  // });
 
-  const darkMode = () => {
-    if (myStyle.color === "black") {
-      setMyStyle({
-        color: "white",
-        backgroundColor: "black"
-      });
-      setBTnText("Disable Dark Mode")
-    } else {
-      setMyStyle({
-        color: "black",
-        backgroundColor: "white"
-      });
-      setBTnText("Enab le Dark Mode")
-    }
-  };
+  let myStyle = {
+    color : props.mode === "dark" ? "white" : "black",
+    backgroundcolor: props.mode === "light" ? "black" : "white"
+  }
+
+ 
+  document.title = "Analyzer About";
 
   return (
     <div className="container my-5" style={myStyle}>
-      <div className={` text-${props.mode === 'dark' ? 'light' : 'dark'}`}  >
+      <div className={` text-${props.mode === 'dark' ? 'light' : 'dark'}`}>
 
-        <h1 className="display-4 mb-4" style={myStyle} >About Us</h1>
-        <p className="lead" >
-          Welcome to our travel and tourism website! Where we're passionate about travel and creating unforgettable experiences.
+        <h1 className="display-4 mb-4" >About Text Analyzer</h1>
+        <p className="lead">
+          Welcome to our Text Analyzer web app! Our goal is to help you analyze and get insights from your text.
+          Whether you're a writer, student, or researcher, we provide tools that offer a deeper understanding of your content.
         </p>
       </div>
       <div className="row justify-content-center">
         <div className="col-md-8">
           <p>
-            Our team of experts curates diverse travel options, ensuring personalized adventures for every traveler.
-            From seamless bookings to expert guidance, we're here to make your journey stress-free.
-            Join our community of adventurers and let's explore the world together. Your next adventure starts here at travel and tourism.
+            Our app processes your input text, providing detailed analysis such as word count, character count, sentence structure, and readability.
+            We aim to simplify content analysis and enhance your writing experience.
+            Join our community and start analyzing your text today!
           </p>
-          <h3 className="mt-5">Join Us on This Journey</h3>
+          <h3 className="mt-5">Why Choose Our Text Analyzer?</h3>
           <p>
-            Whether you're a seasoned globetrotter or embarking on your first adventure, we invite you to join us on this journey of discovery and exploration.
-            Let's create unforgettable memories together!
+            Whether you're editing a document, writing an article, or analyzing data, our tool helps you improve the quality of your text by providing key insights and metrics.
+            Explore the world of content analysis and make your writing more effective with our user-friendly platform.
           </p>
           <p className="mt-4">
-            <strong>For inquiries or bookings, contact us at: </strong>
-            <a href="mailto:travelandtourism@gmail.com">travelandtourism@gmail.com</a>
+            <strong>For feedback or inquiries, contact us at: </strong>
+            <a href="mailto:support@textanalyzer.com">support@textanalyzer.com</a>
           </p>
         </div>
       </div>
-      <button className='btn btn-primary' onClick={darkMode} >{btnText}</button>
     </div>
   );
 }

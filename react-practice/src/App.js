@@ -32,11 +32,11 @@ function App() {
       <div className="App">
         <Navbar mode={mode} toggleMode={toggleMode} />
         <Switch >
-          <Route path='/TextUpForm'>
-            <TextUpForm mode={mode} />
-          </Route>
           <Route path='/about'>
             <About mode={mode} />
+          </Route>
+          <Route path='/'>
+            <TextUpForm mode={mode} />
           </Route>
         </Switch>
 
