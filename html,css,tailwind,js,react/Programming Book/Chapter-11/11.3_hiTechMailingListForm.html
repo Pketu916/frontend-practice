@@ -1,0 +1,112 @@
+<html>
+<head>
+    <script type="text/javascript">
+        // Program name: hiTechMailingList.html
+        // Purpose: Creates an updateable mailing list form
+        // Author: Ketu Patel
+        // Date last modified: 22-08-2024
+
+        // Declare variables and constants
+        var SIZE = 24; // size of arrays
+        var index; // index for loops
+        var currentPos = 1; // current record subscript, now starting from 1
+
+        var lastName; // last name array
+        var firstName; // first name array
+        var city; // city array
+        var state; // state array
+
+        function loadArrays() {
+            lastName = new Array(
+                "Adams", "Baker", "Chalmers", "Dawber", "Englebert", "Fraser", "Grover", "Heimlich",
+                "Iverson", "Jackson", "Kellogg", "Landry", "Matheson", "Norman", "Osterling", "Paulson",
+                "Robbins", "Sterling", "Tarkington", "Urbanik", "Valencia", "Wilson", "Yardley", "Zerza"
+            );
+            firstName = new Array(
+                "Paul", "Merri", "Elizabeth", "Michael", "Carla", "Kris", "Yvonne", "Debbie", "Paula",
+                "Peggy", "Lynn", "Randy", "Eddie", "David", "Carolyn", "James", "Darla", "Darrell", 
+                "Ricky", "Beth", "Mitchell", "Denise", "Scott", "Daniel"
+            );
+            city = new Array(
+                "Annapolis", "Boston", "Charleston", "Dallas", "Englewood", "Frankfort", "Griffith",
+                "Houston", "Iowa City", "Jacksonville", "Kalamazoo", "LaCrosse", "Memphis", "Norman",
+                "Oberlin", "Portland", "Quincy", "Raleigh", "San Jose", "Tempe", "Virginia City",
+                "West Lafayette", "Yorba City", "Zephyrhills"
+            );
+            state = new Array(
+                "MD", "MA", "SC", "TX", "CO", "IN", "IN", "TX", "IA", "FL", "MI", "WI", "TN", "OK", "OH", 
+                "OR", "MA", "NC", "CA", "AZ", "VA", "IN", "FL", "FL"
+            );
+
+            // Load the first record initially
+            loadForm(1);
+        }
+
+        function loadForm(sub) {
+            // Check for non-entry of record number
+            if (sub == "" || sub == null || isNaN(sub)) {
+                sub = 1;
+            }
+            // Set position if Previous button is clicked, disallow moving to a subscript < 1
+            if (sub == -2) {
+                sub = currentPos - 1;
+                if (sub < 1) sub = 1;
+            }
+            // Set position if Next button is clicked, disallow moving to a subscript > SIZE
+            if (sub == -1) {
+                sub = currentPos + 1;
+                if (sub > SIZE) sub = SIZE;
+            }
+            // Set position if Last button is clicked
+            if (sub == -3) {
+                sub = SIZE;
+            }
+            // Note current position
+            currentPos = sub;
+            document.Mail.message.value = currentPos;
+
+            // Load the form with the values from the arrays, adjusted for 1-based indexing
+            document.Mail.lastName.value = lastName[sub - 1];
+            document.Mail.firstName.value = firstName[sub - 1];
+            document.Mail.city.value = city[sub - 1];
+            document.Mail.state.value = state[sub - 1];
+            // Replace value in Go To text box
+            document.Mail.subscript.value = sub;
+        }
+
+        function changeField(field, fieldValue) {
+            // Update the value in the appropriate array based on which field was changed, adjusted for 1-based indexing
+            if (field == "lastName")
+                lastName[currentPos - 1] = fieldValue;
+            if (field == "firstName")
+                firstName[currentPos - 1] = fieldValue;
+            if (field == "city")
+                city[currentPos - 1] = fieldValue;
+            if (field == "state")
+                state[currentPos - 1] = fieldValue;
+        }
+    </script>
+</head>
+<body bgcolor="LightCyan" onload="loadArrays()">
+    <h2>Hi-Tech Investments Mailing List Form</h2>
+    <form name="Mail" action="">
+        <strong>Last name:</strong><br />
+        <input type="text" name="lastName" value="" size="40" onchange="changeField('lastName', this.value)" /><p />
+        <strong>First name:</strong><br />
+        <input type="text" name="firstName" value="" size="40" onchange="changeField('firstName', this.value)" /><p />
+        <strong>City:</strong><br />
+        <input type="text" name="city" value="" size="40" onchange="changeField('city', this.value)" /><p />
+        <strong>State:</strong><br />
+        <input type="text" name="state" value="" size="2" onchange="changeField('state', this.value)" /><p />
+        <strong>Record: </strong>
+        <input type="text" name="subscript" value="1" size="2" />
+        <input type="button" value="Go To" onclick="loadForm(document.Mail.subscript.value)" /><p />
+        <input type="button" value="First" onclick="loadForm(1)" />
+        <input type="button" value="Previous" onclick="loadForm(-2)" />
+        <input type="button" value="Next" onclick="loadForm(-1)" />
+        <input type="button" value="Last" onclick="loadForm(-3)" /><br />
+        <strong>Current record: </strong>
+        <input type="text" name="message" readonly="readonly" value="" size="3" /><p />
+    </form>
+</body>
+</html>

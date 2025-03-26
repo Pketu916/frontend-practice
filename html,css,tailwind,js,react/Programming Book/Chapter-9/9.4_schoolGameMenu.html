@@ -1,0 +1,214 @@
+<html>
+    <head>
+        <script>
+            // Program name: School Game Menu
+            // Purpose: Uses a menu system to play games in arithmetic and geography
+            // Author: Ketu Patel
+            // Date last modified: 21-08-2024
+
+            // Declare variables and constants
+            var BR = "<br />"; // HTML Line break
+            var PA = "<p />"; // HTML paragraph break
+            var ES = ""; // empty string
+            var NL = "\n"; // newline
+
+            // main menu function
+            function mainMenu() {
+                var menuChoice;
+
+                //loop untiol user exits menu
+
+                do {
+                    // display main menu in a single prompt
+                    menuChoice = prompt("School Games Menu" + NL +
+                                        "Enter A to play Arithmetic games," + NL +
+                                        "           G to play Geography games," + NL +
+                                        "           X to exit this program." + NL +
+                                        "Enter your choice : ", ES).toUpperCase();
+                    
+                    // call requested submenu or exit program
+                    if (menuChoice == "A"){
+                        arithmeticMenu();
+                    } else if ( menuChoice == "G"){
+                        geographyMenu();
+                    }else if (menuChoice != "X"){
+                        alert("Invalid selection: Please enter A, G, or X.");
+                    }
+                } while (menuChoice != "X");
+                
+                //say good bye and end program
+                alert("Goodbye!")
+                document.write( + BR);
+
+                // Thank the user and End the program
+                document.write("Thank you for using this program." + BR);
+            }
+
+            function arithmeticMenu() {
+                var subMenuChoice;
+                
+                // Loop until user exits this menu and returns to main menu
+                do {
+                    // Display arithmetic submenu in a single prompt
+                    subMenuChoice = prompt("Arithmetic Games Menu" + NL +
+                                           "Enter A for Addition," + NL +
+                                           "           S for Subtraction," + NL +
+                                           "           X to exit this menu." + NL +
+                                           "Enter your choice : ", ES).toUpperCase();
+
+                    // Process submenu choice
+                    if (subMenuChoice == "A") {
+                        playAddition();
+                    } else if (subMenuChoice == "S") {
+                        playSubtraction();
+                    } else if (subMenuChoice != "X") {
+                        alert("Invalid selection: Enter A, S, or X.");
+                    }
+                } while (subMenuChoice != "X");
+            }
+            // Geography menu module
+            function geographyMenu() {
+                var subMenuChoice;
+
+                // Loop until user exits this menu and returns to main menu
+                do {
+                    // Display geography submenu in a single prompt
+                    subMenuChoice = prompt("Geography Games Menu" + NL +
+                                           "Enter G to play Guess the Country," + NL +
+                                           "           N to play Name the Capital," + NL +
+                                           "           X to exit this menu." + NL +
+                                           "Enter your choice : ", ES).toUpperCase();
+
+                    // Process submenu choice
+                    if (subMenuChoice == "G") {
+                        playGuessTheCountry();
+                    } else if (subMenuChoice == "N") {
+                        playNameTheCapital();
+                    } else if (subMenuChoice != "X") {
+                        alert("Invalid selection: Please enter G, N, or X.");
+                    }
+                } while (subMenuChoice != "X");
+            }
+            // Addition game module
+            function playAddition() {
+                var num1 = Math.floor(Math.random() * 100) + 1;
+                var num2 = Math.floor(Math.random() * 100) + 1;
+                var correctSum = num1 + num2;
+                var userGuess = parseInt(prompt("What is " + num1 + " + " + num2 + "? ", ES));
+
+                if (userGuess === correctSum) {
+                    alert("That is correct!");
+                    document.write("That is correct!" + BR);
+                } else {
+                    alert("Sorry. The correct answer is " + correctSum + ".");
+                    document.write("Sorry. The correct answer is " + correctSum + "." + BR);
+                }
+            }
+            // Subtraction game module
+            function playSubtraction() {
+                var num1 = Math.floor(Math.random() * 100) + 1;
+                var num2 = Math.floor(Math.random() * 100) + 1;
+
+                if (num2 > num1) {
+                    var temp = num1;
+                    num1 = num2;
+                    num2 = temp;
+                }
+
+                var correctDiff = num1 - num2;
+                var userGuess = parseInt(prompt("What is " + num1 + " - " + num2 + "? ", ES));
+
+                if (userGuess === correctDiff) {
+                    alert("That is correct!");
+                    document.write("That is correct!" + BR);
+                } else {
+                    alert("Sorry. The correct answer is " + correctDiff + ".");
+                    document.write("Sorry. The correct answer is " + correctDiff + "." + BR);
+                }
+            }
+            // Guess the Country game module
+            function playGuessTheCountry() {
+                var randomNum = Math.floor(Math.random() * 5) + 1;
+                var city, correctCountry;
+
+                switch (randomNum) {
+                    case 1:
+                        city = "Hamburg";
+                        correctCountry = "GERMANY";
+                        break;
+                    case 2:
+                        city = "Osaka";
+                        correctCountry = "JAPAN";
+                        break;
+                    case 3:
+                        city = "Liverpool";
+                        correctCountry = "ENGLAND";
+                        break;
+                    case 4:
+                        city = "Rio de Janeiro";
+                        correctCountry = "BRAZIL";
+                        break;
+                    case 5:
+                        city = "Mombasa";
+                        correctCountry = "KENYA";
+                        break;
+                }
+
+                var userGuess = prompt("In what country is " + city + " located? ", ES).toUpperCase();
+
+                if (userGuess === correctCountry) {
+                    alert("That is correct!");
+                    document.write("That is correct!" + BR);
+                } else {
+                    alert("Sorry. The correct answer is " + correctCountry + ".");
+                    document.write("Sorry. The correct answer is " + correctCountry + "." + BR);
+                }
+            }
+            // Name the Capital game module
+            function playNameTheCapital() {
+                var randomNum = Math.floor(Math.random() * 5) + 1;
+                var country, correctCapital;
+
+                switch (randomNum) {
+                    case 1:
+                        country = "Afghanistan";
+                        correctCapital = "KABUL";
+                        break;
+                    case 2:
+                        country = "Austria";
+                        correctCapital = "VIENNA";
+                        break;
+                    case 3:
+                        country = "Canada";
+                        correctCapital = "OTTAWA";
+                        break;
+                    case 4:
+                        country = "Finland";
+                        correctCapital = "HELSINKI";
+                        break;
+                    case 5:
+                        country = "Portugal";
+                        correctCapital = "LISBON";
+                        break;
+                }
+
+                var userGuess = prompt("What is the capital of " + country + "? ", ES).toUpperCase();
+
+                if (userGuess === correctCapital) {
+                    alert("That is correct!");
+                    document.write("That is correct!" + BR);
+                } else {
+                    alert("Sorry. The correct answer is " + correctCapital + ".");
+                    document.write("Sorry. The correct answer is " + correctCapital + "." + BR);
+                }
+            }
+
+        </script>
+    </head>
+    <body>
+        <script>
+            // Start the main menu
+            mainMenu();
+        </script>
+    </body>
+</html>

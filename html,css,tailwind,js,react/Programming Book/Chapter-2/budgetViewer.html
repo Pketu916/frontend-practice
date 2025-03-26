@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // program name: budgetViewwer.html
+        // purpose: Computes percentage for specific categories in a personal budget.
+        // Author : Ketu Patel
+        // last Date Modified: 08-AUG-2024
+
+        // variable declaration
+        var totExpe;
+        var rent;
+        var food;
+        var utilities;
+        var otherExpe;
+        var rentPer;
+        var foodPer;
+        var utilitiesPer;
+        var otherPer;
+        var BR = "<br/>";
+        var ES = " ";
+        var PA = "<p/> ";
+
+        // Program Heading
+        document.write("Personal Budget");
+
+        // take input from user
+        rent = parseFloat(prompt("enter your total rent payment:", ES));
+        food = parseFloat(prompt("enter your total food bill:", ES));
+        utilities = parseFloat(prompt("enter your total utilities payment:", ES));
+        otherExpe = parseFloat(
+            prompt("enter your total other Expences payment:", ES)
+        );
+
+        //calculate  the percentage of all payment
+        totExpe = rent + food + utilities + otherExpe;
+        rentPer = (rent * 100) / totExpe;
+        foodPer = (food * 100) / totExpe;
+        utilitiesPer = (utilities * 100) / totExpe;
+        otherPer = (otherExpe * 100) / totExpe;
+
+        //display all payment
+        document.write("your total rent Payment", rent.toFixed(2) + BR);
+        document.write("your total food payment:", food.toFixed(2) + BR);
+        document.write(
+            "your total utilities payment:",
+            utilities.toFixed(2) + BR
+        );
+        document.write(
+            "your total other expences payment:",
+            otherExpe.toFixed(2) + BR
+        );
+        document.write("your total  payment:", totExpe.toFixed(2) + BR + PA);
+
+        //display all payment in percentage
+        document.write(
+            "your total rent percentage:",
+            rentPer.toFixed(1) + "%" + BR
+        );
+        document.write(
+            "your total food percentage:",
+            foodPer.toFixed(1) + "%" + BR
+        );
+        document.write(
+            "your total utilities percentage:",
+            utilitiesPer.toFixed(1) + "%" + BR
+        );
+        document.write(
+            "your total other expences percentage:",
+            otherPer.toFixed(1) + "%" + BR
+        );
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+.container{
+    @apply max-w-[1170px] mx-auto;
+}
+.btn-global{ 
+    @apply w-[222px] h-[71px] text-xs text-primary tracking-[3px] uppercase bg-white active:bg-black active:text-white flex items-center justify-center border;
+}
+.project{
+    @apply relative ;
+}
+.hover-content{
+    @apply absolute top-0 bg-primary opacity-0 hover:opacity-[80%] h-full w-full pl-[10%] pt-[5%] text-white;
+}
+.project-button{
+    @apply text-xs tracking-[3px] uppercase flex items-center gap-2 mt-3;
+}
+.heading{
+    @apply text-64 leading-none text-secondary font-light;
+}
+@tailwind utilities;

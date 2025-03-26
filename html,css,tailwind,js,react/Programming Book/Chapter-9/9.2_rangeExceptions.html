@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            // Program name: Range Exceptions
+            // Purpose: Throw and catch out-of-range errors
+            // Author: Ketu Patel
+            // Date last modified: 20-08-2024
+
+            // Function to test if a number is within a specific range
+            function rangeExceptions() {
+                try {
+                    // Prompt the user for a number
+                    var num1 = parseInt(prompt("Enter a number between 1 and 100: ", ""));
+
+                    // Check if the number is out of range
+                    if (num1 < 1) {
+                        throw "Out of Range Low";
+                    } else if (num1 > 100) {
+                        throw "Out of Range High";
+                    }
+
+                    // If the number is in range
+                    document.write("Number is in the correct range." + BR);
+
+                } catch (ex) {
+                    // Handle the exceptions
+                    if (ex == "Out of Range Low") {
+                        document.write("The number entered is too low." + "<br/>");
+                    } else if (ex == "Out of Range High") {
+                        document.write("The number entered is too high." + "<br/>");
+                    }
+                }
+            }
+
+            // Declare variables and constants
+            var BR = "<br />"; // HTML Line break
+            var PA = "<p />"; // HTML paragraph break
+            var ES = ""; // empty string
+            var NL = "\n"; // newline
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            // Declare and initialize the 'more' variable
+            var more = "Y";
+
+            // Display the program heading
+            document.write("This program tests numbers in a range." + PA);
+
+            // Loop to continue testing numbers
+            while (more.toUpperCase() == "Y") {
+                rangeExceptions();  // Call the rangeExceptions function
+                more = prompt("Test another number? (Y/N): ", "Y");  // Prompt for continuation
+            }
+
+            // Thank the user at the end
+            document.write(BR + "Thank you." + PA);
+        </script>
+    </body>
+</html>

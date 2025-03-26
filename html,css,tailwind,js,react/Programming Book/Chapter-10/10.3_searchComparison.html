@@ -1,0 +1,97 @@
+<html>
+    <body>
+        <script type="text/javascript">
+            // Program name: searchComparison.html
+            // Purpose: Use Data objects to calculate elapsed time in milliseconds
+            // Author: Ketu Patel
+            // Date last modified: 22-08-2024
+
+            // Declare variables and constants
+            var SIZE = 5000000; // array size
+            var index; // array index
+            var found = false; // match found?
+            var numberArray; // number array
+            var searchNumber; // number to find
+            var d1, d2, diff; // date / time
+            var numComparisons; // # of comparisons
+            var low, high; // search endpoints
+
+            var BR = "<br />"; // HTML Line break
+            var PA = "<p />"; // HTML paragraph break
+            var ES = ""; // empty string
+            var NL = "\n"; // newline
+
+            // Instantiate array
+            numberArray = new Array(SIZE);
+
+            // populate array with integers
+            for(index = 0; index < SIZE; index++){
+                numberArray[index] = index + 1;
+            }
+
+            // prompt for number to search for
+            searchNumber = prompt("Enter a number between 1 and 5000000 : " , ES);
+            index = 0;
+
+            // sequential search
+            numComparisons = 0;
+            d1 = new Date();
+
+            // search until end of array or match found
+            while(index < SIZE && (!found)){
+                numComparisons++;
+                if(numberArray[index] == searchNumber){
+                    d2 = new Date();
+                    found = true;
+                    document.write("Match found at subscript : " + index + "." + BR);
+                }
+                index++;
+            }
+            if(!found){
+                d2 = new Date();
+                document.write("Sorry, no match found." + BR);
+            }
+
+            // compute and display elapsed time and number of comparisons
+            diff = d2 - d1;
+            document.write("Sequential search : # of miliseconds : " + diff + BR);
+            document.write("Number of comparisons : " + numComparisons + PA);
+
+            // binary search
+            found = false;
+            low = 0;
+            high = SIZE;
+            index = Math.floor((low + high) / 2);
+            numComparisons = 0;
+            d1 = new Date();
+
+            // search until endpoints meet or match is found 
+            while(low <= high && (!found)){
+                numComparisons++;
+                if(numberArray[index] == searchNumber){
+                    d2 = new Date();
+                    found = true;
+                    document.write("Match found at subscription : " + index + "." + BR);
+                }else{
+                    if(numberArray[index] > searchNumber){
+                        high = index - 1;
+                    }else{
+                        low = index + 1;
+                    }
+                    index = Math.floor((low + high) / 2);
+                }
+            }
+            if(!found){
+                d2 = new Date();
+                document.write("Sorry, no match found." + PA);
+            }
+
+            // compute and display elapsed time and number of comparisons
+            diff = d2 - d1;
+            document.write("Number of comparisons : " + numComparisons + PA);
+
+            // Thank the user at the end
+            document.write(BR + "Thank you." + PA);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    <script>
+        // Programe name : Account class
+        // Purpose :  Use a constructor function
+        // Author : Ketu Patel
+        // Date modified : 08-AUG-2024
+
+
+        // Constructor function for account class
+        function Account(type, num, fName, lName, bal) {
+            this.acctType = type;
+            this.acctNumber = num;
+            this.firstName = fName;
+            this.lastName = lName;
+            this.acctBal = bal;
+        }
+    </script>
+
+</head>
+
+<body>
+    <script>
+        // Declaring constnts variable
+        var BR = "<br/>";
+
+        // Program start
+        document.write("Account Program." + BR);
+        document.write("This program creates an account." + BR);
+
+        // Creating object of account 
+        var mySavingsAcct = new Account("Saving", 9621525, "Ketu", "Patel", 99.00);
+
+    </script>
+</body>
+
+</html>

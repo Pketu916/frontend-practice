@@ -1,0 +1,57 @@
+<html>
+
+<body>
+
+    <script>
+        // Program name: characterBoxOutlined.html
+        // Purpose: to print bordered rectangle with specific character and given row and column size
+        // Author: Ketu Patel
+        // Date last modified: 22-08-2024
+
+        // variables and constants
+        var char; // character entered by the user
+        var rows, cols; // row and col values
+        var rowIndex;  // starting row index
+        var colIndex;  // starting column index
+
+        var BR = "<br/>";
+        var ES = ""; // default empty value for character
+        var INT = 0;    // default int value
+        var BL = "&nbsp;"   // non breaking space
+
+        // Asking for character, row, and col value 
+        char = prompt("Enter the Character you want to print at the border of the rectangle: ", ES);
+        rows = parseInt(prompt("Enter the number of rows: ", INT));
+        cols = parseInt(prompt("Enter the number of columns: ", INT));
+
+        document.write("Here is your " + rows + "x" + cols + " box, filled border with character '" + char + "'" + BR);
+
+        // printing rectangle
+        for (rowIndex = 1; rowIndex <= rows; rowIndex++) {
+            for (colIndex = 1; colIndex <= cols; colIndex++) {
+                // for the first and last row, we print all characters
+                if (rowIndex == 1 || rowIndex == rows) {
+                    document.write(char);
+                }
+                else {
+                    // border character
+                    if (colIndex == 1 || colIndex == cols) {
+                        document.write(char);
+                    }
+                    // space
+                    else {
+                        document.write(BL);
+                    }
+                }
+            }
+            // after printing each line, we simply print a break
+            document.write(BR);
+        }
+
+        // thanks and 
+        document.write("Thanks for printing this pattern. Have a nice day!");
+    </script>
+
+</body>
+
+</html>

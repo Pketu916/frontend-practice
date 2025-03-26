@@ -1,0 +1,32 @@
+<html>
+
+<body>
+  <script>
+
+    function byField(fieldName) {
+      return (a, b) => a[fieldName] > b[fieldName] ? 1 : -1;
+    }
+
+    let users = [
+      { name: "John", age: 20, surname: "Johnson" },
+      { name: "Pete", age: 18, surname: "Peterson" },
+      { name: "Ann", age: 19, surname: "Hathaway" }
+    ];
+
+    // Sort by name (Ann, John, Pete)
+    users.sort(byField('name'));
+    alert(JSON.stringify(users))
+
+    // Sort by age (Pete, Ann, John)
+    users.sort(byField('age'));
+    alert(JSON.stringify(users))
+
+    // Sort by surname (Hathaway, Johnson, Peterson)
+    users.sort(byField('surname'));
+    alert(JSON.stringify(users))
+
+
+  </script>
+</body>
+
+</html>

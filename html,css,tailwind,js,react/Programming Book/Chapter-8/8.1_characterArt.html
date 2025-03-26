@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <script>
+            // Program name : characterArt.html
+            // Purpose: Display patterns of keyboard characters
+            // Author: Ketu Patel
+            // Date last modified : 20-aug-2024 
+            
+            function displayStars(){
+                // Declare variables and constants
+                var num; // # asterisks in a row
+                var index; // loop variable
+                var BR = "<br />"; // HTML Line break
+                var ES = ""; // empty string
+                
+                // ask for number of asterisks
+                // display them horizontally
+                document.write(BR);
+                num = parseInt(prompt("How many asterisks in this row ?",ES));
+
+                for (index = 1; index <= num ; index++){
+                    document.write("*")
+                }
+
+            }
+        </script>
+    </head>
+    <body>
+        <script>
+            // Declare variables and constants
+            var num; // # asterisks in a row
+            var index; // loop variable
+            var BR = "<br />"; // HTML Line break
+            var ES = ""; // empty string
+            
+            // Display program heading , ask for # of rows
+            document.write("Character Art program." + BR);
+            document.write("Display rows of keyboard character." + BR);
+            document.write("The Character is the asterisk, *." + BR);
+            document.write("You choose the length of each row." + BR);
+
+            num = parseInt(prompt("How many rows do you want ?", ES));
+
+            // Call the function for # of rows
+            for (index=1;index<= num; index++){
+                displayStars();
+            }
+
+            // thank the user
+            document.write(BR + "thank you !" + BR);
+
+        </script>
+    </body>
+</html>

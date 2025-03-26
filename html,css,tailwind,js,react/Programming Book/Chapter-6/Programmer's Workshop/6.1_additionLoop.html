@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Additional Loop</title>
+    <!-- Purpose: Use a do while loop to add numbers
+    Author: Ketu Patel
+    Last Date modified: 14-AUG-2024 -->
+</head>
+<body>
+    <script type="text/javascript">
+        // declare variable and constants
+        var num1,num2;      // numbers to add
+        
+        var ES = "";        // empty string
+        var BR = "<br/>";   // HTML line break
+        var PA = "<p/>";    // HTML para break
+
+        // welcome user
+        document.write("Welcome!" + PA);
+        
+        // Counter for the loop
+        var more;
+
+        // start the loop
+        do{
+        // Get the numbers from user to add
+        num1 = parseFloat(prompt("Enter the first number",ES));
+        num2 = parseFloat(prompt("Enter the second number",ES));
+
+        // Displaying result
+        document.write("Addition of " + num1 + " and " + num2 + " is: " + (num1 + num2)+ BR);
+
+        // Asking user that does he wants to add more numbers
+        more = prompt("do you want to add more ?('y/n')",ES).toLowerCase();
+        } while (more == "y" );
+        // Thank user
+        document.write("Thank you !!")
+    </script>
+</body>
+</html>

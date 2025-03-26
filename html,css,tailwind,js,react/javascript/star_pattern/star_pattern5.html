@@ -1,0 +1,38 @@
+<html>
+
+<body>
+    <script>
+        const cols = 5;
+        const rows = 5;
+        var pattern = "";
+
+        for (let i = 1; i <= rows; i++) {
+            //print space
+            for (let k = cols; k > i; k--) {
+                pattern += "&nbsp ";
+            }
+
+            //print star
+            for (let j = 1; j <= i; j++) {
+                pattern += "*";
+            }
+            pattern += "</br >";
+        }
+        for (let i = 1; i <= rows; i++) {
+            //print space
+            for (let j = 1; j <= i; j++) {
+                pattern += "&nbsp ";
+            }
+            
+            //print star
+            for (let k = cols; k > i; k--) {
+                pattern += "*";
+            }
+            pattern += "</br >";
+        }
+        document.write(pattern);
+
+    </script>
+</body>
+
+</html>

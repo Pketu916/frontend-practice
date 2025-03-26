@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rain Bucket Monitor</title>
+    <!-- Purpose:Remind user to empty the bucket
+    Author: Ketu Patel
+    Last Date modified: 14-AUG-2024  -->
+</head>
+<body>
+    <script type="text/javascript" >
+        
+        // declare variable
+        var wtrLvl = "";    //water level
+
+        var BR = "<br/>";   // HTML line break
+        var PA = "<p/>";    // HTML para break
+        var ES = "";        // empty string
+
+        // input value of bucket level
+        wtrLvl= parseFloat(prompt("Enter the water level"))
+
+        // welcome user
+        document.write("welcome ! to rain bucket reminder" + PA );
+
+        //display message based on water level
+        if (wtrLvl>=20){
+            document.write("bucket is full.\nEmpty the bucket and put is back." +PA )
+        }
+        else{
+            document.write("bucket is not full.\ncome after 10 minutes."+ PA)
+        }
+        
+        document.write("Thank you!!")
+
+    </script>
+</body>
+</html>

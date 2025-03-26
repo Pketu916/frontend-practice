@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IntrestCalculater</title>
+</head>
+<body>
+    <script type="text/javascript" >
+        // Purpose: Calculate the annual intrest rate for the balance and return new balance and total intrest on the balnace
+        // Author: Patel Ketu
+        // last date modified: 10-AUG-2024
+
+        // Declare variables and constants
+        var balance = 0.00;        // Account balance
+        var intRate = 0.00;        // Annual intrest rate
+        var intrest = 0.00;        // Annual intrest on balance
+
+        var ES = "";        // an empty string
+        var BR = "<br/>"     // HTML line break
+
+        // Welcoming user and program heading
+        document.write("Welcome to Intrest Calculater !" + BR);
+
+        // Taking input of balance and anual intrest rate from user
+        balance = parseFloat(prompt("Enter the balance: $",ES));
+        intRate = parseFloat(prompt("Enter the annual Intrest rate: (ex. if 5% then Enter 0.05)",ES));
+
+        // calculating intrest and new balance after adding intrest to it
+        intrest = balance * intRate; // Annual intrest on balance
+        balance = balance + intrest; // new balance after adding intrest in balance
+
+        // Displaying new balance and intrest to user
+        document.write("Annual intrest per " + intRate*100 + "% is: $ " + intrest + BR);
+        document.write("Your new balance after 1 year will be " + balance.toFixed(2) + BR);
+
+        // Thank user for using calculater
+        document.write("Thank you for using Intrest Calculater");
+    </script>
+</body>
+</html>

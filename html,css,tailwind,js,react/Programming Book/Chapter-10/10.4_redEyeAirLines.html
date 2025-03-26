@@ -1,0 +1,132 @@
+<html>
+  <head>
+    <script type="text/javascript">
+      // Program name: redEyeAirlines.html
+      // Purpose: Creates a reservation form searchable by city
+      // Author: Ketu Patel
+      // Date last modified: 22-08-2024
+
+      // Variables and constants
+      var NL = "\n"; // newline character
+      var SIZE = 20; // size of flight arrays
+      var index; // index for loops
+      var fromCityName; // selected from city
+      var toCityName; // selected to city
+      var startCity; // starting city array
+      var endCity; // ending city array
+      var flightNumber; // flight numbers array
+      var pricePerPerson; // price array
+
+      // Initialize arrays
+      function loadArrays() {
+        startCity = [
+            "Atlanta", "Atlanta", "Atlanta", "Atlanta",
+            "Cleveland", "Cleveland", "Cleveland",
+            "Cleveland", "Indianapolis", "Indianapolis",
+            "Indianapolis", "Indianapolis", "Louisville",
+            "Louisville", "Louisville", "Louisville",
+            "Memphis", "Memphis", "Memphis", "Memphis"
+        ];
+
+        endCity = [
+            "Cleveland", "Indianapolis", "Louisville",
+            "Memphis", "Indianapolis", "Louisville",
+            "Memphis", "Atlanta", "Louisville", "Memphis",
+            "Atlanta", "Cleveland", "Memphis", "Atlanta",
+            "Cleveland", "Indianapolis", "Atlanta",
+            "Cleveland", "Indianapolis", "Louisville"
+        ];
+
+        flightNumber = [
+            "RE103", "RE105", "RE107", "RE109",
+            "RE305", "RE307", "RE309", "RE301",
+            "RE507", "RE509", "RE501", "RE503",
+            "RE709", "RE701", "RE703", "RE705",
+            "RE901", "RE903", "RE905", "RE907"
+        ];
+
+        pricePerPerson = [
+          110.0, 100.0, 90.0, 80.0, 75.0, 90.0, 110.0, 120.0, 65.0, 80.0, 120.0,
+          75.0, 65.0, 90.0, 90.0, 65.0, 80.0, 110.0, 80.0, 65.0,
+        ];
+      }
+
+      // Function to search the arrays and display flight information
+      function searchArray() {
+        document.InfoForm.flightBox.value =
+          "WELCOME TO REDEYE AIRLINES: " +
+          "All flights leave at 2:00 am" +
+          NL +
+          NL;
+
+        fromCityName = document.InfoForm.StartingCity.value.toUpperCase();
+        toCityName = document.InfoForm.endingCity.value.toUpperCase();
+
+        if (fromCityName == toCityName) {
+          document.InfoForm.flightBox.value +=
+            "Starting and destination city can't be the same." + NL;
+          return;
+        }
+
+        for (index = 0; index < SIZE; index++) {
+          if (
+            startCity[index].toUpperCase() == fromCityName &&
+            endCity[index].toUpperCase() == toCityName
+          ) {
+            document.InfoForm.flightBox.value +=
+              startCity[index] +
+              " TO " +
+              endCity[index] +
+              ", Flight # " +
+              flightNumber[index] +
+              ", Price per person: $" +
+              pricePerPerson[index].toFixed(2) +
+              NL;
+          }
+        }
+      }
+    </script>
+  </head>
+
+  <body bgcolor="Salmon">
+    <h2>RedEye Airlines Flight Information Form</h2>
+
+    <form name="InfoForm" action="">
+      <p>
+        Select your starting city:<br />
+        <select name="StartingCity">
+          <option value="ATLANTA">Atlanta (GA)</option>
+          <option value="CLEVELAND">Cleveland (OH)</option>
+          <option value="INDIANAPOLIS">Indianapolis (IN)</option>
+          <option value="LOUISVILLE">Louisville (KY)</option>
+          <option value="MEMPHIS">Memphis (TN)</option>
+        </select>
+      </p>
+
+      <p>
+        Select your destination city:<br />
+        <select name="endingCity">
+          <option value="ATLANTA">Atlanta (GA)</option>
+          <option value="CLEVELAND">Cleveland (OH)</option>
+          <option value="INDIANAPOLIS">Indianapolis (IN)</option>
+          <option value="LOUISVILLE">Louisville (KY)</option>
+          <option value="MEMPHIS">Memphis (TN)</option>
+        </select>
+      </p>
+
+      <input
+        type="button"
+        name="goButton"
+        value="Find Flights"
+        onclick="searchArray()"
+      />
+      <p />
+      <textarea name="flightBox" readonly="true" rows="6" cols="80"></textarea>
+      <p />
+    </form>
+
+    <script type="text/javascript">
+      loadArrays();
+    </script>
+  </body>
+</html>

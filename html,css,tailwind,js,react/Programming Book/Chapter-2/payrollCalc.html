@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>payroll Calc</title>
+</head>
+
+<body>
+    <script>
+        //Program name : payrollCalc.html
+        // Purpose : Get payrollinformation, calculate
+        //deductions , display all information
+        // Author : Ketu Patel
+        // Date last modified : 7 Aug, 2024
+
+        //Declare variables
+        var firstName;
+        var lastName;
+        var fullName;
+        var grossPay;
+        var netPay;
+        var hoursWorked;
+        var wageRate;
+        var fedTaxWith;
+        var stateTaxWith;
+        var countryTaxWith;
+        var medInsDed;
+        var totDeductions;
+
+        //Declare constants 
+        var FED_RATE = 0.15;
+        var STATE_RATE = 0.034;
+        var COUNTRY_RATE = 0.011;
+
+        //Declare constants 
+        var BR = "<br/>"; // Html line break
+        var PA = "<p/>"; // Html paragraph break
+        var ES = " "; // empty string
+
+        //Program Heading
+        document.write("Employee Payroll Calculator" + PA);
+
+        //Get employee's name, hours worked, and wage rate
+        lastName = prompt("Enter the employee's last name:", ES);
+        firstName = prompt("Enter the employee's first name:", ES);
+        fullName = firstName + ES + lastName;
+        hoursWorked = prompt("Enter the number of hours worked:", ES);
+        hoursWorked = parseFloat(hoursWorked);
+        wageRate = prompt("Enter the employee's hourly wage:", ES);
+        wageRate = parseFloat(wageRate);
+
+        //Calculate gross pay
+        grossPay = hoursWorked * wageRate;
+
+        //Calculate federal , state and country wirhholding
+        fedTaxWith = grossPay * FED_RATE;
+        stateTaxWith = grossPay * STATE_RATE;
+        countryTaxWith = grossPay * COUNTRY_RATE;
+
+        //Get medical insurance deduction
+        medInsDed = prompt("Enter medical insurance deduction:", ES);
+        medInsDed = parseFloat(medInsDed);
+
+        //Calculate total deduction and net pay
+        totDeductions = fedTaxWith + stateTaxWith + countryTaxWith + medInsDed;
+        netPay = grossPay - totDeductions;
+
+        //Display all information 
+        document.write("Payroll information for: " + fullName + BR);
+        document.write("Hours worked:" + hoursWorked + BR);
+        document.write("Gross pay: $" + grossPay + BR);
+        document.write("Witholdings:" + BR);
+        document.write("Federal income tax: $" + fedTaxWith + BR);
+        document.write("State income tax: $" + stateTaxWith + BR);
+        document.write("Country income tax: $" + countryTaxWith + BR);
+        document.write("Medical insurance: $" + totDeductions + BR);
+        document.write("Net pay: $" + netPay + PA);
+
+        //End the program
+        document.write("End of program. Good-bye!" + BR);
+    </script>
+</body>
+
+</html>

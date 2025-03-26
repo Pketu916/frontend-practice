@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        
+        // Program name: maxOfThree.html
+        // Purpose: To find the maximum of three sales amounts
+        // Author: Ketu Patel 
+        // Date last modified: 13-Aug-2024
+
+        // Sales class for calculating percentage
+        class Sales{
+            constructor(s1,s2,s3){
+                this.Sales1 = s1;
+                this.Sales2 = s2;
+                this.Sales3 = s3;
+            }
+                
+            // displaying max value
+            maxValue(){
+                this.maxSale = Math.max(this.Sales1,this.Sales2,this.Sales3)
+                document.write("Max sale value among all three value is: "+this.maxSale + "<br/>");
+            
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <script>
+        //welcome user
+        document.write("Welcome to the program !" + "<p/>")
+
+         // Declaring variable
+        var sale1,sale2,sale3; // three sales values
+         
+         //asking for sales value
+        sale1 = parseFloat(prompt("Enter first number: "));
+        sale2 = parseFloat(prompt("Enter second numer: "));
+        sale3 = parseFloat(prompt("Enter third number: "));
+
+        //creating object of the class
+        var sale = new Sales(sale1,sale2,sale3)
+
+        //calling sales class display method
+        sale.maxValue();
+
+        //thank you user
+        document.write("Thank you for using this program!")
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<html>
+    <body>
+        <script type="text/javascript">
+            // Program name: timer.html
+            // Purpose: Use Data objects to calculate elapsed time in milliseconds
+            // Author: Ketu Patel
+            // Date last modified: 22-08-2024
+
+            // Declare variables and constants
+            var index; // loop index
+            var x; // variable for division problem
+            var d1, d2; // date variables
+
+            var BR = "<br />"; // HTML Line break
+            var PA = "<p />"; // HTML paragraph break
+            var ES = ""; // empty string
+            var NL = "\n"; // newline
+
+            // Set starting time
+            d1 = new Date();
+
+            // loop to pass time
+            for(index = 0; index < 6000000; index++){
+                x = 123.456789 / 987.654321;
+            }
+
+            // set ending time
+            d2 = new Date();
+
+            // compute and display elapsed time
+            var diff = d2 - d1;
+            document.write("Defference in time is : " + diff + "milliseconds." + BR);
+
+            // Thank the user at the end
+            document.write(BR + "Thank you." + PA);
+        </script>
+    </body>
+</html>

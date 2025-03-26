@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" >
+        // program name: TelevisionClass
+        // purpose: Create television class and Television object to display the values
+        // Author: Ketu Patel
+        // last Date Modified: 13-AUG-2024
+
+        // Create class with parameters
+        class Television{
+            constructor(manu,size,price){
+                this.manufacturer = manu;
+                this.screenDiagonalSize = size;
+                this.retailPrice = price;
+            }
+
+        // method to set price
+            setPrice(newPrice){
+                this.retailPrice = newPrice;
+            }
+
+        // mmethod to display information
+        displayInfo(){
+                document.write("Manufacturer: " + this.manufacturer + BR);
+                document.write("Screen diagonal Size (in inches): " + this.screenDiagonalSize + BR);
+                document.write("Retail Price: $" + this.retailPrice + BR);
+            }
+        }
+        // variables and constants
+        var BR = "<br />"; // HTML line break tag
+        var PA = "<p />"; // HTML paragraph tag
+
+    </script>
+</head>
+<body>
+    <script type="text/javascript" >
+
+        //state program purpose
+        document.write("An Electronics Appliance Store." + PA);
+
+        //create an account
+        var myTV = new Television("sony",52,1299);
+
+        // Update retail price using setPrice function
+        myTV.setPrice(999);
+
+        myTV.displayInfo();
+
+        //Thank the user and end the program
+        document.write("Thank you for using this program !" + BR);
+
+    </script>
+</body>
+</html>

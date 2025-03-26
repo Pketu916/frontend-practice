@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript" >
+        // Programe name : mathMethods.html
+        // Purpose :  Use a constructor function
+        // Author : Ketu Patel
+        // Date modified : 09-AUG-2024
+
+        // variables and constants
+        var someNum1; // 1st number entered by user
+        var sqRoot; // square root of number
+        var absolute; // absolute value of number
+        var nextHighest; // next highest whole number
+        var nextLowest; // next lowest whole number
+        var someNum2; // 2nd number entered by user
+        var higherNum; // higher of two numbers entered
+        var lowerNum; // lower of two numbers entered
+
+
+        var ES = ""; // empty string for prompt
+        var BR = "<br />"; // HTML line break tag
+        var PA = "<p />"; // HTML paragraph tag
+
+        //Welcome the user State program purpose
+        document.write("Welcome to the Math Methods Program : " + BR);
+        document.write("This program asks for a decimal number, and calculates the square root, absolute value, and the next highest and next lowest whole number." + BR);
+        document.write("It then asks for a second number, and calculates the higher and the lower of the two numbers." + PA);
+
+        // Prompt user for a radius , convert to number
+        someNum1 = parseFloat(prompt("Enter a number : ", ES));
+
+        // Compute and display square root, absolute value, and next highest and next lowest whole numbers
+        sqRoot = Math.sqrt(someNum1);
+        absolute = Math.abs(someNum1);
+        nextHighest = Math.ceil(someNum1);
+        nextLowest= Math.floor(someNum1);
+
+        document.write("Square root: " + sqRoot.toFixed(2) + BR);
+        document.write("Absolute root: " + absolute + BR);
+        document.write("Next highest whole number: " + nextHighest + BR);
+        document.write("Next lowest whole number: " + nextLowest + PA);
+        
+        // Prompt user for the second number convert to numeric
+        someNum2 = parseFloat(prompt("Enter another number : ", ES));
+
+        // Compute and display the higher and lower numbers
+        higherNum = Math.max(someNum1,someNum2);
+        lowerNum = Math.min(someNum1,someNum2);
+        
+        document.write("Higher of two nummber" + higherNum + BR);
+        document.write("lower of two number" + lowerNum + PA)
+
+        //Thank the user and end the program
+        document.write("Thank you for using this program !" + BR);
+
+    </script>
+</body>
+</html>

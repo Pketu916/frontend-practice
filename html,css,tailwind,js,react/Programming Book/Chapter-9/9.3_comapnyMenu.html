@@ -1,0 +1,129 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            // Program name: Company Menu
+            // Purpose: A menu system for customer service and order processing
+            // Author: Ketu Patel
+            // Date last modified: 21-08-2024
+
+            // Declare variables and constants
+            var BR = "<br />"; // HTML Line break
+            var PA = "<p />"; // HTML paragraph break
+            var ES = ""; // empty string
+            var NL = "\n"; // newline
+
+            // Main Menu function
+            function mainMenu() {
+                var menuChoice;
+
+                // Loop until user exits menu
+                do {
+                    // Display main menu in a single prompt
+                    menuChoice = prompt("Enter C for Customer Service menu," + NL +
+                                        "           O for Order Processing menu," + NL +
+                                        "           Q to Quit this program." + NL +
+                                        "Enter your choice : ", ES).toUpperCase();
+
+                    // Call requested submenu or exit program
+                    if (menuChoice == "C") {
+                        customerServiceMenu();
+                    } else if (menuChoice == "O") {
+                        orderProcessingMenu();
+                    } else if (menuChoice != "Q") {
+                        alert("Invalid selection: Enter C, O, or Q.");
+                    }
+                } while (menuChoice != "Q");
+
+                // Say goodbye and end program
+                alert("Goodbye!");
+
+                // Say goodbye and end program
+                alert("Goodbye!");
+            }
+
+            // Customer Service menu
+            function customerServiceMenu() {
+                var subMenuChoice;
+
+                // Loop until user exits submenu
+                do {
+                    // Display customer service submenu in a single prompt
+                    subMenuChoice = prompt("Enter A to Add a new customer," + NL +
+                                           "           C to Change customer info," + NL +
+                                           "           D to Delete a customer," + NL +
+                                           "           Q to Quit this submenu." + NL +
+                                           "Enter your choice : ", ES).toUpperCase();
+
+                    // Process submenu choice
+                    if (subMenuChoice == "A") {
+                        addCustomer();
+                    } else if (subMenuChoice == "C") {
+                        changeCustomer();
+                    } else if (subMenuChoice == "D") {
+                        deleteCustomer();
+                    } else if (subMenuChoice != "Q") {
+                        alert("Invalid selection: Enter A, C, D, or Q.");
+                    }
+                } while (subMenuChoice != "Q");
+            }
+
+            // Order Processing menu
+            function orderProcessingMenu() {
+                var subMenuChoice;
+
+                // Loop until user exits submenu
+                do {
+                    // Display order processing submenu in a single prompt
+                    subMenuChoice = prompt("Enter P for Placing an order," + NL +
+                                           "          I for Invoicing," + NL +
+                                           "          S for Shipping," + NL +
+                                           "          Q to Quit this submenu." + NL +
+                                           "Enter your choice : ", ES).toUpperCase();
+
+                    // Process submenu choice
+                    if (subMenuChoice == "P") {
+                        placeOrder();
+                    } else if (subMenuChoice == "I") {
+                        invoiceOrder();
+                    } else if (subMenuChoice == "S") {
+                        shipOrder();
+                    } else if (subMenuChoice != "Q") {
+                        alert("Invalid selection: Enter P, I, S, or Q.");
+                    }
+                } while (subMenuChoice != "Q");
+            }
+
+            // Stubs for Customer Service operations
+            function addCustomer() {
+                document.write("In Add Customer module." + BR + PA);
+            }
+
+            function changeCustomer() {
+                document.write("In Change Customer module." + BR + PA);
+            }
+
+            function deleteCustomer() {
+                document.write("In Delete Customer module." + BR + PA);
+            }
+
+            // Stubs for Order Processing operations
+            function placeOrder() {
+                document.write("In Place order module." + BR + PA);
+            }
+
+            function invoiceOrder() {
+                document.write("In Invoicing module." + BR + PA);
+            }
+
+            function shipOrder() {
+                document.write("In Shipping module." + BR + PA);
+            }
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            // Start the main menu
+            mainMenu();
+        </script>
+    </body>
+</html>

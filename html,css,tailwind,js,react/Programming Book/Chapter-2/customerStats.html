@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Statistics</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        //Program name: customerStats.html
+        //Purpose: Compute total and average customers over 4 hours
+        //Author: Ketu Patel
+        //Date last modified: 07-Aug-2024
+
+        //Variables and Constants
+        var totCust; //total customers
+        var avgCust; //average customers per hour
+        var count1, count2, count3, count4; // count os customers each hours
+        var NUM_HOURS = 4.0; // number of hours
+        var BR = "<br />";
+        var ES = "";
+
+        //Program heading
+        document.write("Sunshine Books Customer Statistics Program" + BR);
+
+        //Get number of customers for each hour
+        count1 = prompt("Enter the # of customers for the hour 1: ", ES);
+        count1 = parseInt(count1);
+        count2 = prompt("Enter the # of customers for the hour 2: ", ES);
+        count2 = parseInt(count2);
+        count3 = prompt("Enter the # of customers for the hour 3: ", ES);
+        count3 = parseInt(count3);
+        count4 = prompt("Enter the # of customers for the hour 4: ", ES);
+        count4 = parseInt(count4);
+
+        //Compute total and average, and display results 
+        totCust = count1 + count2 + count3 + count4;
+        avgCust = totCust / NUM_HOURS;
+        document.write("Total number of customers: " + totCust + BR);
+        document.write("Average customers/hour: " + avgCust + BR);
+
+        //Thank the user and end the program
+        document.write("Thank you for using this program. Good-bye!" + BR);
+    </script>
+</body>
+
+</html>

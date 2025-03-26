@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Functions</title>
+</head>
+
+<script>
+    // Program name: numberFunctions.html
+    // Purpose: To display different results based on different function calls
+    // Author: Ketu Patel
+    // Date last modified: 20-Aug-2024 
+
+    // Declare global variables and constants
+    var BR = "<br/>"; // line break
+    var PA = "<p/>"; // paragraph break
+    var FLT = 0.0;   // default float value
+
+    var sum;
+    var mul;
+    var div;
+    var mod;
+
+    // Function to perform mathematical operations
+    function math(num1, num2) {
+        sum = num1 + num2;
+        mul = num1 * num2;
+        div = num1 / num2;
+        mod = num1 % num2;
+    }
+
+</script>
+
+<body>
+    <script>
+        // Welcome the user
+        document.write("Welcome to the Number Functions program!" + PA);
+
+        // Ask for numbers as input from the user
+        var num1 = parseFloat(prompt("Enter first number: ", FLT));
+        var num2 = parseFloat(prompt("Enter second number: ", FLT));
+
+        // Call the math function with user inputs
+        math(num1, num2);
+
+        // Display the results
+        document.write("You entered: " + num1 + " and " + num2 + BR);
+        document.write("Sum: " + sum + BR);
+        document.write("Multiplication: " + mul + BR);
+        document.write("Division: " + div + BR);
+        document.write("Modulus: " + mod + PA);
+    </script>
+</body>
+
+</html>

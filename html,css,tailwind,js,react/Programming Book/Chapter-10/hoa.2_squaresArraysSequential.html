@@ -1,0 +1,91 @@
+<html>
+  <head>
+    <script type="text/javascript">
+      // Program name: Squares array sequential
+      // Purpose: use for loop for find perfect square
+      // Author: Ketu Patel
+      // Date last modified: 22-08-2024
+
+      // Declare variables and constants
+      var BR = "<br />"; // HTML Line break
+      var PA = "<p />"; // HTML paragraph break
+      var ES = ""; // empty string
+      var NL = "\n"; // newline
+
+      var squares = []; // Declare an empty array
+
+      // Load the array with squares of indexes
+      for (var i = 0; i < 500; i++) {
+        squares[i] = i * i;
+      }
+
+      // Sequential Search Function
+      function searchPerfectSquareSequential(num) {
+        var isPerfectSquare = false;
+
+        for (var i = 0; i < 500; i++) {
+          if (squares[i] === num) {
+            isPerfectSquare = true;
+            break;
+          }
+        }
+
+        if (isPerfectSquare) {
+          document.write(
+            num + " is a perfect square. (Found using Sequential Search)" + BR
+          );
+        } else {
+          document.write(
+            num + " is not a perfect square. (Sequential Search)" + BR
+          );
+        }
+      }
+
+      // Binary Search Function
+      function searchPerfectSquareBinary(num) {
+        var low = 0;
+        var high = 499;
+        var isPerfectSquare = false;
+
+        while (low <= high) {
+          var mid = Math.floor((low + high) / 2);
+
+          if (squares[mid] === num) {
+            isPerfectSquare = true;
+            break;
+          } else if (squares[mid] < num) {
+            low = mid + 1;
+          } else {
+            high = mid - 1;
+          }
+        }
+
+        if (isPerfectSquare) {
+          document.write(
+            num + " is a perfect square. (Found using Binary Search)" + BR
+          );
+        } else {
+          document.write(
+            num + " is not a perfect square. (Binary Search)" + BR
+          );
+        }
+      }
+    </script>
+  </head>
+
+  <body>
+    <script type="text/javascript">
+      // ask for number
+      var userNumber = parseInt(
+        prompt("Enter a number less than 250,000 for Binary Search : ")
+      );
+
+      // Call this function onload to initialize the squares array
+      searchPerfectSquareSequential(userNumber);
+      searchPerfectSquareBinary(userNumber);
+
+      // Thank the user at the end
+      document.write(BR + "Thank you." + PA);
+    </script>
+  </body>
+</html>

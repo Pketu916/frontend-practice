@@ -1,0 +1,26 @@
+<html>
+  <body>
+    <script>
+      function inBetween(a, b) {
+        return function (x) {
+          if (x >= a && x <= b) {
+            return x;
+          }
+        };
+      }
+      function inArray(arr) {
+        return function (x) {
+          if (arr.includes(x)) {
+            return x;
+          }
+        };
+      }
+
+      let arr = [1, 2, 3, 4, 5, 6, 7];
+
+      alert(arr.filter(inBetween(3, 6))); // 3,4,5,6
+
+      alert(arr.filter(inArray([1, 2, 10]))); // 1,2
+    </script>
+  </body>
+</html>

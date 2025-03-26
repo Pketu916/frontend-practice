@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Program name: coffeeSurvey.html
+        // Purpose: Getting survey card total for morning, afternoon, and evening
+        // Author: Ketu Patel
+        // Date last modified: 16-Aug-2024
+            
+        // Variables
+        var choice;             // User input choice
+        var morningCard = 0;    // Morning card total
+        var afternoonCard = 0;  // Afternoon card total
+        var eveningCard = 0;    // Evening card total
+        var totCatCard = 0;     // Category-wise total card
+        var totCard = 0;        // Total card count
+
+        // Constants
+        var NL =  "\n";         // New line
+        var BR = "<br/>";       // Line break
+        var PA = "<p/>";        // Paragraph break
+        var INT = 0;            // Default integer value
+
+        // Program heading 
+        document.write("Mack's Coffee Cove Survey: Category-wise Card Count" + PA);
+
+        // Asking for employee choice
+        choice = parseInt(prompt("Enter 1 for Morning" + NL + "Enter 2 for Afternoon" + NL + "Enter 3 for Evening" + NL + "Type -1 to quit", INT));
+            
+        while (choice != -1) {
+            if (choice === 1) {
+                totCatCard = parseInt(prompt("Enter total number of cards for Morning", INT));
+                morningCard += totCatCard;
+            }
+            else if (choice === 2) {
+                totCatCard = parseInt(prompt("Enter total number of cards for Afternoon", INT));
+                afternoonCard += totCatCard;
+            }
+            else if (choice === 3) {
+                totCatCard = parseInt(prompt("Enter total number of cards for Evening", INT));
+                eveningCard += totCatCard;
+            }
+            // else {
+            //     document.write("Please enter a valid choice between 1 and 3" + PA);
+            //     break;
+            // }
+            totCard += totCatCard;
+            
+            choice = parseInt(prompt("Enter 1 for Morning" + NL + "Enter 2 for Afternoon" + NL + "Enter 3 for Evening" + NL + "Type -1 to quit", INT));
+        }
+
+        // Displaying all card totals
+        document.write("Total morning cards: " + morningCard + BR);
+        document.write("Total afternoon cards: " + afternoonCard + BR);
+        document.write("Total evening cards: " + eveningCard + BR);
+        document.write("Total cards for all categories: " + totCard + PA);
+            
+        // End and thank user
+        document.write("Thank you for using this program to count survey cards!");
+
+    </script>
+</body>
+</html>

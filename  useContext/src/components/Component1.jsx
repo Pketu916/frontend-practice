@@ -1,13 +1,9 @@
-import {useContext} from 'react'
-import { counterContext } from '../context/context'
+import { useContext } from "react";
+import { counterContext } from "../context/context";
 
 const Component1 = () => {
-    const value = useContext(counterContext)
-  return (
-    <div>
-      {value.count}
-    </div>
-  )
-}
+  const { count, setCount } = useContext(counterContext);
+  return <div>{count}</div>;
+};
 
-export default Component1
+export default Component1;

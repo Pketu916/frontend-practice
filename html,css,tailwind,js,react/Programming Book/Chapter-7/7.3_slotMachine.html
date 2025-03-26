@@ -1,0 +1,115 @@
+<html>
+<head>
+        <script type="text/javascript">
+            // Program name : slotMachine.html
+            // Purpose: create a form to simulate slot machine
+            // Author: Ketu Patel
+            // Date last modified : 18-aug-2024 
+
+            // Variables    
+            var random1, random2, random3;  // box numbers
+            var PA = "<p/>"
+            // constants
+            var TEXT_CHERRY = "CHERRY";     //cherry box
+            var TEXT_LEMON = "LEMON";        //lemon box
+            var TEXT_ORANGE = "ORANGE";     // ORANGE BOX
+            var TEXT_LIME = "LIME";         // lime box
+            var TEXT_BANANA = "BANANA";     // text banana
+            
+            // constats for possible result variables
+            var RESULT_JACKPOT = "JACKPOT!! 3 of a kind!";
+            var RESULT_2JACKPOT = "2 of a kind!";
+            var RESULT_NOPRIZE = "No prize!";
+
+            // this function generates three random numbers from 1 to 5 
+            //it puts cherry, lemon, orange, lime, banana and check for the result jackpot prize
+            function playSlots(){
+                random1 = Math.floor(Math.random() * 5) + 1;
+                switch(random1){
+                    case 1:
+                        document.SlotForm.box1.value = TEXT_CHERRY;
+                        break;
+                    case 2:
+                        document.SlotForm.box1.value = TEXT_LEMON;
+                        break;
+                    case 3:
+                        document.SlotForm.box1.value = TEXT_ORANGE;
+                        break;
+                    case 4:
+                        document.SlotForm.box1.value = TEXT_LIME;
+                        break;
+                    case 5:
+                        document.SlotForm.box1.value = TEXT_BANANA;
+                        break;
+                }
+
+                random2 = Math.floor(Math.random() * 5) + 1;
+                switch(random2){
+                    case 1:
+                        document.SlotForm.box2.value = TEXT_CHERRY;
+                        break;
+                    case 2:
+                        document.SlotForm.box2.value = TEXT_LEMON;
+                        break;
+                    case 3:
+                        document.SlotForm.box2.value = TEXT_ORANGE;
+                        break;
+                    case 4:
+                        document.SlotForm.box2.value = TEXT_LIME;
+                        break;
+                    case 5:
+                        document.SlotForm.box2.value = TEXT_BANANA;
+                        break;
+                }
+
+                random3 = Math.floor(Math.random() * 5) + 1;
+                switch(random3){
+                    case 1:
+                        document.SlotForm.box3.value = TEXT_CHERRY;
+                        break;
+                    case 2:
+                        document.SlotForm.box3.value = TEXT_LEMON;
+                        break;
+                    case 3:
+                        document.SlotForm.box3.value = TEXT_ORANGE;
+                        break;
+                    case 4:
+                        document.SlotForm.box3.value = TEXT_LIME;
+                        break;
+                    case 5:
+                        document.SlotForm.box3.value = TEXT_BANANA;
+                        break;
+                }
+
+                // checking for slots values
+                if(random1 == random2 && random1 == random3){
+                    document.SlotForm.result.value = RESULT_JACKPOT
+                }
+                else if(random1 == random2 || random1 == random3 || random2 == random3){
+                    document.SlotForm.result.value = RESULT_2JACKPOT;
+                }
+                else{
+                    document.SlotForm.result.value = RESULT_NOPRIZE;
+                }
+            }
+
+        </script>
+</head>
+
+<body bgcolor="LightBlue">
+
+    <h1>It's Your Money Slots</h1>
+    <form name="SlotForm" action="">
+
+        <input type="text" name="box1" value="Box1" size="10">
+        <input type="text" name="box2" value="Box2" size="10">
+        <input type="text" name="box3" value="Box3" size="10"><p/>
+
+        <input type="button" name="Play" value="Play Slots" onclick="playSlots()"><p/>
+
+        <input type="text" name="result" value="" size="24">
+    </form>
+
+    
+</body>
+</html>

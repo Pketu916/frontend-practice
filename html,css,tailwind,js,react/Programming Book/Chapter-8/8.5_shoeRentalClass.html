@@ -1,0 +1,63 @@
+1<html>
+    <head>
+        <script type="text/javascript">
+            // Program name : Shoe Rental Class
+            // Purpose: Pseudocode for creating a shoerental class
+            // Author: Ketu Patel
+            // Date last modified : 20-aug-2024 
+
+            class ShoeRental {
+                // Variables
+                constructor() {
+                    // Initialize the variables by prompting the user for input
+                    this.shoeID = parseInt(prompt("Enter the shoe ID number (1000 to 9999): ", ES));
+                    this.shoeSize = parseFloat(prompt("Enter the shoe size: ", ES));
+                    this.firstName = prompt("Enter renter's first name: ", ES);
+                    this.lastName = prompt("Enter renter's last name: ", ES);
+                    this.rentalDate = prompt("Enter date (MM/DD/YYYY): ", ES);
+                    this.rentalTime = prompt("Enter time (HH:MM, 24-hr): ", ES);
+                    this.numGames = parseInt(prompt("How many games is the renter bowling? ", ES));
+                    
+                    // Compute the rental cost
+                    this.rentalCost = this.computeRentalCost(this.numGames);
+                }
+
+                // Method to compute rental cost
+                computeRentalCost(games) {
+                    const COST_PER_GAME = 2;
+                    return games * COST_PER_GAME;
+                }
+
+                // Method to display all information
+                displayInfo() {
+                    document.write("Renter's name: " + this.firstName + " " + this.lastName + BR);
+                    document.write("Shoe ID: " + this.shoeID + BR);
+                    document.write("Shoe size: " + this.shoeSize + BR);
+                    document.write("Rental date: " + this.rentalDate + BR);
+                    document.write("Rental time: " + this.rentalTime + BR);
+                    document.write("Number of games bowled: " + this.numGames + BR);
+                    document.write("Cost of rental: $" + this.rentalCost + PA);
+                }
+            }
+
+            // Declare variables and constants
+            var BR = "<br />"; // HTML Line break
+            var PA = "<p />"; // HTML paragraph break
+            var ES = ""; // empty string
+            var NL = "\n"; // newline
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            // Welcome the user
+            document.write("Welcome to Lanes Galore Shoe Rentals." + PA);
+
+            // Rent a pair of shoes to a customer
+            var nextCustomer = new ShoeRental();
+            nextCustomer.displayInfo();
+
+            // Thank the user and End the program
+            document.write("Thank you for using this program." + BR);
+        </script>
+    </body>
+</html>

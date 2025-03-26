@@ -1,0 +1,18 @@
+<html>
+    <body>
+        <script>
+            function shuffle(arr){
+                let cArr = arr.slice()
+                for(i=0;i<arr.length;i++){
+                    let j = Math.floor(Math.random() * (i + 1));
+                    // Swap elements
+                    [cArr[i], cArr[j]] = [cArr[j], cArr[i]];
+                }
+                alert(cArr)
+            }
+            shuffle([1,2,3]);
+            shuffle([1,2,3]);
+            shuffle([1,2,3]);
+        </script>
+    </body>
+</html>

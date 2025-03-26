@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Order</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // Purpose: Movie order
+        // Author: Ketu Patel
+        // Last date modified: 13-AUG-2024
+
+        // Declare the variable and constants
+        var movName;     // Movie Name
+        var movprice;    // Movie Price
+
+        var BR = "<br/>";
+        var ES = "";
+        var PA = "<p/>";
+
+        //create movieOrder class
+        class MovieOrder{
+            constructor(moviName,deliverType){
+                this.movName = moviName;
+                this.deliv = deliverType;
+                if(this.deliv == "s"){
+                    this.movprice = 3.99;
+                }
+                else{
+                    this.movprice = 4.99;
+                }
+            }
+            displayInfo(){
+                document.write("Movie Name: " + this.movName + BR);
+                document.write("Price: " + this.movprice + PA);
+            }
+        }
+
+    </script> 
+</body>
+    <script type="text/javascript" >
+        
+        // Declare variables
+        var choice;         // Movie Choice
+
+        // Welcome user and get the information needed
+        document.write("Welcome to Movie Order",PA);
+
+        choice = prompt("Enter Following numbers to select Movie: \n1. Star Wars\n 2. E.T.\n 3. Raiders of the Lost Ark", ES);
+        
+        //Prompt to get value of movie name
+        switch (choice) {
+            case "1":
+                movName = "Star Wars"
+                break;
+            case "2":
+                movName = "E.T."
+                break;
+            case "3":
+                movName = "Raiders of the Lost Ark"
+                break;
+
+            default:
+                document.write("Invalid choice !! \n Please make right choice from given option.")
+                break;
+        }
+        // Prompt to get value of delivery type
+        deliv = prompt("Select delivery type: \n'S' for Streaming and 'D' for Download",ES);
+
+        // call constructer method to create order
+        var myOrder = new MovieOrder(movName,deliv);
+
+        // method call to display information
+        myOrder.displayInfo();
+
+        // Thank user
+        document.write("Thank you for Order !!")
+
+    </script>
+</html>

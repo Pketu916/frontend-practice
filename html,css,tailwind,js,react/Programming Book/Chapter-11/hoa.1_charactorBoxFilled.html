@@ -1,0 +1,39 @@
+<html>
+
+
+<body>
+    <script>
+
+        // Program name: characterBoxFIlled.html
+        // Purpose: to print rectangle with specific character and given row and column size
+        // Author:Ketu Patel
+        // Date last modified: 22-08-2024
+
+        // variables and constats
+        var char; // character enter by user
+        var rows, cols; // row and col value
+        var rawIndex;  // startin row index
+        var colIndex    // starting calumn index
+
+        var BR = "<br/>";
+        var ES = ""; // default emppty value for character
+        var INT = 0;    // default int value
+
+        // Asking for character, row and col value 
+        char = prompt("Enter the Character you want to print at every position: ", ES);
+        rows = parseInt(prompt("Enter the number of rows: ", INT));
+        cols = parseInt(prompt("Enter the number of colums: ", INT));
+
+        document.write("Here is your " + rows + "x" + cols + " Box, Filled with character '" + char + "'" + BR);
+        // printing rectangle
+        for (rawIndex = 1; rawIndex <= rows; rawIndex++) {
+            for (colIndex = 1; colIndex <= cols; colIndex++) {
+                document.write(char);
+            }
+            // after priting each line we simply print brake
+            document.write(BR);
+        }
+    </script>
+</body>
+
+</html>

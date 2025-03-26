@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+
+.container{
+    @apply mx-auto max-w-[1240px];
+}
+.nav-link{
+    @apply relative font-medium text-[#8E8FA5] text-base active:text-primary;
+}
+.nav-btn{
+    @apply active:border-[#E6E0EC] active:bg-white active:shadow active:border active:rounded-[10px] lg:w-[102px] w-20 h-11 text-primary;
+}
+.nav-after{
+    @apply  after:hidden active:after:block after:absolute after:right-1/2 active:after:bg-current after:h-1 after:w-3 after:rounded-lg after:mx-auto;
+}
+.heading-text {
+    @apply  font-semibold text-2xl text-center md:text-[57px] md:leading-[64px] tracking-tight;
+}
+.hero-before-after {
+    @apply  before:left-0 before:-z-10 before:absolute before:bg-[#8A6CF9] md:before:blur-[400px] before:blur-[200px] before:rounded-full before:w-[42%] before:max-w-[552px] before:h-[10%] md:before:max-h-[552px] before:max-h-[150px];
+    @apply  after:right-0 after:-z-10 after:absolute after:bg-[#56C6E7] md:after:blur-[400px] after:blur-[200px] after:rounded-full after:w-[42%] after:max-w-[552px] after:h-[10%] after:after:max-h-[150px] after:max-h-[552px];
+}
+
+.text-gradient {
+    @apply  bg-clip-text bg-gradient-to-r from-purple via-pink to-blue text-transparent;
+}
+.btn-text{
+    @apply font-medium text-sm md:text-base tracking-0.1px md:tracking-0.15px;
+}
+.btn-primary{
+    @apply border-[#383A4D] border-4 bg-[#252739] active:shadow-custom-button border-solid rounded-[10px] text-white;
+    @apply w-[132px] md:w-[195px] h-[58px] md:h-16;
+}
+.btn-rounded{
+    @apply border-[#E6E0EC] active:shadow-custom-button border rounded-full;
+}
+.card-item{
+    @apply flex flex-col flex-nowrap justify-between bg-white shadow-card-item-shadow p-4 rounded-xl w-[266px] h-[379px] text-primary;
+}
+.card-img{
+    @apply before:absolute before:bg-[#00000047] before:active:opacity-0 before:rounded-xl before:w-full before:h-full;
+}
+
+.bag-icon{
+    @apply top-[8%] right-[5%] absolute bg-[#FFFFFF3D] p-2 rounded-full;
+}
+.card-btn{
+    @apply flex justify-evenly items-center border-[#E6E0EC] border-2 active:shadow-custom-button rounded-[10px] w-[116px] h-10 font-medium text-primary text-sm tracking-0.1px;
+}
+.card-before{
+    @apply before:absolute before:h-[369px] before:w-[435px] before:bg-[#8A6CF9E5] before:rounded-full before:blur-[140px] before:top-2/3 before:-z-10; 
+}
+.centered-flex-col{
+    @apply flex flex-col items-center;
+}
+.flex-between-center{
+    @apply flex justify-between items-center;
+}
+.flex-between{
+    @apply flex justify-between;
+}
+
+.border-1 {
+    @apply border-[#E6E0EC] border border-solid rounded-xl;
+}
+.card-nav-btn{
+    @apply bg-[#252739] active:bg-[#E0E0F9] active:shadow-card-nav rounded-full text-white active:text-secondary size-10;
+}
+.article-big-text{
+    @apply block font-semibold text-[32px] text-center text-gradient md:text-45 leading-10 md:leading-13 mb-1;
+}
+.article-small-text{
+    @apply text-center text-sm md:text-base tracking-0.1px md:tracking-0.15px ;
+}
+@tailwind utilities;

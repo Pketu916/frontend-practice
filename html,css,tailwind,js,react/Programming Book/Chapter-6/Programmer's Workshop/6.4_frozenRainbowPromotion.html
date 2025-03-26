@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frozen Rainbow Promotion</title>
+</head>
+<body>
+    <script>
+        // Program name: frozenRainbowPromotion.html
+        // Purpose: Compute stats for coupon purchase attributed to employees for a 5-day period
+        // Author: Ketu Patel
+        // Date last modified: 14-Aug-2024
+
+        // Declare variables
+        var empName; // employee name
+        var maxName; // employee with high total
+        var dailyAmt; // daily employee amounts
+        var empTot; // total employee purchases
+        var maxTot = 0; // highest employee total
+        var grandTot = 0; // total of all purchases
+        var dayIndex; // loop index for weekdays
+
+        var INT = 0;    // Default integer value
+        var BR = "<br/>"; // break tag
+        var PA = "<p/>";   // paragraph brake
+        var ES = "";        // Default empty strin value
+
+        // Display program header, prompt for first employee name
+        document.write("Frozen Rainbow Promotion Program" + PA);
+        empName = prompt("Enter employee's name or Q to quite : ", ES);
+
+        // Start the outer loop, and set employee's total to 0
+        while(empName != 'q'){
+            empTot = 0;
+
+            // Start the inner loop, prompt for daily amounts
+            // Add each daily amount to total
+
+            for(dayIndex = 1; dayIndex <= 5; dayIndex++){
+                dailyAmt = parseInt(prompt("Enter the amount of the day :" + dayIndex));
+                empTot = empTot + dailyAmt;
+            }
+            // Display employee's name and total 
+            // Compare total with max total
+            // If higher, replace max total and employee's name 
+            // Add total to grand total
+
+            document.write(empName + ": total is $"+ empTot.toFixed(2) + BR);
+            if(empTot  > maxTot){
+                maxTot = empTot;
+                maxName = empName;
+            }
+            // grandTot = parseInt( grandTot) + parseInt(empTot);
+            grandTot = grandTot + empTot;
+
+            // Prompt for next employee's name,end loop
+            empName = prompt("Enter employee's name or Q to quite : ", ES);
+        }
+        // Display grand total and display name and amount of highest employee
+        document.write("Grand total of coupon purchases is : $" + grandTot.toFixed(2) + BR);
+        document.write("Employee with highest amount is : " + maxName + BR);
+        document.write("Highest amount : $" + maxTot.toFixed(2) + PA);
+
+        // Thank the user and End the program
+        document.write("Frozen Rainbow Thank you !" + BR);
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        // Program name: buzzButtons.html
+        // Purpose: To display buzzButtons company's customers informatioin and order
+        // Author: Ketu Patel
+        // Date last modified: 13-Aug-2024
+
+        var PA = "<p/>"; // paragraph brake
+        var BR = "<br/>"; // brake html tag
+        var INT = 0; // DEfault int value
+        var BTN_PRICE = 0.99; // one button price in dollar
+        var SALE_TAX = 0.06; // sales tax
+        var SHIP_RATE = 2; // shipping rate
+
+        //create class and use constructor method
+        class Buttons{
+            constructor(name,mail,numButtons){
+                this.name = name;
+                this.mail = mail;
+                this.numButtons = numButtons;
+
+                this.buttonAmt;
+                this.salesTaxAmt;
+                this.shippingAmt;
+                this.totalAmount;
+            }
+            // calculating button order 
+            calcOrder(){
+            // calculating total button price, total sales tax, ship amount, total order amout    
+            this.buttonAmt = this.numButtons * BTN_PRICE;
+            this.salesTaxAmt = this.buttonAmt * SALE_TAX;
+            this.shippingAmt = SHIP_RATE;
+            this.totalAmount = this.buttonAmt + this.salesTaxAmt + this.shippingAmt;
+            
+            // Printing customer's order informationSHIP_RATE
+            document.write("Hey! "+this.name+" here is yourorder summary!"+PA);
+            document.write("Total buttons: "+this.numButtons.toFixed(2)+BR);
+            document.write("amount for button purchase: $"+this.buttonAmt+BR);
+            document.write("Addition tax: $"+this.salesTaxAmt.toFixed(2)+BR);
+            document.write("Shipping amout: $"+this.shippingAmt+PA);
+            document.write("Total amount to be paid: $"+this.totalAmount.toFixed(2)+PA);
+            
+            document.write("We contact you shorly through your email address: "+this.mail+" for adrress informatioin." +BR)
+            document.write("Thank you for order!!"+BR)
+       
+            }
+        }
+
+
+        
+    </script>
+</head>
+<body>
+    <script>
+        // Welcome the user
+        document.write("This is your order information"+"<p/>");
+
+        // Asking for infotmation from users
+        name = prompt("Enter your full name to be printed on button: ");
+        email = prompt("Enter your email addess: ");
+        numButtons = parseInt(prompt("Enter the number of buttons to be order: "));
+
+        var buttonPurchase = new Buttons(name,email,numButtons);
+
+            // Buttons calss calcOrder() method calls for order calculation
+            buttonPurchase.calcOrder();
+    </script>
+</body>
+</html>

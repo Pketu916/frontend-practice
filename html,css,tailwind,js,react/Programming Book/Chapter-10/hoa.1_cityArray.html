@@ -1,0 +1,35 @@
+<html>
+    <body>
+        <script type="text/javascript">
+            // Program name: city Array
+            // Purpose: take cities and show on dashboard
+            // Author: Ketu Patel
+            // Date last modified: 22-08-2024
+
+            // Declare variables and constants
+            var BR = "<br />"; // HTML Line break
+            var PA = "<p />"; // HTML paragraph break
+            var ES = ""; // empty string
+            var NL = "\n"; // newline
+
+            var cities = [];  // Declare an empty array
+
+            // Prompt user to enter 5 cities
+            for (var i = 0; i < 5; i++) {
+                cities[i] = prompt("Enter the name of city " + (i + 1) + " :");
+            }
+
+            // Display the cities
+            var output = "You entered the following cities : " + BR;
+            for (var i = 0; i < 5; i++) {
+                output += cities[i] + BR;
+            }
+
+            // Write the output to the document
+            document.write(output);
+            
+            // Thank the user
+            document.write(PA + "Thank you.");
+        </script>
+    </body>
+</html>

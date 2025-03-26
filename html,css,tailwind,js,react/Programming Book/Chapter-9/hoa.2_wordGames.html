@@ -1,0 +1,92 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            // Program name: Word Games
+            // Purpose: Play word games using menus
+            // Author: Ketu Patel
+            // Date last modified: 21-08-2024
+
+            // Declare variables and constants
+            var BR = "<br />"; // HTML Line break
+            var PA = "<p />"; // HTML paragraph break
+            var ES = ""; // empty string
+            var NL = "\n"; // newline
+
+            // Display info function
+            function displayInfo(){
+                var menuItem;
+                
+                do{
+                    menuItem = prompt(
+                        "Word Games Menu" + NL + 
+                        "Enter C to play Word Count game" + NL + 
+                        "           B for Backward sentence Game," + NL + 
+                        "           X to exit this program" + NL + 
+                        "Enter your choice :", ES).toUpperCase();
+
+                    if(menuItem == "C"){
+                        wordCountGame();
+                    } else if(menuItem == "B"){
+                        backwardSentenceGame();
+                    } else if(menuItem != "X"){
+                        alert("Invalid selection: Please enter C, B, or X.");
+                    }
+
+                } while(menuItem != "X");
+            }
+
+            // Backward Sentence Game function
+            function backwardSentenceGame(){
+                var sentence = prompt("Enter your sentence to reverse it : ", ES);
+                var word = "";
+                var letter;
+                var reverse = "";
+
+                for(var index = 0; index < sentence.length; index++){
+                    letter = sentence.substring(index, index + 1);
+                    if((letter == " " && index != 0) || index == sentence.length - 1){
+                        if(index == sentence.length - 1 && letter != " ") {
+                            word += letter;
+                        }
+                        reverse = word + " " + reverse;
+                        word = "";
+                    } else {
+                        word += letter;
+                    }
+                }
+                alert("Your reversed sentence is : " + reverse.trim());
+                document.write("Your original sentence : " + BR + sentence + BR + "Reversed sentence : " + reverse.trim() + PA);
+            }
+
+            // Word Count Game function
+            function wordCountGame(){
+                var sentence = prompt("Enter your sentence for Word Counting Game : ", ES);
+                var count = 0;
+                var letter;
+                
+                for(var index = 0; index < sentence.length; index++){
+                    letter = sentence.substring(index, index + 1);
+                    if(letter == " " && index != 0){
+                        count++;
+                    }
+                }
+                // Increment count for the last word if sentence is not empty
+                if(sentence.length > 0 && sentence[sentence.length - 1] != " ") {
+                    count++;
+                }
+                
+                alert("Your Word Count is : " + count);
+                document.write("Your Sentence is : " + BR + sentence + BR + "And Word count is : " + count + PA);
+            }
+            
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            displayInfo();
+            
+            // Thank the user at the end
+            document.write("Thank you." + PA);
+        </script>
+    </body>
+</html>

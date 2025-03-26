@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MenuItemClass</title>
+    
+    <!-- Purpose: Create a Menu class and create objects  -->
+    <!-- Author: Patel Ketu -->
+    <!-- Last date modified: 10-AUG-2024 -->
+
+    <script type="text/javascript">
+
+        // Declare variables and constants
+        var itemName;       // Item name from menu
+        var category;       // Item category
+        var itemPrice;      // Item Price
+
+        var BR = "<br/>"    // HTML line break
+        var PA = "<p/>"     // HTML paragraph break
+
+        // Create MENU class using constructor and assigning values to variable from parameters
+        class MenuItem{
+            constructor(itemName,category,itemPrice){
+                this.itemName = itemName;
+                this.category = category;
+                this.itemPrice = itemPrice;
+            
+            }
+            // Function to Display Information
+            displayInfo() {
+                document.write("Name: " + this.itemName + BR);
+                document.write("Category: " + this.category + BR);
+                document.write("Price: " + this.itemPrice + PA);
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <script type="text/javascript">
+        // Welcome user and program heading
+        document.write("Welcome, Here is Food Menu !!"+ PA);
+
+        // Create objects for different items
+        var pasteamiSandwich = new MenuItem("Pastrami sandwich","Sandwich",4.95);
+        var hamSandwich = new MenuItem("Ham Sandwich","Sandwich",5.25);
+        var milkShake = new MenuItem("Milk Shake","drink",2.95);
+        var softDrink = new MenuItem("Soft Drink","drink",1.49);
+
+        // Displaying the Menu to user
+        pasteamiSandwich.displayInfo();
+        hamSandwich.displayInfo();
+        milkShake.displayInfo();
+        softDrink.displayInfo();
+
+        // Thank user
+        document.write("Thank you !!")
+    </script>
+</body>
+</html>

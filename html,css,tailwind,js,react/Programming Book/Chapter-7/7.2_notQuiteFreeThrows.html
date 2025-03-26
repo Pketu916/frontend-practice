@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // Program name : Not Quite Free Throws
+        // Purpose: Calculate orders fro a sale on flying discs and boomerangs
+        // Author: Ketu Patel
+        // Date last modified : 18-aug-2024 
+
+        // Declare variables
+        var totPurchase; // total of items purchases
+        var shippingCost; // total shipping cost
+        var totOrder; // amount of total order
+        var numDiscs; // number of flyinh disks
+        var numBooms; // numer of boomerangs
+
+        // Declare constant
+        var DISC_PRICE = 4.98; // disc price
+        var BOOM_PRICE = 3.98; // boomerang price
+        var SHIP_RATE = 5.00 // shipping rate
+        var BR = "<br />"; // HTML Line break
+        var PA = "<p />"; // HTML paragraph break
+        var ES = ""; // empty string
+        var NL = "\n"; // newline
+
+        // Display program header, get number of discs and boomerangs
+        document.write("Not Quite Free Throws Sale,"+ NL +"We are ready to take your order !" + PA);
+        
+        numDiscs = parseInt(prompt("How many flying discs do you want ? ", ES));
+        numBooms = parseInt(prompt("How many boomerangs do you want ? ", ES));
+
+        // Calculate total purchase amount
+        totPurchase = (numDiscs * DISC_PRICE) + (numBooms * BOOM_PRICE);
+
+        // Determine whether customer gets free shipping
+        if((numDiscs >= 1 && numBooms >= 1) || (numDiscs >= 3 || numBooms >= 3)){
+            shippingCost = 0.00;
+            document.write("Congratulations ! Shipping is free !" + PA);
+        }else{
+            shippingCost = SHIP_RATE;
+        }
+
+        // Calculate and display order details, total 
+        totOrder = totPurchase + shippingCost;
+
+        document.write("Total Purchases Amount : $" + totPurchase.toFixed(2) + BR);
+        document.write("Shipping Cost : $" + shippingCost.toFixed(2) + BR);
+        document.write("Total Order : $" + totOrder.toFixed(2) + PA);
+
+        // Thank the user and Exit the program
+        document.write("Thanks for shopping here !" + BR);
+    </script>
+</body>
+</html>

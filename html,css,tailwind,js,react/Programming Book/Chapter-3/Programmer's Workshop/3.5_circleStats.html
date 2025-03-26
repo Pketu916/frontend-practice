@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Programe name : 3.5_circleStats.html
+        // Purpose :  Use a constructor function
+        // Author : Ketu Patel
+        // Date modified : 09-AUG-2024
+
+        // variables and constants 
+        var radius; // radius of circle
+        var area;   // computed area of circle
+        var circum; // computed circumference of a circle
+        var diameter // computed diameter of a circle
+        var ES = ""; // empty string for prompt
+        var BR = "<br/>" // html line break
+        var PA = "<p/>" // html paragraph break
+
+        //welcomr user
+        document.write("javascript math program" + BR);
+        document.write("this program asked for the radius ");
+        document.write("of a circle, and computs the diameter, ");
+        document.write("circumference, and area ." + PA);
+
+        //propmt user for a radius, convent to number
+        radius = prompt("Enter the radius of a circle:",ES);
+        radius = parseFloat(radius);
+        
+        // compute and display circle statistics
+        diameter = 2 * radius;
+        circum = Math.PI * diameter;
+        area = Math.PI * radius * radius;
+        document.write("Diameter:" + diameter.toFixed(2) + BR);
+        document.write("Circumference:"+ circum.toFixed(2) + BR );
+        document.write("Area:" + area.toFixed(2) + PA);
+
+        //thank the user
+        document.write("thank you for using this program!" + BR);
+
+    </script>
+</body>
+
+</html>

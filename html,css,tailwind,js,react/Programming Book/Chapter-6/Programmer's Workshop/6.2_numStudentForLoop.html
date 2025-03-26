@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A for loop to enter students</title>
+    <!-- Purpose: Use a do while loop to add numbers
+    Author: Ketu patel
+    Last Date modified: 14-AUG-2024  -->
+</head>
+<body>
+    <script type="text/javascript">
+        // declare variable and constants
+        var numStudents;    // number of students to add
+        var index;          // for loop index
+        var stuName;        // Student name
+
+        var ES = "";        // empty string
+        var BR = "<br/>";   // HTML line break
+        var PA = "<p/>";    // HTML para break
+
+        // welcome user
+        document.write("Welcome!" + PA);
+        
+        // geting the value of number of students to adad
+        numStudents = prompt("Enter the number of student you want to add : ",ES)
+        
+        // for loop to add students
+       for (let index =  1; index<=numStudents; index++){
+        stuName = prompt("Enter the student name: ",ES);
+        document.write("Student Name: " + index + ". " + stuName + BR);
+       }
+
+        // Thank user
+        document.write(PA +"Thank you !!");
+
+    </script>
+</body>
+</html>

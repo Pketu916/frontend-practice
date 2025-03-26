@@ -1,0 +1,29 @@
+<html>
+
+<body>
+    <script>
+        //declare variables
+        let userName;
+
+        //take user input and check the conditions
+        userName = prompt("Who's there?", '')
+
+        if (userName == "Admin") {
+            let password = prompt("Enter Password:")
+            if (password == 'TheMaster') {
+                alert("Welcome!")
+            } else if (password == '' || password == null) {
+                alert('Canceled');
+            } else {
+                alert('Wrong password');
+            }
+        } else if (userName == '' || userName == null) {
+            alert('Canceled');
+        } else {
+            alert("I don't know you");
+        }
+
+    </script>
+</body>
+
+</html>

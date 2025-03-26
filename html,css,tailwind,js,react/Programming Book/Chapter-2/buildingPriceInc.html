@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>buildingPriceInc</title>
+</head>
+
+<body>
+
+    <script>
+        // Program name: buildingPriceInc
+        // purpose: calculate and display the percentage increase or decrease over a year
+        // Author :Ketu Patel
+        // Last date modified : 08-AUG-2024
+
+        // Declaring variables
+        var price_2010; // price of building in 2010
+        var price_2011; // price of building in 2011
+        var price_dif; // price difference in a year
+        var price_dif_pr; // price difference percentage
+
+        // declaring constants
+        var BR = "<br/>"; // HTML break tag
+        var ES = ""; // An empty string
+
+        // Program Heading
+        document.write("The percentage increase or decrease of the market value of the Connors Building" + BR);
+
+        // Taking input of prices in 2010 & 2011 from user
+        price_2010 = parseInt(prompt("Enter the price of building in year 2010"));
+        price_2011 = parseInt(prompt("Enter the price of building in year 2011"));
+
+        // Calculating diffence of price
+        price_dif = price_2011 - price_2010;
+
+        // calculating percentage increased or decreased based on the difference in price
+        price_dif_pr = (price_dif / price_2010) * 100;
+
+        // Displaying percentage increase or decrease over the january 2010 price
+        document.write(price_dif_pr + "% price difference over the january 2010 price." + BR)
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AccountClass</title>
+
+    <script type="text/javascript">
+        // program name: AccountClass-2.html
+        // Purpose: Create Account and also modifies
+        // Author: Ketu Patel
+        // last date modified: 08-AUG-2024
+
+        // Constructor function for the Account class
+        function Account(type, num, lname, fname, bal) {
+            this.acctType = type;
+            this.accNumber = num;
+            this.lastName = lname;
+            this.firstName = fname;
+            this.acctBal = bal;
+
+            // Link the current object to the class methods
+            this.deposite = deposite;
+            this.withdraw = withdraw;
+            this.changeName = changeName;
+            this.inquire = inquire;
+            this.displayInfo = displayInfo;
+        }; // end Acoount Function
+
+        // Define new functions
+        // Function to deposite in the account
+        function deposite(amt) {
+            this.acctBal = this.acctBal + amt;
+            document.write("Deposite Succesfull ! " + BR + " New balance: $" + this.acctBal + BR);
+        };
+
+        // function to withdraw money
+        function withdraw(amt) {
+            this.acctBal = this.acctBal - amt;
+            document.write("Withdraw Succesfull ! " + BR + "New balance: $" + this.acctBal + BR);
+        };
+
+        // function to change the full name
+        function changeName(lname, fname) {
+            this.lastName = lname;
+            this.firstName = fname;
+            document.write("The name has been changed to " + this.firstName + this.lastName + BR);
+        };
+
+        // function that returns the current balance
+        function inquire() {
+            document.write("Current Balance: $" + this.acctBal + BR);
+        };
+
+        // function that displays all account information
+        function displayInfo() {
+            document.write("Your Account Information: " + BR);
+            document.write("Account type: " + this.acctType + BR);
+            document.write("Account No: " + this.accNumber + BR);
+            document.write("Last name: " + this.lastName + BR);
+            document.write("First name: " + this.firstName + BR);
+            document.write("Balance: $" + this.acctBal + BR);
+        };
+    </script>
+
+</head>
+
+<body>
+
+    <script type="text/javascript">
+        // variables and constants
+        var BR = "<br />"; // HTML break tag
+
+        // Program Heading
+        document.write("Account Program." + BR);
+        document.write("This program creates an Account." + BR +
+            "This program also modifies the acount." + BR);
+
+        // create an account object
+        var mySavingAcct = new Account("Saving", 9621525, "Ketu", "Patel", 99.00);
+
+        // Deposite $100
+        mySavingAcct.deposite(100.00);
+
+        // Withdraw $50
+        mySavingAcct.withdraw(50.00);
+
+        // Inquire about balance
+        mySavingAcct.inquire();
+
+        // Display Info for varification
+        mySavingAcct.displayInfo();
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+<html></html>
+    <body>
+        <script>
+            function makeUser(){
+                return{
+                    name:"John",
+                    ref:this
+                };
+            }
+
+            let user = makeUser();
+
+            alert(user.ref.name)
+            console.log(user.ref.name);
+        </script>
+    </body>
+</html>

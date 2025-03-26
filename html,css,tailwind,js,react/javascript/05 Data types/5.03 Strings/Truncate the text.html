@@ -1,0 +1,16 @@
+<html>
+    <body>
+        <script>
+
+            function truncate(str, len){
+                if ( str.length > len ){
+                    return str.slice(0 ,len-1) + "...";
+                } else {
+                    return str;
+                }
+            }
+            alert(truncate("What I'd like to tell on this topic is:", 20))
+            alert(truncate("Hi everyone!", 20))
+        </script>
+    </body>
+</html>

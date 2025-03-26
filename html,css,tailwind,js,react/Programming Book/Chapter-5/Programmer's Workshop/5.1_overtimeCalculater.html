@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overtime Calculater</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // Purpose: Calculate gross pay with overtime
+        // Author: Ketu patel
+        // Last date modified: 13-AUG-2024
+
+        // Declaring variables and Constants
+        var hoursWroked;    
+        var wageRate;
+        var grossPay;
+        var overtimeHours;
+        var overtimePay;
+        var regularPay;
+
+        var ES = "";
+        var BR = "<br/";
+        var PA = "<p/>";
+
+         // Welcome the user and ask for hours worked and wage rate
+        document.write("Welcome to the overtime calculator!" + PA);
+        hoursWroked = parseFloat(prompt("Enter the number of hours worked: ",ES));
+        wageRate = parseFloat(prompt("Enter the wage rate: ",ES));
+        
+        // calculate gross pay
+        // Hours over 40 paid at time and a half
+        if(hoursWroked>40){
+            overtimeHours = hoursWroked - 40;
+            overtimePay = overtimeHours * wageRate * 1.5;
+            regularPay = 40 * wageRate;
+            grossPay = regularPay + overtimePay;
+        }
+        else{
+            grossPay = hoursWroked * wageRate;
+        }
+        // Display the result
+        document.write("Gross Pay: $" + grossPay.toFixed(2) + PA);
+
+        // Thank user
+        document.write("Thank You !!");
+
+    </script>
+</body>
+</html>

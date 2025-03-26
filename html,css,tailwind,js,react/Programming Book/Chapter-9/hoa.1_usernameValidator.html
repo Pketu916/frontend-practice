@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+            // Program name: Username Validator
+            // Purpose: Check some conditions on user input
+            // Author: Ketu patel
+            // Date last modified: 10-08-2024
+
+            // Declare variables and constants
+            var BR = "<br />"; // HTML Line break
+            var PA = "<p />"; // HTML paragraph break
+            var ES = ""; // empty string
+            var NL = "\n"; // newline
+
+            // check if a character is a letter
+            function isLetter(char) {
+                return (char >= 'a' && char <= 'z') || (char >= 'A' && char <= 'Z');
+            }
+
+            // check if a character is a digit
+            function isNumeric(char) {
+                return (char >= 0 && char <= 9);
+            }
+
+            // Function to validate the username
+            function isValidUsername(username) {
+                if (username.length < 8){
+                    alert("Invalid username." + NL + "Please, Username length should be atleast 8." + NL + "Please try again.");
+                    return false;
+                }
+                
+                if (!isLetter(username.charAt(0))){
+                    alert("Invalid username." + NL + "Please, First latter of Username must be Alphabetic." + NL + "Please try again.");
+                    return false;
+                }
+
+                let hasDigit = false;
+                for (let i =0; i < username.length;  i++){
+                    if(isNumeric(username.charAt(i))){
+                        hasDigit = true;
+                        break
+                    }
+                }
+                if(!hasDigit){
+                    alert("Invalid username." + NL + "Please, Username contains atleast one numeric." + NL + "Please try again.");
+
+                }
+                return hasDigit;
+            }
+    </script>
+</head>
+<body>
+    <script>
+            // Main program execution
+            var username = ES;
+            var isValid = false;
+
+            // Loop until a valid username is entered
+            while (!isValid) {
+                username = prompt("Enter a username with at least eight characters," + NL + "starting with a letter and including at least one digit : " + NL, ES);
+
+                if (isValidUsername(username)) {
+                    isValid = true;
+                    alert("Username is valid." + NL + "Good Bye!");
+                    document.write(BR + "Username is valid." + BR);
+                } else {
+                    document.write(BR + "Invalid username. Please try again." + BR);
+                }
+            }
+
+            // Thank the user at the end
+            document.write(BR + "Thank you." + PA);
+    </script>
+</body>
+</html>

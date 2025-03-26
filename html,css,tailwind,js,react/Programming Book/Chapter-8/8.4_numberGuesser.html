@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            // Program name : Number Guesser
+            // Purpose: User tries to guess a random number between 1 and 10 in three or fewer guesser
+            // Author: Ketu Patel
+            // Date last modified : 20-aug-2024 
+
+            function compareNums(guess, win){
+                var result;
+                if(guess == win){
+                    result = true;
+                }else{
+                    result = false;
+                    if(guess < win){
+                        document.write("Your guess was low." + BR);
+                    }else{
+                        document.write("Your guess was high." + BR);
+                    }
+                }
+                return result;
+            }
+
+            function reportWinner(itIsUser){
+                if(itIsUser){
+                    document.write("Congratulations ! You won !" + BR);
+                }else{
+                    document.write("Sorry. Better luck next time." + BR);
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            // Declare variables and constants
+            var winningNum; // winning #
+            var userGuess; // user's guess
+            var index; // loop index
+            var correct = false; // guess
+
+            var BR = "<br />"; // HTML Line break
+            var PA = "<p />"; // HTML paragraph break
+            var ES = ""; // empty string
+            var NL = "\n"; // newline
+
+            // Call math method to generate random number
+            winningNum = Math.floor(Math.random() * 10) + 1;
+            
+            // Loop up to three to get user's guess
+            index = 1;
+            while(index <= 3 && !correct){
+                userGuess = parseFloat(prompt("Guess the number : ", ES));
+
+            // Call module to compare guess with winning number and increment index
+            correct = compareNums(userGuess, winningNum);
+            index = index + 1;
+            }
+
+            // Report winner based on correct variable, thank user , and end program
+            document.write("The winning number was " + winningNum + BR);
+            reportWinner(correct);
+
+            // Thank the user and End the program
+            document.write("Thank you for using this program." + BR);
+        </script>
+    </body>
+</html>

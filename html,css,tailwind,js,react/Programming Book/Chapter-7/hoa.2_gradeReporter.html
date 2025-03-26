@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student grade report</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // Program name : Student grade report
+        // Purpose: student's grade in a class based on percentage and attendence
+        // Author: Ketu Patel
+        // Date last modified : 19-aug-2024 
+
+        // Declare variables
+        var percentage; // percentage
+        var newPer; // new percentage
+        var absences; // absence
+        var grade; // grade
+
+        // Declare constants
+        var BR = "<br />"; // HTML Line break
+        var PA = "<p />"; // HTML paragraph break
+        var ES = ""; // empty string
+        var NL = "\n"; // newline
+
+        // Welcome the user, prompt for details
+        document.write("Student's Grade based on percentage and absence !" + PA);
+        
+        percentage = parseFloat(prompt("Enter Percentage (in decimal) : ", ES));
+        absences = parseInt(prompt("How many absences are there ?", ES));
+
+        // Calculate 3% of percentage for lower absence
+        if(absences > 5){
+            document.write("You are failed, Because of high absence !" + BR + "Your Absence is : "+ absences + PA);
+        }else{
+            document.write("Your Percentage is : " + percentage + "%" + BR);
+            document.write("Your Absence is : " + absences + PA);
+            if(absences <= 2 && absences >= 0){
+                newPer = percentage * 0.03;
+                percentage = parseFloat(percentage + newPer).toFixed(2);
+                document.write("You got extra 3% in percentage based on low absences !" + BR);
+            }
+            if(percentage <=100.00 && percentage >= 90.00){
+                grade = "A";
+            }else if(percentage >= 80.00){
+                grade = "B";
+            }else if(percentage >= 70.00){
+                grade = "C";
+            }else if(percentage >= 60.00){
+                grade = "D";
+            }else{
+                grade = "F";
+            }
+
+            document.write("Your Percentage is : " + percentage+ "%" + BR);
+            document.write("Your Grade is : " + grade + PA);
+        }
+
+
+        // Thank the user
+        document.write("Thank you !" + BR);
+    </script>
+</body>
+</html>

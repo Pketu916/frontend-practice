@@ -1,0 +1,28 @@
+<html>
+
+<body>
+    <script>
+        let calculator = {
+            a: null,
+            b: null,
+            read() {
+                console.log("in read");
+                this.a = parseInt(prompt("Enter a"));
+                this.b = parseInt(prompt("Enter b"));
+            },
+            sum() {
+                return this.a + this.b;
+            },
+            mul() {
+                return this.a * this.b;
+            }
+        }
+
+        calculator.read();
+        alert("Sum "+calculator.sum());
+        alert("mul "+calculator.mul());
+
+    </script>
+</body>
+
+</html>

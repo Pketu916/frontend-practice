@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // Program name : QuickTunesCustomer Class
+        // Purpose: Create class for QuickTunes customers
+        // Author: Ketu Patel
+        // Date last modified : 15-08-2024 
+
+        class QuickTunesCustomer{
+            //Static variable
+            static newCustNum = 0;
+
+            //constructor method for new customer
+            constructor(lName ,fName,strAddr,city,state,zip){
+                // Assign customer number set by separate method and increment for next customer
+                this.custNumber = QuickTunesCustomer.newCustNum;
+                QuickTunesCustomer.newCustNum++;
+
+                // Set values for other variables
+                this.custLastName = lName;
+                this.custFirstName = fName;
+                this.custName = lName + " " + fName; // concatenate name
+                this.custStreetAddr = strAddr;
+                this.custCity = city;
+                this.custState = state;
+                this.custZip = zip;
+            }
+            // Static method to set starting customer number
+            static setCustNum(startNum) {
+                    QuickTunesCustomer.newCustNum = startNum;
+                }
+            // Method to display all customer information
+            displayInfo() {
+                document.write("Customer # : " + this.custNumber + BR);
+                document.write("Name : " + this.custName + BR);
+                document.write("Address : " + this.custStreetAddr + BR);
+                document.write("City, State, Zip : " + this.custCity + ", " + this.custState + " " + this.custZip + PA);
+            }
+        }
+        // Variables and constants
+        var BR = "<br />"; // HTML line break tag
+        var PA = "<p />"; // HTML paragraph tag
+    </script>
+</head>
+<body>
+    <script>
+        // Program header
+        document.write("QuickTunes New Customer Program" + PA);
+        // Variables
+        var startNum;
+        var lastName, firstName, address, city, state, zip;
+        var numNewCusts = 0;
+
+                    // Get next customer number from user
+                    startNum = prompt("Enter starting customer number : ");
+            QuickTunesCustomer.setCustNum(parseInt(startNum));
+
+            // Priming prompt for new customer or quit
+            lastName = prompt("Enter last name or Q to quit : ");
+
+            // Start loop to process new customers
+            while (lastName !== "Q") {
+                numNewCusts++;
+
+                // Get new customer information
+                firstName = prompt("Enter customer's first name : ");
+                address = prompt("Enter customer's street address : ");
+                city = prompt("Enter customer's city : ");
+                state = prompt("Enter customer's state : ");
+                zip = prompt("Enter customer's zip code : ");
+
+                // Call constructor to create new customer record
+                var newCust = new QuickTunesCustomer(lastName, firstName, address, city, state, zip);
+                newCust.displayInfo();
+
+                // Prompt for new customer, or quit and end loop
+                lastName = prompt("Enter last name or Q to quit : ");
+            }
+
+            // Display number of new customers
+            document.write("# of new customers added : " + numNewCusts + BR);
+
+            // Thank the user and end the program
+            document.write("Thank you!" + BR);
+        
+
+    </script>
+</body>
+</html>

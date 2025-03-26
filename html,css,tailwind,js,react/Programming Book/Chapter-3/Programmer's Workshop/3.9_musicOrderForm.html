@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>musicOrderForm</title>
+    <script type = "text/javascript">
+        // program name: musicOrderForm.html
+        // Purpose: Creates a form and calls functions to
+        //  order sheet music for download.
+        // Author: Ketu Patel
+        // last date modified: 12-AUG-2024
+
+        // variables and constants
+        var songtitle;          // song selection
+        var creditCardType;     // selected credit card type
+        var SONG_PRICE = 0.99;  // fixed price of song
+        var BR = "<br />";      // HTML line break
+        var PA = "<p />";       // HTML Paragraph break
+        var NL = "\n";          // JavaScript newline character
+
+        // Take the credit card type passed from the
+        // radio button and assign it to
+        // the variable creditCardType.
+        function setType(ccType){
+            creditCardType = ccType;
+        }
+
+        // This function display order information, including
+        // the selected song from the drop-down list,
+        // the name and e-mail address of the cusomer,
+        // the credit card tupe selected from the radio button group
+        // the order total ( a constant charge),
+        // along with a heading and a thank-you line.
+
+        function displayOrder(){
+            var firstName = document.OrderForm.firstName.value;
+            var lastName = document.OrderForm.lastName.value;
+            var email = document.OrderForm.email.value;
+            var songtitle = document.OrderForm.songChoice.value;
+
+            document.OrderForm.fullOrder.value = "HERE IS YOUR ORDER: " + NL + NL
+                + "TITLE: " + songtitle + NL
+                + "YOUR NAME: " + firstName + " " + lastName + NL
+                + "YOUR EMAIL ADDRESS: " + email + NL
+                + "AMOUNT CHARGED TO CARD: $" + SONG_PRICE.toFixed(2) + NL + NL
+                + "Thank you for placing your order!";
+        }
+    </script>
+</head>
+<!-- Set background color, display heading, name form -->
+<body bgcolor="Azure">
+    <h2>Music Delivered Order Form</h2>
+    <form name="OrderForm" action="">
+        <!-- Create drop-down list for song selection -->
+         <strong>Select your song : </strong><br/>
+         <select name="songChoice"  >
+            <option value="She Loves You (Beatles)">The Beatles : She Loves You</option>
+            <option value="Ruby Tuesday (Rolling Stones)">The Rolling Stones : Ruby Tuesday</option>
+            <option value="My Generation (The Who)">The Who : My Generation</option>
+            <option value="Light My Fire (The Doors)">The Doors : Light My Fire</option>
+            <option value="Somebody to Love (Jefferson Airplane)">Jefferson Airplane : Somebody to Love</option>
+         </select><p/>
+
+         <!-- Create radio buttons for credit card type -->
+          <strong>Select your credit card type : </strong><br/>
+          <input type="radio" name="creditCard" value="MasterCard" onclick="setType(this.value)"/>MasterCard<br />
+          <input type="radio" name="creditCard" value="Visa" onclick="setType(this.value)"/>Visa<br />
+          <input type="radio" name="creditCard" value="Discover" onclick="setType(this.value)"/>Discover<br />
+          <input type="radio" name="creditCard" value="American Express" onclick="setType(this.value)"/>American Express<p />
+        
+        <!-- Create text boxes for user information -->
+         <strong>Enter your name and e-mail address : </strong><br/>
+         <input type="text" name="firstName" value="First Name" size="40"/><br/>
+         <input type="text" name="lastName" value="Last Name" size="40"/><br/>
+         <input type="text" name="email" value="E-mail address" size="40"/><p/>
+
+         <!-- Create dispaly button and multiline text box for info -->
+        <input type="button" name="dispalyButton" value="Display Order" onclick="displayOrder()"/><p/>
+        <textarea name="fullOrder" readonly="true" value="" rows="8" cols="50"></textarea><br/>
+    </form>
+</body>
+</html>

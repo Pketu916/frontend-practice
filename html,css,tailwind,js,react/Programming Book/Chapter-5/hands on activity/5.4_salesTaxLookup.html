@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <script>
+        // Program name: salesTaxLookup.html
+        // Purpose: Create order from MovieOrder class
+        // Author: Ketu Patel
+        // Date last modified: 14-Aug-2024
+
+        // Declaring variabls
+        var sales;  // Sales amout 
+        var tax;    // tax amount
+        var BR = "<br/>"; // break tag
+        var PA = "<p/>"; // paragraph tag
+
+        // input sales amount
+        sales = parseInt(prompt("Enter the sales amount in cents"));
+
+        //tax based on sales  amount
+        if(sales<0){
+            document.write( "Enter valid amount" + BR+ "sales amount between 0 to 99!"+BR);
+        }
+        else if (sales>=0 && sales<=7){
+            tax = 0;
+        }
+        else if (sales<=21){
+            tax =1;
+        }
+        else if (sales<=35){
+            tax =2;
+        }
+        else if (sales<=49){
+            tax =3;
+        }
+        else if (sales<=64){
+            tax =4;
+        }
+        else if (sales<=78){
+            tax =5;
+        }
+        else if (sales<=92){
+            tax =6;
+        }
+        else if (sales<=99){
+            tax =7;
+        }
+        else{
+            document.write("enter the amount beetween 0 to 99 !"+BR);
+        }
+        //display result
+        if(sales>=0 && sales<=99){
+            document.write("Your sales amount: "+sales+" cents"+BR);
+            document.write("Your tax on sales amount is: "+tax+PA);
+            }
+
+            
+            document.write("Thank you !!");
+
+    </script>
+<body>
+    
+</body>
+</html>

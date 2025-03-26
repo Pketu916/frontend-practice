@@ -1,0 +1,73 @@
+<html>
+
+<head>
+    <title>Sounds Right Customer Inquiry Form</title>
+    <script type="text/javascript">
+
+        // Program name: soundsRightInfoForm.html
+        // Purpose: Creates a customer inquiry form for Sounds Right and calls a function to verify the data.
+        // Author: Ketu Patel
+        // Date last modified: 21-08-2024
+
+        // Declare variables and constants
+        var BR = "<br />"; // HTML Line break
+        var PA = "<p />"; // HTML paragraph break
+        var ES = ""; // empty string
+        var NL = "\n"; // newline
+        
+        //this function varifies and display cusomer information 
+        function displayInfo() {
+            var firstName = document.InfoForm.firstName.value;
+            var lastName = document.InfoForm.lastName.value;
+            var streetAddress = document.InfoForm.streetAddress.value;
+            var city = document.InfoForm.city.value;
+            var state = document.InfoForm.state.value;
+            var zip = document.InfoForm.zip.value;
+            var email = document.InfoForm.email.value;
+            var errMsg = "";
+
+            // Check for presence of name and address fields
+            if (firstName.length <= 0) errMsg += "First name required." + NL;
+            if (lastName.length <= 0) errMsg += "Last name required." + NL;
+            if (streetAddress.length <= 0) errMsg += "Street address required." + NL;
+            if (city.length <= 0) errMsg += "City required." + NL;
+            if (state.length != 2) errMsg += "State code must be two letters." + NL;
+            if (zip.length != 5) errMsg += "5-digit zip code required." + NL;
+            if (isNaN(zip)) errMsg += "Zip code must include only digits." + NL;
+            if (email.indexOf("@") <= 0) errMsg += "Invalid e-mail address." + NL;
+            if (email.indexOf(".") <= 0) errMsg += "Invalid e-mail address." + NL;
+
+            // display error message or validated information
+            if (errMsg.length > 0){
+                document.InfoForm.fullInfo.value = errMsg;
+            } else {
+                document.InfoForm.fullInfo.value = "HERE IS YOUR INFORMATION:" + NL + NL
+                    + "YOUR NAME: " + firstName + " " + lastName + NL
+                    + "ADDRESS: " + streetAddress + NL
+                    + "CITY, STATE, ZIP: " + city + ", " + state + " " + zip + NL
+                    + "E-MAIL ADDRESS: " + email + NL + NL
+                    + "Thank you for your interest!";
+            }
+        }
+
+    </script>
+</head>
+<body bgcolor="WhiteSmoke">
+    <h2>Sounds Right Customer Inquiry Form</h2>
+    <form name="InfoForm" action="">
+        <strong>Enter Your name , address and e-mail address:</strong><br/>
+
+        First name: <input type="text" name="firstName" value="" size="40"><br />
+        Last name: <input type="text" name="lastName" value="" size="40"><br />
+        Street address: <input type="text" name="streetAddress" value="" size="40"><br />
+        City: <input type="text" name="city" value="" size="30">
+        State: <input type="text" name="state" value="" size="2">
+        Zip (5-digit): <input type="text" name="zip" value="" size="5"><br />
+        E-mail address: <input type="text" name="email" value="" size="40"><p />
+
+        <input type="button" name="displayButton" value="display Info" onclick="displayInfo()" > <p />
+        <textarea name="fullInfo" readonly = "true" rows="8" cols="50" id=""></textarea>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canned food drive</title>
+    <!-- Purpose: Calculate total canned food donated by employes
+    Author: Ketu Patel
+    Last Date modified: 14-AUG-2024  -->
+</head>
+<body>
+    <script type="text/javascript">
+        // declare variable and constants
+        var numCans;        // Number of cans
+        var totalCans = 0;      // Total number donated
+
+        var ES = "";        // empty string
+        var BR = "<br/>";   // HTML line break
+        var PA = "<p/>";    // HTML para break
+
+        // welcome user
+        document.write("Welcome to Canned food donate program" + PA);
+        
+        // geting the value of number of students to adad
+        numCans = parseInt(prompt("Enter the number of cans you want to donate or (-1) to Quite. ",ES));
+        
+        // while loop to count the total cans donated
+        while (numCans != -1) {
+            totalCans = totalCans + numCans;
+            document.write("Total cans donated so far: "+totalCans+BR)
+            numCans = parseInt(prompt("Enter the number of cans you want to donate or (-1) to Quite. ",ES));
+        }
+
+        // Displaying total cans donated
+        document.write("Totals cans Donated by employees: " + totalCans + PA);
+
+        // Thank user
+        document.write(PA +"Thank you !!");
+    </script>
+</body>
+</html>

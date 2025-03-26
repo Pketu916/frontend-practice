@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <script>
+            // Program name : factorial.html
+            // Purpose: To get factorial of given number
+            // Author: Ketu Patel
+            // Date last modified : 20-aug-2024 
+
+
+            // declare global variables and constants
+            var result = 1; // initial result is 1
+      
+            // function to calculating factorial of number
+            function factorial(number){
+                for(var index=1; index<=number; index++){
+                    result *= index;
+                }
+                return result;
+            }
+
+
+        </script>
+    </head>
+    <body>
+        <script>
+            // Declaring variables
+            var number; // user number inputs
+            var result; // factorial result
+            var FLT = 0; // default int value
+            var PA = "<p/>";
+
+            // Welcome the user
+            document.write("Welcome to factorial program." + PA);
+
+            // asking for number as input from user
+            number = parseFloat(prompt("Enter number which you want to find factorial (1 to 20): ",FLT));
+            result = factorial(number);
+
+            // displaying result
+            document.write("The factorial of number "+number+" is: "+result+PA);
+            
+
+            // end and thanks
+            document.write("Thanks for using this program!!");
+
+        </script>
+    </body>
+</html>

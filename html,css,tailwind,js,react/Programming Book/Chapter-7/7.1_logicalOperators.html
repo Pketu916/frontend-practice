@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // Program name : Logical Operators
+        // Purpose: Use the logical operators And , or, not
+        // Author: Ketu Patel
+        // Date last modified : 18-aug-2024 
+
+        // Declare variables
+        var num1, num2; // numbers to enter
+
+        // Declare constants
+        var BR = "<br />"; // HTML Line break
+        var PA = "<p />"; // HTML paragraph break
+        var ES = ""; // empty string
+        var NL = "\n"; // newline
+
+        // Welcome the user, prompt for two numbers
+        document.write("Welcome to Logical Operators !" + PA);
+        
+        num1 = parseInt(prompt("Enter the first number : ", ES));
+        num2 = parseInt(prompt("Enter the second number : ", ES));
+
+        // See whether both numbers are greater than 100 using And
+        document.write("AND : " + BR);
+        if(num1 > 100 && num2 > 100){
+            document.write("Both numbers are greater than 100." + PA);
+        }else{
+            document.write("At least one number is less than or equal to 100." + PA);
+        }
+
+        // See whether either number is greater than 100, using or
+        document.write("OR : " + BR);
+        if(num1 > 100 || num2 > 100){
+            document.write("At least one number is greater than 100." + PA);
+        }else{
+            document.write("Neither number is greater than 100." + PA);
+        }
+
+        // See whether either number is greater than 100, using not
+        // The combined condition is negated, and the order of messages is switched
+        document.write("NOT : " + BR);
+        if(!(num1 > 100 || num2 > 100)){
+            document.write("Neither number is greater than 100." + PA);
+        }else{
+            document.write("At least one number is greater than 100." + PA);
+        }
+
+        // Thank the user and End the program
+        document.write("Thank you !" + BR);
+    </script>
+</body>
+</html>

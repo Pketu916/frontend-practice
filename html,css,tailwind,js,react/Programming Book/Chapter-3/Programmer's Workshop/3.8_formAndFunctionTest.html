@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+
+    <script type="text/javascript">
+        // program name: formAndFunctionTest.html
+        // Purpose: Creates a form and calls functions to
+        // set and changes color and display text
+        // Author: Ketu Patel
+        // last date modified: 12-AUG-2024
+
+        // Variables and Constants
+        var nextColor = "";     // new background color
+        var BR = "<br />";      // HTML line break
+        var PA = "<P />";       // HTML paragraph break
+
+        // This function takes the coloe passed from the
+        // radio button and assign it to nextColor.
+        function setColor(newColor){
+            nextColor = newColor;
+        }
+
+        // This function changes the background color of the
+        // page to the color stroed in nextColor.
+        function changeColor(){
+            document.body.bgColor = nextColor;
+        }
+
+        // Concatenate the first and last names from the
+        // first two text boxes with a space in between
+        // and display them in the third text box.
+        function displayName() {
+            var firstName = document.colorAndText.firstName.value;
+            var lastName= document.colorAndText.lastName.value;
+            document.colorAndText.fullName.value = firstName + " " + lastName;
+        };
+    </script>
+</head>
+<!-- Set body color to white, name the form -->
+<body bgcolor="white">
+    <form name="colorAndText" action="">
+
+        <!-- Three radio buttons to set the color -->
+        <input type="radio" name="colors" value="Azure" onclick="setColor(this.value)"/> Azure <br />
+        <input type="radio" name="colors" value="LightYellow" onclick="setColor(this.value)" /> LightYellow <br />
+        <input type="radio" name="colors" value="Cornsilk" onclick="setColor(this.value)"/> Cornsilk <br />
+
+        <!-- A button to change the color -->
+        <input type="button" name="changeButton" value="Change Color" onclick="changeColor()"/><p />
+
+        <!-- text boxes for for first and last name -->
+        <input type="text" name="firstName" value="First Name " size="40" /><br />
+        <input type="text" name="lastName" value="Last Name " size="40" /><br />
+
+        <!-- text box and button to display full name -->
+        <input type="text" name="fullName" readonly="true" size="40" /><br />
+        <input type="button" name="displayButton" value="Display Name" onclick="displayName()"/><br />
+
+    </form>
+</body>
+</html>

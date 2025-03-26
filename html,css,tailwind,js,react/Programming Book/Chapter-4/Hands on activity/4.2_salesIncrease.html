@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        // Program name: salesIncrease.html
+        // Purpose: To know percentage increase in sales for year 2011 compared with 2010
+        // Author: Ketu Patel 
+        // Date last modified: 13-Aug-2024
+
+        var BR = "<br/>";  // Breaking tag
+
+        // Sales class for calculating percentage
+
+        class Sales{
+            constructor(amt2010,amt2011){
+                this.sale2010 = amt2010;
+                this.sale2011 = amt2011;
+
+                // Caculating diffrent and percentage
+                this.diff = (this.sale2011 - this.sale2010);
+                this.percentage = ((this.diff/this.sale2010) * 100);
+            }
+                
+            displayinfo(){
+                document.write("Sales in year 2010: $"+this.sale2010+BR);
+                document.write("Sales in year 2011: $"+this.sale2011+BR);
+                document.write("Sales in 2011 increased by a percentage compared to the previous year, 2010:"+this.percentage.toFixed(2)+"%");
+                document.write(BR);
+            }
+
+        }
+        
+    </script>
+
+</head>
+<body>
+    <script>
+
+        // Welcome the user
+        document.write("Welcome to the program to know the percentage increase in sales for year 2011 compare to 2010!"+"<p/>");
+
+        // Declaring variable and constants
+        var sales2010, sales2011;
+        
+        // Asking for sales value for both year
+        sales2010 = parseFloat(prompt("Enter the sales amount for year 2010: $"));
+        sales2011 = parseFloat(prompt("Enter the sales amout for year 2011: $"));
+
+        // Creating object of calss Sales for finding incresing percentage
+        var Sale = new Sales(sales2010,sales2011);
+
+        // Calling Sales class display method
+        Sale.displayinfo();
+
+        // End and thank you use
+        document.write("Thank you for using this program!");
+        
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UpperCrust College Admissions</title>
+</head>
+
+<body>
+    <script>
+        // Program name : UpperCrust College Admissions
+        // Purpose: admissions process based on category
+        // Author: Ketu Patel
+        // Date last modified : 19-aug-2024 
+
+        // Declare variables
+        var satScore; // SAT score
+        var alumnus; // parent alumnus
+        var income; // family income
+
+        // Declare constants
+        var BR = "<br />"; // HTML Line break
+        var PA = "<p />"; // HTML paragraph break
+        var ES = ""; // empty string
+        var NL = "\n"; // newline
+
+        // Welcome the userand prompt for details
+        document.write("Welcome to Admission Process of UpperCrust College !" + PA);
+
+        satScore = parseInt(prompt("Enter the SAT Score : ", ES));
+        alumnus = parseInt(prompt("How many alumnus parent is there ?", ES));
+        income = parseInt(prompt("Enter your family income (in dollars) : ", ES));
+
+        document.write("SAT Score : " + satScore + BR);
+        document.write("Parent Alumnus : " + alumnus + BR);
+        document.write("Family Income : $" + income + PA);
+
+        // loop
+        if (satScore >= 1400 || (satScore >= 1200 && (alumnus > 0 || income >= 100000))) {
+            document.write("The Student is accepted." + BR);
+            if (income < 100000) {
+                document.write("The Student is granted a scholarship." + PA);
+            }
+        } else {
+            document.write("The student is not eligible for admission." + PA);
+        }
+
+        //thank the user
+        document.write("Thank you !!" + BR);
+    </script>
+</body>
+
+</html>

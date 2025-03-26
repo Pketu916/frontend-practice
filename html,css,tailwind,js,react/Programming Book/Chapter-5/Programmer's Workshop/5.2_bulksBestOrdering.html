@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bulk is best</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // purpose: Customer ordering program
+        // Author: Patel Ketu 
+        // last date modified: 13-AUG-2024
+
+        // Declare variables and constants
+        var firstName;      // first name
+        var lastName;       // last name
+        var custName;       // Full name
+        var numPkgs;        // Number of packages
+        var state;          // state
+        var pkgPrice;       // cost of one package
+        var totPkgCost;     // total cost of packages
+        var shipCost;       // Shipping cost
+        var totOrderCost;   // total cost of order
+
+        var ES = "";        // empty string
+        var BR = "<br/>";   // HTML line break
+        var PA = "<p/>";    // HTML para break
+
+        // welcome user and get neccesary information
+        document.write("Welcome to Bulk Is Best !" + PA);
+        firstName = prompt("Enter your First name: ",ES);
+        lastName = prompt("Enter Your last name: ",ES);
+        custName = firstName + " " + lastName;
+
+        numPkgs = parseInt(prompt("Enter the number of paper towel packages: ",ES));
+        state = prompt("Enter the abreviation of state to ship to: (ex. if state is Idaho (abbreviated as 'ID'))",ES);
+        
+        if (numPkgs >= 6){
+            pkgPrice = 2.00;
+        }
+        else{
+            pkgPrice = 2.50;
+        }
+
+        if (state == "ID"){
+            shipCost = 0.00;
+        }
+        else{
+            shipCost = 4.00;
+        }
+
+        // Compute and display order totals
+        totPkgCost = pkgPrice * numPkgs;
+        totOrderCost = totPkgCost + shipCost;
+
+        document.write("Order Summary for "+ custName + BR
+            + "Number packages ordered: " + numPkgs + BR
+            + "Price per package: " + pkgPrice + BR
+            + "Subtotal: " + totPkgCost + BR
+            + "Order will be shipped to: " + state + BR
+            + "Shipping Cost: " + shipCost + BR
+            + "Order Total: " + totOrderCost + PA
+        );
+
+        //thanks user
+        document.write("thank you!!")
+    </script>
+</body>
+</html>

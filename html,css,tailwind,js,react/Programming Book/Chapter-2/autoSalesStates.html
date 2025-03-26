@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // program name: autoSalesStats.html
+        // purpose: Compute the total sales for the year, and
+        // calculates and displays the average quarterly sales for the year.
+        // Author : Ketu Patel
+        // last Date Modified: 08-AUG-2024
+
+        // Declare variables and constants
+        var totSale; // Total sales
+        var avgSale; // Average sales 
+        var quater1, quater2, quater3, quater4; // count of sales every year
+
+        var NUM_QUATER = 4; // Number of quater
+        var BR = "<br />"; // Breaking tag
+        var ES = ""; // an empty string
+
+        // program heading
+        document.write("Final Sales figure for the four quarters in 2010" + BR);
+
+        // Get number of sales for each quater as a number 
+        quater1 = parseInt(prompt("Enter the Number of sales for the quater1: "));
+        quater2 = parseInt(prompt("Enter the Number of sales for the quater2: "));
+        quater3 = parseInt(prompt("Enter the Number of sales for the quater3: "));
+        quater4 = parseInt(prompt("Enter the Number of sales for the quater4: "));
+
+        // computing total and average, and displaying results
+        totSale = quater1 + quater2 + quater3 + quater4; // calculating total Sales
+        avgSale = totSale / NUM_QUATER; // Calculating average sales per quater
+        document.write("Total number of sales: " + totSale + BR); // Displaying total sales
+        document.write("Average sales per quater: " + avgSale + BR); // Displaying average sales per quater
+
+        // thank the user and end the program
+        document.write("<p/>" + "Thank you for using this program!");
+    </script>
+</body>
+
+</html>

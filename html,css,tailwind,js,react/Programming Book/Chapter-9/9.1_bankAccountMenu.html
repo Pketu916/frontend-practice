@@ -1,0 +1,70 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            // Program name : bankAccountMenu.html
+            // Purpose: Use a menu system to process bank account transactions
+            // Author: Ketu Patel
+            // Date last modified : 20-08-2024 
+
+            // Declare variables and constants
+            var BR = "<br />"; // HTML Line break
+            var PA = "<p />"; // HTML paragraph break
+            var ES = ""; // empty string
+            var NL = "\n"; // newline
+
+            // Deposite function
+            function deposit(balance){
+                var transAmt;
+                transAmt = parseFloat(prompt("Enter the amount of the deposit : " + ES));
+                balance = balance + transAmt;
+                document.write("Your new balance is : $" + balance.toFixed(2) + BR);
+                return balance;
+            }
+
+            // Withdrawal function
+            function withdrawal(balance){
+                var transAmt;
+                transAmt = parseFloat(prompt("Enter the amount of the withdrawal : " + ES));
+                balance = balance - transAmt;
+                document.write("Your new balance is : $" + balance.toFixed(2) + BR);
+                return balance;
+            }
+
+            // Inquiry function
+            function inquiry(balance){
+                document.write("Your current balance is : $" + balance.toFixed(2) + BR);
+            }
+            
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            // Declare variables and constants
+            var menuChoice; // user's menu choice
+            var currentBalance = 0.00; // current acct balance
+            
+            // Welcome the user
+            document.write("Welcome to the bank Account Menu program !" + PA);
+
+            do{
+                // Didplay choice , ask for user input, convert to uppercase
+
+                menuChoice = prompt("Enter D for deposit," + NL + "      W for withdrawal," + NL + "      I for inquiry, or" + NL + "     X to exit the menu : ", ES);
+                menuChoice = menuChoice.toUpperCase();
+
+                if(menuChoice == "D"){
+                    currentBalance = deposit(currentBalance);
+                }else if(menuChoice == "W"){
+                    currentBalance = withdrawal(currentBalance);
+                }else if(menuChoice == "I"){
+                    inquiry(currentBalance);
+                }else if(menuChoice != "X"){
+                    alert("ERROR : Enter D, W, I, or X");
+                }
+            }while(menuChoice != "X");
+
+            // Thank the user and End the program
+            document.write(BR + "Thank you for using this program." + BR);
+        </script>
+    </body>
+</html>

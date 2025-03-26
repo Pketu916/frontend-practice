@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // Program name : Sentence Reverser
+        // Purpose: Reverse sentence
+        // Author: Ketu Patel
+        // Date last modified : 16-aug-2024 
+
+        // Declare variables
+        var word; // for store words
+        var originalSentence = ""; // save original sentence
+        var reverseSentence = ""; // save reverse sentence
+
+        // Declare constants
+        var BR = "<br />"; // HTML Line break
+        var PA = "<p />"; // HTML paragraph break
+        var ES = ""; // empty string
+
+        // Display program header, prompt for first word
+        document.write("Sentence Reverse Program !" + PA);
+        word = prompt("Enter Word or Q to quite : ", ES);
+
+        // loop
+        while(word.toUpperCase() != "Q"){
+            originalSentence = originalSentence + " " + word;
+            reverseSentence = word + " " + reverseSentence;
+
+            word = prompt("Enter Word or Q to quite : ", ES);
+        }
+
+        // Display original and reverse sentence
+        document.write("Original Sentence : " + BR + originalSentence + PA);
+        document.write("Reverse Sentence : " + BR + reverseSentence + PA);
+
+        // Thank the user and End the program
+        document.write("Thank you !" + BR);
+    </script>
+</body>
+</html>

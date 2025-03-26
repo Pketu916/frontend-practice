@@ -1,0 +1,111 @@
+<html>
+<head>
+    
+</head>
+<body>
+    <script type="text/javascript">
+        // Program name: Mode Finder
+        // Purpose: Find the number occurring most often in a series of numbers. Use parallel arrays, one for numbers entered and one for frequency of each number.
+        // Author: Ketu Patel
+        // Date last modified: 22-08-2024
+
+        // Declare variables and constants
+        var BR = "<br />"; // HTML Line break
+        var PA = "<p />"; // HTML paragraph break
+        var ES = ""; // empty string
+        var NL = "\n"; // newline
+
+        var inputNum; // number entered
+        var numEntries; // # of entries
+        var uniqueNums; // last unique #
+        var count; // loop counter
+        var index; // array index
+        var found; // number found?
+        var maxFrequency; // highest frequency
+        var maxLocation; // max location
+        var freq; // single frequency
+        var numModes; // count of modes
+
+        // Arrays for numbers entered and their frequencies
+        var numbersEntered = [];
+        var frequency = [];
+
+            // welcome user
+            document.write("This is mode finder." + PA);
+
+            // Initialize subscript for unique numbers
+            uniqueNums = -1;
+
+            // Ask user how many entries there will be
+            numEntries = parseInt(prompt("How many numbers will you enter?", ES));
+            
+            // Initialize arrays based on number of entries
+            for (var i = 0; i < numEntries; i++) {
+                numbersEntered[i] = 0;
+                frequency[i] = 0;
+            }
+            
+            // Get user input
+            document.write("Entered number :")
+            for (count = 0; count < numEntries; count++) {
+                inputNum = parseInt(prompt("Enter a number:", ES));
+                document.write(inputNum + ",")
+
+                // See whether number has been entered
+                found = false;
+                for (index = 0; index <= uniqueNums; index++) {
+                    if (inputNum == numbersEntered[index]) {
+                        frequency[index]++;
+                        found = true;
+                        break;
+                    }
+                }
+
+                // If not found, add to numbersEntered array and set frequency of new number to 1
+                if (!found) {
+                    uniqueNums++;
+                    numbersEntered[uniqueNums] = inputNum;
+                    frequency[uniqueNums] = 1;
+                }
+            }
+            
+            // Find location of maximum occurrences
+            maxFrequency = 0;
+            for (index = 0; index <= uniqueNums; index++) {
+                if (frequency[index] > maxFrequency) {
+                    maxFrequency = frequency[index];
+                    maxLocation = index;
+                }
+            }
+            
+            // Check for multiple modes or no mode
+            numModes = 0;
+            for (index = 0; index <= uniqueNums; index++) {
+                if (frequency[index] == maxFrequency) {
+                    numModes++;
+                }
+            }
+            
+            document.write(BR);
+            // Display mode or modes
+            if (maxFrequency <= 1) {
+                document.write("There is no mode." + BR);
+                document.write("No number occurred more than once." + PA);
+            } else if (numModes > 1) {
+                document.write("There are multiple modes:" + BR);
+                for (index = 0; index <= uniqueNums; index++) {
+                    if (frequency[index] == maxFrequency) {
+                        document.write(numbersEntered[index] + " occurred " + frequency[index] + " times." + BR);
+                    }
+                }
+                document.write(PA);
+            } else {
+                document.write("The mode is: " + numbersEntered[maxLocation] + BR);
+                document.write("Number of times occurring: " + maxFrequency + PA);
+            }
+
+            // Thank the user
+            document.write("Thank you." + PA);
+    </script>
+</body>
+</html>

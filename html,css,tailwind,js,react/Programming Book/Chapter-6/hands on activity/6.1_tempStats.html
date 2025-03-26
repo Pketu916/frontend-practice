@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Stats</title>
+</head>
+<body>
+    <script>
+        // Program name: tempStats.html
+        // Purpose: To find temperature measurement details of the office on different days
+        // Author: Ketu Patel
+        // Date last modified: 16-Aug-2024
+
+        // Variables
+        var empName;    // Employee name
+        var dayTemp;    // Temperature of the day
+        var indexDay;   // Day index
+        var highTemp;   // Highest temperature
+        var lowTemp;    // Lowest temperature
+        var totTemp;    // Total temperature
+        var avgTemp;    // Average temperature
+
+        // Constants
+        var BR = "<br/>";   // Line break
+        var PA = "<p/>";    // Paragraph break
+        var ES = "";        // Empty string
+        var DAYS = 5;       // Total days
+
+        // Program heading
+        document.write("Welcome to the Temperature Calculation Program for our office" + PA);
+
+        // Prompt for employee name
+        empName = prompt("Enter employee name or Q to quit:", ES);
+        empName = empName.toUpperCase(); // Convert to uppercase to handle 'q' or 'Q' consistently
+
+        // Loop to collect temperature data for each employee
+        while (empName !== "Q") {
+            // Get temperature for day 1
+            dayTemp = parseFloat(prompt("Enter the temperature for day: 1"));
+
+            // Initialize highest, lowest, and total temperature
+            highTemp = dayTemp;
+            lowTemp = dayTemp;
+            totTemp = dayTemp;
+
+            // Collect and compare temperatures for the remaining days
+            for (indexDay = 2; indexDay <= DAYS; indexDay++) {
+                dayTemp = parseFloat(prompt("Enter the temperature for day: " + indexDay));
+                
+                // Update highest temperature
+                if (dayTemp > highTemp) {
+                    highTemp = dayTemp;
+                }
+
+                // Update lowest temperature
+                if (dayTemp < lowTemp) {
+                    lowTemp = dayTemp;
+                }
+
+                // Add to total temperature
+                totTemp += dayTemp;
+            }
+
+            // Calculate average temperature
+            avgTemp = totTemp / DAYS;
+        
+            // Display results
+            document.write("Employee Name: " + empName + BR);
+            document.write("Lowest Temperature: " + lowTemp + BR);
+            document.write("Highest Temperature: " + highTemp + BR);
+            document.write("Average Temperature: " + avgTemp + PA);
+        
+            // Prompt for another employee name or to quit
+            empName = prompt("Enter employee name or Q to quit:", ES);
+            empName = empName.toUpperCase(); // Convert to uppercase to handle 'q' or 'Q' consistently
+        }
+
+        // Thank the user
+        document.write("Thank you for using the program!");
+    </script>
+</body>
+</html>

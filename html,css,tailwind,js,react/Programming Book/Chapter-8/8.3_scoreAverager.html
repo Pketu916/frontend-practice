@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            // Program name : Score Averager
+            // Purpose: Call the avaerage() function to calculate a mean
+            // Author: Ketu Patel
+            // Date last modified : 20-aug-2024 
+
+            function average(){
+                // Declare variables
+                var inputNum; // number entered
+                var quantity; // # numbers input
+                var total = 0; // accumulated total
+                var index; // loop variable
+                var avg; // avg of numbers
+
+                // Ask user how many numbers to input
+                quantity = parseInt(prompt("How many numbers will you input ? ", ES));
+
+                // Loop for input accumulate total
+                for(index = 1; index <= quantity; index++){
+                    inputNum = parseInt(prompt("Enter number " + index + " : ", ES));
+                    total = total + inputNum;
+                }
+
+                // Compute and return avaerage, end function
+                avg = total / quantity;
+
+                return avg.toFixed(2);
+            }
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            // Declare variables and constants
+            var hwAvg; // avg homework scores
+            var quizAvg; // avg quiz scores
+            var BR = "<br />"; // HTML Line break
+            var ES = ""; // empty string
+
+            // Welcome user
+            document.write("This program calculates the avaerage for any quantity of numbers." + "<p/>");
+            
+            // Call function for homework average and display the result
+            document.write("First, enter homework score : " + BR);
+            hwAvg = average();
+            document.write("Average homework score : " + hwAvg + "<p/>");
+
+            // Call function for quiz average and display the result
+            document.write("Next, enter quiz score : " + BR);
+            quizAvg = average();
+            document.write("Average quiz score : " + quizAvg + "<p/>");
+
+            // Thank the user and End the program
+            document.write("Thank you for using this program." + BR);
+        </script>
+    </body>
+</html>

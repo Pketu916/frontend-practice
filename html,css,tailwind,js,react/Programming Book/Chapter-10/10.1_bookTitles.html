@@ -1,0 +1,38 @@
+<html>
+
+    <body>
+        <script type="text/javascript">
+            // Program name: Book titles array
+            // Purpose: Creates an array for users to enter five book titles and displays the titles
+            // Author: Ketu Patel
+            // Date last modified: 22-08-2024
+
+            // Declare variables and constants
+            var SIZE = 5; // size of array
+            var bookTitles; // array for book titles
+            var index; // loop index
+
+            var BR = "<br />"; // HTML Line break
+            var PA = "<p />"; // HTML paragraph break
+            var ES = ""; // empty string
+            var NL = "\n"; // newline
+
+            // Create book titles array
+            bookTitles = new Array(SIZE);
+
+            // Prompt user to enter book titles
+            for(index = 0; index < SIZE; index++){
+                bookTitles[index] = prompt("Enter title for book #" + (index + 1) + " : ", ES);
+            }
+
+            // Display book titles
+            document.write("Book titles entered : " + PA);
+            for(index = 0; index < SIZE; index++){
+                document.write(bookTitles[index] + BR);
+            }
+
+            // Thank the user at the end
+            document.write(BR + "Thank you." + PA);
+        </script>
+    </body>
+</html>

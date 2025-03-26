@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            // Program name : numberDoubler.html
+            // Purpose: Call a function to double a number
+            // Author: Ketu Patel
+            // Date last modified : 20-aug-2024 
+
+            function double(num){
+                // Declare variables
+                var result; // result of doubling
+                var BR = "<br/>"; // HTML line break
+
+                // Compute and display result , end function
+                result = num * 2;
+                document.write("Your number doubled is : " + result + BR);
+            }
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            // Declare variables and constants
+            var someNum; // number to double
+            var BR = "<br />"; // HTML Line break
+            var ES = ""; // empty string
+
+            // Welcome user, ask for the number to double
+            document.write("Welcome to the Number Doubler !" + "<p/>");
+            
+            someNum = parseInt(prompt("Enter the number to double : ", ES));
+
+            // Call the function to double the number
+            double(someNum);
+            
+            // Thank the user and End the program
+            document.write(BR + "Thank you !" + BR);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>textToNumbers</title>
+</head>
+<body>
+    <script type="text/javascript">
+        //Program name: textToNumbers.html
+        //Purpose: Convert text input to numbers and add them
+        //Author: Ketu Patel
+        //Date last modified: 06-Aug-2024
+
+        //Declare variables and constants
+        var num1, num2;
+        var sum;
+        var BR = "<br />";
+        var ES = "";
+
+        //Welcome the user
+        document.write("Welcome!" + BR);
+        document.write("This program converts text to numbers");
+        document.write(" adds them, and displays the sum." + BR);
+
+        //Prompt for two numbers, convert to integers
+        num1 = prompt("Enter the first number: ", ES);
+        num1 = parseInt(num1);
+        num2 = prompt("Enter the second number: ", ES);
+        num2 = parseInt(num2);
+
+        //Add the numbers, display the sum
+        sum = num1 + num2;
+        document.write("The sum of the numbers is: " + sum + BR);
+
+        //Thank User and end program
+        document.write("Thank You!" + BR);
+    </script>
+</body>
+</html>
