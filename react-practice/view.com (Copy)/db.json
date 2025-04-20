@@ -1,0 +1,291 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "email": "user1@example.com",
+      "password": "password123",
+      "name": "John Doe",
+      "phone": "123-456-7890",
+      "avatar": "https://randomuser.me/api/portraits/men/1.jpg"
+    },
+    {
+      "id": "2",
+      "email": "user2@example.com",
+      "password": "password456",
+      "name": "Jane Smith",
+      "phone": "987-654-3210",
+      "avatar": "https://randomuser.me/api/portraits/women/1.jpg"
+    },
+    {
+      "id": "65af",
+      "email": "pketu9016@gmail.com",
+      "password": "123456",
+      "name": "Patel KETU",
+      "phone": "9265650606",
+      "avatar": "https://ui-avatars.com/api/?name=Patel%20KETU&background=random"
+    }
+  ],
+  "properties": [
+    {
+      "id": "1",
+      "type": "House",
+      "name": "Luxury Villa",
+      "description": "Beautiful luxury villa with amazing views and modern amenities.",
+      "image": "http://localhost:3000/img/houses/house1.png",
+      "imageLg": "http://localhost:3000/img/houses/house1.png",
+      "country": "United States",
+      "address": "7240C Argyle St. Lawndale, CA 90260",
+      "bedrooms": "6",
+      "bathrooms": "3",
+      "surface": "4200 sq ft",
+      "year": "2016",
+      "price": "1700",
+      "date": "5",
+      "listingType": "rent",
+      "userId": 1,
+      "agent": {
+        "name": "John Doe",
+        "phone": "123-456-7890",
+        "image": "https://randomuser.me/api/portraits/men/1.jpg"
+      },
+      "visible": true,
+      "status": "available"
+    },
+    {
+      "id": "2",
+      "type": "House",
+      "name": "Luxury Villa",
+      "description": "Beautiful luxury villa with amazing views and modern amenities.",
+      "image": "http://localhost:3000/img/houses/house1.png",
+      "imageLg": "http://localhost:3000/img/houses/house1.png",
+      "country": "United States",
+      "address": "7240C Argyle St. Lawndale, CA 90260",
+      "bedrooms": "6",
+      "bathrooms": "3",
+      "surface": "4200 sq ft",
+      "year": "2016",
+      "price": "1700",
+      "date": "5",
+      "listingType": "sell",
+      "userId": 1,
+      "agent": {
+        "name": "John Doe",
+        "phone": "123-456-7890",
+        "image": "https://randomuser.me/api/portraits/men/1.jpg"
+      },
+      "status": "available",
+      "visible": false
+    },
+    {
+      "id": "3",
+      "type": "House",
+      "name": "Modern Apartment",
+      "description": "Spacious modern apartment in the heart of the city.",
+      "image": "http://localhost:3000/img/houses/house2.png",
+      "imageLg": "http://localhost:3000/img/houses/house2.png",
+      "country": "India",
+      "address": "798 Talbot St. Bridgewater, NJ 08807",
+      "bedrooms": "3",
+      "bathrooms": "2",
+      "surface": "1800 sq ft",
+      "year": "2018",
+      "price": "2500",
+      "date": "10",
+      "listingType": "rent",
+      "userId": 2,
+      "agent": {
+        "name": "Jane Smith",
+        "phone": "987-654-3210",
+        "image": "https://randomuser.me/api/portraits/women/1.jpg"
+      }
+    },
+    {
+      "id": "4",
+      "type": "House",
+      "name": "Modern Apartment",
+      "description": "Spacious modern apartment in the heart of the city.",
+      "image": "http://localhost:3000/img/houses/house3.png",
+      "imageLg": "http://localhost:3000/img/houses/house3.png",
+      "country": "India",
+      "address": "798 Talbot St. Bridgewater, NJ 08807",
+      "bedrooms": "3",
+      "bathrooms": "2",
+      "surface": "1800 sq ft",
+      "year": "2018",
+      "price": "2500",
+      "date": "10",
+      "listingType": "buy",
+      "userId": 2,
+      "agent": {
+        "name": "Jane Smith",
+        "phone": "987-654-3210",
+        "image": "https://randomuser.me/api/portraits/women/1.jpg"
+      }
+    },
+    {
+      "id": "5",
+      "type": "House",
+      "name": "Luxury Villa",
+      "description": "Beautiful luxury villa with amazing views and modern amenities.",
+      "image": "http://localhost:3000/img/houses/house1.png",
+      "imageLg": "http://localhost:3000/img/houses/house1.png",
+      "country": "United States",
+      "address": "7240C Argyle St. Lawndale, CA 90260",
+      "bedrooms": "6",
+      "bathrooms": "3",
+      "surface": "4200 sq ft",
+      "year": "2016",
+      "price": "1700",
+      "date": "5",
+      "listingType": "rent",
+      "userId": 1,
+      "agent": {
+        "name": "John Doe",
+        "phone": "123-456-7890",
+        "image": "https://randomuser.me/api/portraits/men/1.jpg"
+      },
+      "visible": true,
+      "status": "available"
+    },
+    {
+      "id": "6",
+      "type": "House",
+      "name": "Luxury Villa",
+      "description": "Beautiful luxury villa with amazing views and modern amenities.",
+      "image": "http://localhost:3000/img/houses/house1.png",
+      "imageLg": "http://localhost:3000/img/houses/house1.png",
+      "country": "United States",
+      "address": "7240C Argyle St. Lawndale, CA 90260",
+      "bedrooms": "6",
+      "bathrooms": "3",
+      "surface": "4200 sq ft",
+      "year": "2016",
+      "price": "1700",
+      "date": "5",
+      "listingType": "rent",
+      "userId": 1,
+      "agent": {
+        "name": "John Doe",
+        "phone": "123-456-7890",
+        "image": "https://randomuser.me/api/portraits/men/1.jpg"
+      },
+      "visible": true,
+      "status": "available"
+    },
+    {
+      "id": "7",
+      "type": "House",
+      "name": "Luxury Villa",
+      "description": "Beautiful luxury villa with amazing views and modern amenities.",
+      "image": "http://localhost:3000/img/houses/house1.png",
+      "imageLg": "http://localhost:3000/img/houses/house1.png",
+      "country": "United States",
+      "address": "7240C Argyle St. Lawndale, CA 90260",
+      "bedrooms": "6",
+      "bathrooms": "3",
+      "surface": "4200 sq ft",
+      "year": "2016",
+      "price": "1700",
+      "date": "5",
+      "listingType": "rent",
+      "userId": 1,
+      "agent": {
+        "name": "John Doe",
+        "phone": "123-456-7890",
+        "image": "https://randomuser.me/api/portraits/men/1.jpg"
+      },
+      "visible": true,
+      "status": "available"
+    }
+  ],
+  "inquiries": [
+    {
+      "id": "1",
+      "propertyId": 1,
+      "fromUserId": 2,
+      "toUserId": 1,
+      "message": "I'm interested in this property. Is it still available?",
+      "date": "2023-03-15T10:30:00.000Z",
+      "status": "accepted"
+    },
+    {
+      "id": "b413",
+      "propertyId": "1",
+      "fromUserId": "1",
+      "toUserId": 1,
+      "message": "hello",
+      "date": "2025-03-20T19:12:32.460Z",
+      "status": "rejected"
+    },
+    {
+      "id": "3e7e",
+      "propertyId": null,
+      "fromUserId": "1",
+      "toUserId": 1,
+      "message": "kjnhgvf",
+      "date": "2025-03-21T03:11:54.329Z",
+      "status": "rejected"
+    },
+    {
+      "id": "635c",
+      "propertyId": "2",
+      "fromUserId": "1",
+      "toUserId": 2,
+      "message": "hy",
+      "date": "2025-03-21T03:29:27.177Z",
+      "status": "pending"
+    },
+    {
+      "id": "66f5",
+      "propertyId": "1",
+      "fromUserId": "2",
+      "toUserId": 1,
+      "message": "hello",
+      "date": "2025-03-21T06:51:58.536Z",
+      "status": "pending"
+    },
+    {
+      "id": "5df9",
+      "propertyId": "1",
+      "fromUserId": "65af",
+      "toUserId": 1,
+      "message": "testing",
+      "date": "2025-03-21T07:34:34.240Z",
+      "status": "accepted"
+    }
+  ],
+  "messages": [
+    {
+      "id": "e792",
+      "fromUserId": "2",
+      "toUserId": "1",
+      "content": "Is the price negotiable?",
+      "timestamp": "2025-03-22T12:25:18.545Z",
+      "read": true
+    },
+    {
+      "id": "3afc",
+      "fromUserId": "1",
+      "toUserId": "2",
+      "content": "why not",
+      "timestamp": "2025-03-22T12:28:09.826Z",
+      "read": true
+    },
+    {
+      "id": "241d",
+      "fromUserId": "1",
+      "toUserId": "2",
+      "content": "send your number",
+      "timestamp": "2025-03-22T12:28:35.681Z",
+      "read": true
+    },
+    {
+      "id": "3a2e",
+      "fromUserId": "2",
+      "toUserId": "1",
+      "content": "ok sure",
+      "timestamp": "2025-03-22T12:28:50.213Z",
+      "read": true
+    }
+  ]
+}
